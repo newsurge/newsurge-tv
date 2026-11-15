@@ -1,0 +1,600 @@
+{
+ "note": "Five channels, one shared clock per channel: every viewer of a channel watches the same moment. All programmes public domain; see rights log.",
+ "channels": [
+  {
+   "channel": "RETRO SURGE",
+   "note": "One channel, one reel: every viewer watches the same moment. All programmes public domain; see rights log.",
+   "items": [
+    {
+     "title": "Superman: The Mad Scientist",
+     "year": 1941,
+     "kind": "Fleischer Studios cartoon",
+     "dur": 628.26,
+     "url": "https://archive.org/download/1.-superman-the-mad-scientist-1941/01.%20Superman%20-%20The%20Mad%20Scientist%20%281941%29.mp4"
+    },
+    {
+     "title": "Superman: The Mechanical Monsters",
+     "year": 1941,
+     "kind": "Fleischer Studios cartoon",
+     "dur": 614.38,
+     "url": "https://archive.org/download/the-mechanical-monsters-4k/The%20Mechanical%20Monsters%204K.ia.mp4"
+    },
+    {
+     "title": "Superman: Billion Dollar Limited",
+     "year": 1942,
+     "kind": "Fleischer Studios cartoon",
+     "dur": 516.77,
+     "url": "https://archive.org/download/1.-superman-the-mad-scientist-1941/03.%20Superman%20-%20%20Billion%20Dollar%20Limited%20%281942%29.mp4"
+    },
+    {
+     "title": "Superman: The Arctic Giant",
+     "year": 1942,
+     "kind": "Fleischer Studios cartoon",
+     "dur": 516.48,
+     "url": "https://archive.org/download/1.-superman-the-mad-scientist-1941/04.%20Superman%20-%20The%20Arctic%20Giant%20%281942%29.mp4"
+    },
+    {
+     "title": "Design for Dreaming",
+     "year": 1956,
+     "kind": "Prelinger Collection short",
+     "dur": 556.79,
+     "url": "https://archive.org/download/Designfo1956/Designfo1956_512kb.mp4"
+    },
+    {
+     "title": "A Date With Your Family",
+     "year": 1950,
+     "kind": "Prelinger Collection short",
+     "dur": 600.13,
+     "url": "https://archive.org/download/DateWith1950/DateWith1950_512kb.mp4"
+    },
+    {
+     "title": "Duck and Cover",
+     "year": 1951,
+     "kind": "Prelinger Collection short",
+     "dur": 555.38,
+     "url": "https://archive.org/download/DuckandC1951/DuckandC1951_512kb.mp4"
+    },
+    {
+     "title": "One Got Fat: Bicycle Safety",
+     "year": 1963,
+     "kind": "Prelinger Collection short",
+     "dur": 887.48,
+     "url": "https://archive.org/download/OneGotFa1963/OneGotFa1963_512kb.mp4"
+    },
+    {
+     "title": "Newsreel: First U.S. Satellite Launched!",
+     "year": 1958,
+     "kind": "Universal Newsreel",
+     "dur": 169.54,
+     "url": "https://archive.org/download/1958-02-03_First_US_Satellite_Launched/1958-02-03_First_US_Satellite_Launched_512kb.mp4"
+    },
+    {
+     "title": "Newsreel: Space Triumph! Glenn Flight Thrills World",
+     "year": 1962,
+     "kind": "Universal Newsreel",
+     "dur": 372.01,
+     "url": "https://archive.org/download/1962-02-22_Space_Triumph/1962-02-22_Space_Triumph_512kb.mp4"
+    },
+    {
+     "title": "Newsreel: Telstar Brings World Closer",
+     "year": 1962,
+     "kind": "Universal Newsreel",
+     "dur": 197.47,
+     "url": "https://archive.org/download/1962-07-12_A_Day_in_History/1962-07-12_A_Day_in_History_512kb.mp4"
+    },
+    {
+     "title": "STS-135 Crew Tribute to the Space Shuttle Program",
+     "year": 2011,
+     "kind": "NASA footage",
+     "dur": 220.58,
+     "url": "https://archive.org/download/Sts-135CrewTributeToTheSpaceShuttleProgram/STS135_TributeFuture_720p.mp4"
+    },
+    {
+     "title": "Night of the Living Dead",
+     "year": 1968,
+     "kind": "The late movie",
+     "dur": 5753.42,
+     "url": "https://archive.org/download/night-of-the-living-dead_pnm_alternate/NightOfTheLivingDead.mp4"
+    }
+   ]
+  },
+  {
+   "channel": "CARTOON THEATRE",
+   "note": "All programmes public domain; see rights notes below. Superman episodes continue the run begun on RETRO SURGE (episodes 1-4 live there).",
+   "items": [
+    {
+     "title": "Superman: The Bulleteers",
+     "year": 1942,
+     "kind": "Fleischer Studios cartoon",
+     "dur": 484.82,
+     "url": "https://archive.org/download/1.-superman-the-mad-scientist-1941/05.%20Superman%20-%20The%20Bulleteers%20%281942%29.mp4"
+    },
+    {
+     "title": "Superman: The Magnetic Telescope",
+     "year": 1942,
+     "kind": "Fleischer Studios cartoon",
+     "dur": 460.51,
+     "url": "https://archive.org/download/1.-superman-the-mad-scientist-1941/06.%20Superman%20-%20The%20Magnetic%20Telescope%20%281942%29.mp4"
+    },
+    {
+     "title": "Superman: Electric Earthquake",
+     "year": 1942,
+     "kind": "Fleischer Studios cartoon",
+     "dur": 524.91,
+     "url": "https://archive.org/download/1.-superman-the-mad-scientist-1941/07.%20Superman%20-%20Electric%20Earthquake%20%281942%29.mp4"
+    },
+    {
+     "title": "Superman: Volcano",
+     "year": 1942,
+     "kind": "Fleischer Studios cartoon",
+     "dur": 477.4,
+     "url": "https://archive.org/download/1.-superman-the-mad-scientist-1941/08.%20Superman%20-%20Volcano%20%281942%29.mp4"
+    },
+    {
+     "title": "Superman: Terror on the Midway",
+     "year": 1942,
+     "kind": "Fleischer Studios cartoon",
+     "dur": 502.42,
+     "url": "https://archive.org/download/1.-superman-the-mad-scientist-1941/09.%20Superman%20-%20Terror%20on%20the%20Midway%20%281942%29.mp4"
+    },
+    {
+     "title": "Superman: Showdown",
+     "year": 1942,
+     "kind": "Fleischer Studios cartoon",
+     "dur": 501.55,
+     "url": "https://archive.org/download/1.-superman-the-mad-scientist-1941/11.%20Superman%20-%20Showdown%20%281942%29.mp4"
+    },
+    {
+     "title": "Superman: Destruction Inc.",
+     "year": 1942,
+     "kind": "Fleischer Studios cartoon",
+     "dur": 514.1,
+     "url": "https://archive.org/download/1.-superman-the-mad-scientist-1941/13.%20Superman%20-%20Destruction%20Inc.%20%281942%29.mp4"
+    },
+    {
+     "title": "Superman: The Mummy Strikes",
+     "year": 1943,
+     "kind": "Fleischer Studios cartoon",
+     "dur": 468.22,
+     "url": "https://archive.org/download/1.-superman-the-mad-scientist-1941/14.%20Superman%20-%20The%20Mummy%20Strikes%20%281943%29.mp4"
+    },
+    {
+     "title": "Superman: The Underground World",
+     "year": 1943,
+     "kind": "Fleischer Studios cartoon",
+     "dur": 493.62,
+     "url": "https://archive.org/download/1.-superman-the-mad-scientist-1941/16.%20Superman%20-%20The%20Underground%20World%20%281943%29.mp4"
+    },
+    {
+     "title": "Superman: Secret Agent",
+     "year": 1943,
+     "kind": "Fleischer Studios cartoon",
+     "dur": 460.51,
+     "url": "https://archive.org/download/1.-superman-the-mad-scientist-1941/17.%20Superman%20-%20Secret%20Agent%20%281943%29.mp4"
+    },
+    {
+     "title": "Popeye the Sailor Meets Sindbad the Sailor",
+     "year": 1936,
+     "kind": "Fleischer Studios cartoon",
+     "dur": 966.4,
+     "url": "https://archive.org/download/PopeyeTheSailorMeetsSindbadTheSailor_540/Popeye_meetsSinbadtheSailor.mp4"
+    },
+    {
+     "title": "Falling Hare",
+     "year": 1943,
+     "kind": "Warner Bros. cartoon",
+     "dur": 512.14,
+     "url": "https://archive.org/download/falling-hare-1943/Falling%20Hare%20%281943%29.mp4"
+    },
+    {
+     "title": "Pantry Panic",
+     "year": 1941,
+     "kind": "Walter Lantz cartoon",
+     "dur": 396.69,
+     "url": "https://archive.org/download/PantryPanic1941/Pantry%20Panic%20%281941%29.mp4"
+    }
+   ]
+  },
+  {
+   "channel": "AMERICANA",
+   "note": "All programmes from the Prelinger Collection on archive.org, public domain.",
+   "items": [
+    {
+     "title": "Master Hands",
+     "year": 1936,
+     "kind": "Prelinger Collection short",
+     "dur": 1908.76,
+     "url": "https://archive.org/download/masterhandscomplete4kh264/Master_Hands_complete_4K_h264.mp4"
+    },
+    {
+     "title": "Hired!",
+     "year": 1940,
+     "kind": "Prelinger Collection short",
+     "dur": 1112.84,
+     "url": "https://archive.org/download/Hired1940/Hired1940_512kb.mp4"
+    },
+    {
+     "title": "A Case of Spring Fever",
+     "year": 1940,
+     "kind": "Prelinger Collection short",
+     "dur": 496.66,
+     "url": "https://archive.org/download/CaseofSp1940/CaseofSp1940_512kb.mp4"
+    },
+    {
+     "title": "To New Horizons",
+     "year": 1940,
+     "kind": "Prelinger Collection short",
+     "dur": 1380.58,
+     "url": "https://archive.org/download/ToNewHor1940/ToNewHor1940_512kb.mp4"
+    },
+    {
+     "title": "Shy Guy",
+     "year": 1947,
+     "kind": "Prelinger Collection short",
+     "dur": 815.31,
+     "url": "https://archive.org/download/ShyGuy1947/ShyGuy1947_512kb.mp4"
+    },
+    {
+     "title": "Dating: Do's and Don'ts",
+     "year": 1949,
+     "kind": "Prelinger Collection short",
+     "dur": 745.41,
+     "url": "https://archive.org/download/DatingDo1949/DatingDo1949_512kb.mp4"
+    },
+    {
+     "title": "Are You Ready for Marriage?",
+     "year": 1950,
+     "kind": "Prelinger Collection short",
+     "dur": 963.39,
+     "url": "https://archive.org/download/AreYouRe1950/AreYouRe1950_512kb.mp4"
+    },
+    {
+     "title": "A Young Man's Fancy (Part I)",
+     "year": 1952,
+     "kind": "Prelinger Collection short",
+     "dur": 875.54,
+     "url": "https://archive.org/download/YoungMan1952/YoungMan1952_512kb.mp4"
+    },
+    {
+     "title": "A Young Man's Fancy (Part II)",
+     "year": 1952,
+     "kind": "Prelinger Collection short",
+     "dur": 880.74,
+     "url": "https://archive.org/download/YoungMan1952_2/YoungMan1952_2_512kb.mp4"
+    },
+    {
+     "title": "Habit Patterns",
+     "year": 1954,
+     "kind": "Prelinger Collection short",
+     "dur": 859.25,
+     "url": "https://archive.org/download/HabitPat1954/HabitPat1954_512kb.mp4"
+    },
+    {
+     "title": "The Relaxed Wife",
+     "year": 1957,
+     "kind": "Prelinger Collection short",
+     "dur": 807.67,
+     "url": "https://archive.org/download/RelaxedW1957/RelaxedW1957_512kb.mp4"
+    },
+    {
+     "title": "Century 21 Calling",
+     "year": 1964,
+     "kind": "Prelinger Collection short",
+     "dur": 836.63,
+     "url": "https://archive.org/download/Century21964/Century21964_512kb.mp4"
+    }
+   ]
+  },
+  {
+   "channel": "SPACE AGE",
+   "note": "Universal Newsreels (public domain) and NASA productions (U.S. government works, public domain).",
+   "items": [
+    {
+     "title": "Newsreel: V-2 Rocket Test at White Sands",
+     "year": 1946,
+     "kind": "Universal Newsreel",
+     "dur": 79.91,
+     "url": "https://archive.org/download/1946-11-21_White_Sands_NM_V-2_rocket/1946-11-21_White_Sands_NM_V-2_rocket_512kb.mp4"
+    },
+    {
+     "title": "Newsreel: Space Race \u2014 U.S. in Lead with 4,000-Mile Rocket",
+     "year": 1957,
+     "kind": "Universal Newsreel",
+     "dur": 122.36,
+     "url": "https://archive.org/download/1957-10-28_Space_Race/1957-10-28_Space_Race_512kb.mp4"
+    },
+    {
+     "title": "Newsreel: Ike Denies U.S. Lag in Missiles",
+     "year": 1957,
+     "kind": "Universal Newsreel",
+     "dur": 99.1,
+     "url": "https://archive.org/download/1957-10-10_Ike_Denies_US_lag/1957-10-10_Ike_Denies_US_lag_512kb.mp4"
+    },
+    {
+     "title": "Newsreel: Explorer VI Puts an Eye in the Sky",
+     "year": 1959,
+     "kind": "Universal Newsreel",
+     "dur": 70.64,
+     "url": "https://archive.org/download/1959-08-10_Explorer_VI/1959-08-10_Explorer_VI_512kb.mp4"
+    },
+    {
+     "title": "Newsreel: Space Monkeys Meet the Press",
+     "year": 1959,
+     "kind": "Universal Newsreel",
+     "dur": 128.06,
+     "url": "https://archive.org/download/1959-06-01_Space_Monkeys/1959-06-01_Space_Monkeys_512kb.mp4"
+    },
+    {
+     "title": "Newsreel: Space Progress \u2014 Capsule Recovery Successful",
+     "year": 1960,
+     "kind": "Universal Newsreel",
+     "dur": 193.96,
+     "url": "https://archive.org/download/1960-12-22_Space_Progress/1960-12-22_Space_Progress_512kb.mp4"
+    },
+    {
+     "title": "Newsreel: Cosmos Pioneer \u2014 Soviets Orbit Man in Space",
+     "year": 1961,
+     "kind": "Universal Newsreel",
+     "dur": 31.17,
+     "url": "https://archive.org/download/1961-04-13_Cosmos_Pioneer/1961-04-13_Cosmos_Pioneer_512kb.mp4"
+    },
+    {
+     "title": "The John Glenn Story",
+     "year": 1963,
+     "kind": "NASA footage",
+     "dur": 1791.44,
+     "url": "https://archive.org/download/TheJohnGlennStory/The_John_Glenn_Story_512kb.mp4"
+    },
+    {
+     "title": "Apollo 11: The Eagle Has Landed",
+     "year": 1969,
+     "kind": "NASA footage",
+     "dur": 1624.69,
+     "url": "https://archive.org/download/Apollo11TheEagleHasLanded/Apollo11EagleHasLanded_512kb.mp4"
+    },
+    {
+     "title": "We Came in Peace",
+     "year": 1970,
+     "kind": "NASA documentary",
+     "dur": 2248.92,
+     "url": "https://archive.org/download/66324-we-come-in-peace-vwr/66324%20We%20Come%20In%20Peace_vwr.mp4"
+    }
+   ]
+  },
+  {
+   "channel": "LATE NIGHT FEATURE",
+   "note": "Full-length features whose U.S. public-domain status is well established; see per-title basis below.",
+   "items": [
+    {
+     "title": "His Girl Friday",
+     "year": 1940,
+     "kind": "Feature film",
+     "dur": 5504.57,
+     "url": "https://archive.org/download/his_girl_friday/his_girl_friday.mp4"
+    },
+    {
+     "title": "The Stranger",
+     "year": 1946,
+     "kind": "Feature film",
+     "dur": 5698.17,
+     "url": "https://archive.org/download/TheStranger720p/TheStranger720p.mp4"
+    },
+    {
+     "title": "House on Haunted Hill",
+     "year": 1959,
+     "kind": "Feature film",
+     "dur": 4483.22,
+     "url": "https://archive.org/download/house_on_haunted_hill_512kb/house_on_haunted_hill_512kb.mp4"
+    },
+    {
+     "title": "Plan 9 from Outer Space",
+     "year": 1959,
+     "kind": "Feature film",
+     "dur": 4684.21,
+     "url": "https://archive.org/download/plan-9-from-outer-space-1959/Plan%209%20From%20Outer%20Space%20%281959%29.mp4"
+    },
+    {
+     "title": "The Little Shop of Horrors",
+     "year": 1960,
+     "kind": "Feature film",
+     "dur": 4385.5,
+     "url": "https://archive.org/download/The_Little_Shop_of_Horrors_60/The_Little_Shop_of_Horrors_60.mp4"
+    },
+    {
+     "title": "Carnival of Souls",
+     "year": 1962,
+     "kind": "Feature film",
+     "dur": 4940.83,
+     "url": "https://archive.org/download/CarnivalOfSouls1962/Carnival_of_Souls.mp4"
+    },
+    {
+     "title": "Charade",
+     "year": 1963,
+     "kind": "Feature film",
+     "dur": 6785.01,
+     "url": "https://archive.org/download/charade-1963-cary-grant-audrey-hepburn-comedy-mystery-romance-thriller-full-movie/Charade_READY.mp4"
+    },
+    {
+     "title": "Dementia 13",
+     "year": 1963,
+     "kind": "Feature film",
+     "dur": 4123.37,
+     "url": "https://archive.org/download/dementia.-13.1963/Dementia%2013%20%281963%29/mp4/Dementia.13.1963.mp4"
+    },
+    {
+     "title": "The Last Man on Earth",
+     "year": 1964,
+     "kind": "Feature film",
+     "dur": 5203.59,
+     "url": "https://archive.org/download/TheLastManOnEarth1964_201808/The%20Last%20Man%20on%20Earth%20%281964%29.mp4"
+    }
+   ]
+  },
+  {
+   "channel": "POPE RADIO",
+   "note": "Sergio's Catholic channel \u2014 a TV channel wearing a radio name, his joke. Silent-era biblical epics, Fr. Peyton's Family Theater, and Cathedral Films. Every programme public domain; see per-title basis below. No Fulton Sheen \u2014 see the verdict in the rejected list.",
+   "items": [
+    {
+     "title": "The Star of Bethlehem",
+     "year": 1912,
+     "kind": "Silent classic",
+     "dur": 919.93,
+     "url": "https://archive.org/download/silent-the-star-of-bethlehem/The%20Star%20of%20Bethlehem.mp4"
+    },
+    {
+     "title": "From the Manger to the Cross",
+     "year": 1912,
+     "kind": "Silent classic",
+     "dur": 4235.7,
+     "url": "https://archive.org/download/silent-from-the-manger-to-the-cross-or-jesus-of-nazareth/From%20the%20Manger%20to%20the%20Cross%3B%20or%2C%20Jesus%20of%20Nazareth.mp4"
+    },
+    {
+     "title": "Quo Vadis?",
+     "year": 1913,
+     "kind": "Silent classic",
+     "dur": 6138.64,
+     "url": "https://archive.org/download/silent-quo-vadis/Quo%20Vadis%3F.mp4"
+    },
+    {
+     "title": "Judith of Bethulia",
+     "year": 1914,
+     "kind": "Silent classic",
+     "dur": 2915.48,
+     "url": "https://archive.org/download/silent-judith-of-bethulia/Judith%20of%20Bethulia.mp4"
+    },
+    {
+     "title": "The Ten Commandments",
+     "year": 1923,
+     "kind": "Silent classic",
+     "dur": 8164.87,
+     "url": "https://archive.org/download/TheTenCommandments1923NR_201503/The%20Ten%20Commandments%20%281923%29%20%5BNR%5D.mp4"
+    },
+    {
+     "title": "Ben-Hur: A Tale of the Christ",
+     "year": 1925,
+     "kind": "Silent classic",
+     "dur": 8466.93,
+     "url": "https://archive.org/download/silent-ben-hur-a-tale-of-the-christ-1925/Ben%20Hur%2C%20A%20Tale%20Of%20The%20Christ%20%281925%29.mp4"
+    },
+    {
+     "title": "The King of Kings",
+     "year": 1927,
+     "kind": "Silent classic",
+     "dur": 9447.25,
+     "url": "https://archive.org/download/TheKingOfKings1927ByCecilB.DeMille/The%20King%20of%20Kings%201927%20by%20Cecil%20B.%20DeMille.mp4"
+    },
+    {
+     "title": "The Passion of Joan of Arc",
+     "year": 1928,
+     "kind": "Silent classic",
+     "dur": 4929.24,
+     "url": "https://archive.org/download/the-passion-of-joan-of-arc/The%20Passion%20of%20Joan%20of%20Arc.mp4"
+    },
+    {
+     "title": "The Pilgrimage Play",
+     "year": 1949,
+     "kind": "Feature film",
+     "dur": 5753.77,
+     "url": "https://archive.org/download/ThePilgrimagePlay1949_201903/The%20Pilgrimage%20Play%20%281949%29.mp4"
+    },
+    {
+     "title": "Hill Number One",
+     "year": 1951,
+     "kind": "Family Theater production",
+     "dur": 3371.84,
+     "url": "https://archive.org/download/HillNumberOne/HillNumberOne.mp4"
+    },
+    {
+     "title": "I Beheld His Glory",
+     "year": 1953,
+     "kind": "Cathedral Films TV film",
+     "dur": 3171.31,
+     "url": "https://archive.org/download/i-beheld-his-glory_201903/I_beheld_his_glory.mp4"
+    },
+    {
+     "title": "Day of Triumph",
+     "year": 1954,
+     "kind": "Cathedral Films feature",
+     "dur": 6596.65,
+     "url": "https://archive.org/download/day-of-triumph-1954-full-movie-robert-wilson-lee-j.-cobb-joanne-dru/Day%20of%20Triumph%20%281954%29%20%EF%BD%9C%20Full%20Movie%20%28Unconverted%29%20%EF%BD%9C%20Robert%20Wilson%20%EF%BD%9C%20Lee%20J.%20Cobb%20%EF%BD%9C%20Joanne%20Dru.mp4"
+    }
+   ]
+  },
+  {
+   "channel": "PUBLIC TELEVISION",
+   "note": "Public-service television of the early public-TV era: The Big Picture, the U.S. Army's weekly TV series (1951-1971), produced by the Signal Corps and supplied free to stations nationwide \u2014 U.S. government works, public domain (17 U.S.C. \u00a7 105). Pete Seeger's Rainbow Quest was researched in depth and held out: its public-domain claim does not hold up; see the rights notes.",
+   "items": [
+    {
+     "title": "The Big Picture: Battlefields of Yesterday",
+     "year": 1954,
+     "kind": "U.S. Army TV series",
+     "dur": 1649.43,
+     "url": "https://archive.org/download/TheBigPicture270BattlefieldsOfYesterday1954/TheBigPicture270-BattlefieldsOfYesterday1954.mp4"
+    },
+    {
+     "title": "The Big Picture: Pentomic 101st",
+     "year": 1956,
+     "kind": "U.S. Army TV series",
+     "dur": 1641.28,
+     "url": "https://archive.org/download/TheBigPicture351/The%20Big%20Picture%20351%20Pentomic%20101st.mp4"
+    },
+    {
+     "title": "The Big Picture: Flying Soldiers",
+     "year": 1958,
+     "kind": "U.S. Army TV series",
+     "dur": 1733.06,
+     "url": "https://archive.org/download/TheBigPicture426/The%20Big%20Picture%20Number%20426%20Flying%20Soldiers.mp4"
+    },
+    {
+     "title": "The Big Picture: Religious Emphasis Day",
+     "year": 1958,
+     "kind": "U.S. Army TV series",
+     "dur": 1720.93,
+     "url": "https://archive.org/download/TheBigPicture470/The%20Big%20Picture%20470%20-%20Religious%20Emphasis%20Day%20in%20Philadelphia%201958.mp4"
+    },
+    {
+     "title": "The Big Picture: The Unseen Weapon",
+     "year": 1958,
+     "kind": "U.S. Army TV series",
+     "dur": 1731.48,
+     "url": "https://archive.org/download/UnseenWeaponTheBigPictureSeriesUSArmy/Unseen%20Weapon%20The%20Big%20Picture%20Series%20US%20Army.mp4"
+    },
+    {
+     "title": "The Big Picture: Army Digest No. 8",
+     "year": 1961,
+     "kind": "U.S. Army TV series",
+     "dur": 1718.46,
+     "url": "https://archive.org/download/TheBigPicture511ArmyDigestNumberEight1961/The%20Big%20Picture%20511%20-%20Army%20Digest%20Number%20Eight%201961.mp4"
+    },
+    {
+     "title": "The Big Picture: The Army Nurse Story",
+     "year": 1961,
+     "kind": "U.S. Army TV series",
+     "dur": 1704.66,
+     "url": "https://archive.org/download/TheBigPicture516/The%20Big%20Picture%20516%20The%20Army%20Nurse%20Story%201961.mp4"
+    },
+    {
+     "title": "The Big Picture: Recall",
+     "year": 1963,
+     "kind": "U.S. Army TV series",
+     "dur": 1716.56,
+     "url": "https://archive.org/download/TheBigPicture577Recall1963/The%20Big%20Picture%20577%20-%20Recall%201963.mp4"
+    },
+    {
+     "title": "The Big Picture: When the Chips Are Down",
+     "year": 1968,
+     "kind": "U.S. Army TV series",
+     "dur": 1731.13,
+     "url": "https://archive.org/download/TheBigPicture723/The%20Big%20Picture%20723%20When%20the%20Chips%20Are%20Down%20Bob%20Hope.mp4"
+    },
+    {
+     "title": "The Big Picture: D-Day Anniversary",
+     "year": 1969,
+     "kind": "U.S. Army TV series",
+     "dur": 1713.27,
+     "url": "https://archive.org/download/DDayAnniversary/The%20Big%20Picture%20762%20D-Day%20Anniversary%201969.mp4"
+    }
+   ]
+  }
+ ]
+}
