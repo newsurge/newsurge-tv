@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NewSurge — Skin Lab</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#04070f;color:#dbe7ff;font-family:-apple-system,'Segoe UI',Roboto,sans-serif;padding:22px 14px 60px;max-width:640px;margin:0 auto}
+h1{font-size:22px;letter-spacing:2px;text-align:center;margin:6px 0 4px}
+.sub{text-align:center;color:#8fa3c8;font-size:13px;margin-bottom:26px}
+.opt{margin-bottom:34px}
+.opt-name{font-size:13px;font-weight:800;letter-spacing:3px;margin-bottom:4px}
+.opt-desc{font-size:12.5px;color:#8fa3c8;margin-bottom:10px;line-height:1.5}
+/* shared sample-panel guts */
+.sp{border-radius:18px;padding:20px 18px;position:relative;overflow:hidden}
+.sp h3{font-size:11px;letter-spacing:3px;margin-bottom:10px}
+.sp .big{font-size:44px;font-weight:900;margin:2px 0 4px}
+.sp .small{font-size:12.5px;line-height:1.55;margin-bottom:14px}
+.sp .btn{display:inline-block;padding:10px 22px;border-radius:12px;font-size:12px;font-weight:800;letter-spacing:2px}
+/* A — brushed gunmetal */
+.sp-metal{background:
+ repeating-linear-gradient(90deg,rgba(255,255,255,.025) 0 2px,transparent 2px 4px),
+ linear-gradient(180deg,#3d4453 0%,#262b35 55%,#1a1e26 100%);
+ border:1px solid #0c0e13;
+ box-shadow:0 10px 24px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.14),inset 0 -2px 6px rgba(0,0,0,.5)}
+.sp-metal h3{color:#aeb8cc;text-shadow:0 -1px 0 rgba(0,0,0,.9),0 1px 0 rgba(255,255,255,.1)}
+.sp-metal .big{color:#f2f5fa;text-shadow:0 -2px 0 rgba(0,0,0,.85),0 2px 3px rgba(0,0,0,.5)}
+.sp-metal .small{color:#c3ccdd;text-shadow:0 -1px 0 rgba(0,0,0,.7)}
+.sp-metal .btn{background:linear-gradient(180deg,#4a5265,#2b303c);color:#eef2f9;border:1px solid #0c0e13;box-shadow:0 3px 8px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.2);text-shadow:0 -1px 0 rgba(0,0,0,.8)}
+.sp-metal .screw{position:absolute;width:11px;height:11px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#8b93a7,#3a3f4b 70%);box-shadow:inset 0 1px 2px rgba(0,0,0,.7)}
+.sp-metal .screw::after{content:'';position:absolute;left:1px;right:1px;top:50%;height:1.6px;margin-top:-.8px;background:rgba(0,0,0,.65);transform:rotate(38deg)}
+/* B — tactical */
+.sp-tac{background:linear-gradient(180deg,#23261a 0%,#161810 60%,#0f110a 100%);border:1px solid #3a3d2a;
+ box-shadow:0 10px 24px rgba(0,0,0,.6),inset 0 0 0 3px rgba(0,0,0,.35)}
+.sp-tac::before{content:'';position:absolute;top:0;left:0;right:0;height:7px;
+ background:repeating-linear-gradient(45deg,#e8b10a 0 12px,#141414 12px 24px)}
+.sp-tac h3{color:#d8c86a;font-family:'Courier New',monospace;letter-spacing:4px;padding-top:6px}
+.sp-tac .big{color:#f4ecd0;font-family:'Courier New',monospace;text-shadow:0 0 12px rgba(232,177,10,.25)}
+.sp-tac .small{color:#b9bda6;font-family:'Courier New',monospace;font-size:12px}
+.sp-tac .btn{background:#e8b10a;color:#191a10;border:none;font-family:'Courier New',monospace;box-shadow:0 3px 0 #8a6a06}
+.sp-tac .rivet{position:absolute;width:9px;height:9px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffe9a8,#a8842a 70%);box-shadow:0 1px 2px rgba(0,0,0,.7)}
+/* C — CRT phosphor */
+.sp-crt{background:#040805;border:1px solid #123322;border-radius:14px;
+ box-shadow:0 0 0 4px #0a0d0c,0 0 26px rgba(0,255,150,.12),inset 0 0 60px rgba(0,0,0,.85)}
+.sp-crt::after{content:'';position:absolute;inset:0;pointer-events:none;
+ background:repeating-linear-gradient(0deg,rgba(0,0,0,.28) 0 2px,transparent 2px 4px)}
+.sp-crt h3{color:#39ff88;font-family:'Courier New',monospace;letter-spacing:3px;text-shadow:0 0 8px rgba(57,255,136,.8)}
+.sp-crt .big{color:#d2ffe2;font-family:'Courier New',monospace;text-shadow:0 0 14px rgba(57,255,136,.9)}
+.sp-crt .small{color:#7ee2a8;font-family:'Courier New',monospace;font-size:12.5px;text-shadow:0 0 6px rgba(57,255,136,.5)}
+.sp-crt .btn{background:transparent;color:#39ff88;border:1px solid #39ff88;font-family:'Courier New',monospace;box-shadow:0 0 10px rgba(57,255,136,.35),inset 0 0 8px rgba(57,255,136,.15);text-shadow:0 0 8px rgba(57,255,136,.8)}
+/* D — midnight clay (current) */
+.sp-clay{background:#1a2450;border-radius:26px;
+ box-shadow:7px 7px 16px rgba(2,6,26,.55),-7px -7px 16px rgba(96,116,190,.22),inset 3px 3px 8px rgba(255,255,255,.07),inset -3px -3px 8px rgba(0,0,0,.35)}
+.sp-clay h3{color:#7dd3fc}
+.sp-clay .big{color:#f4f7ff;text-shadow:0 2px 6px rgba(2,6,26,.6)}
+.sp-clay .small{color:#a9bede}
+.sp-clay .btn{background:linear-gradient(180deg,#38bdf8,#0369a1);color:#04121f;box-shadow:0 4px 10px rgba(2,6,26,.5),inset 0 1px 0 rgba(255,255,255,.35)}
+.note{margin-top:30px;font-size:12.5px;color:#8fa3c8;line-height:1.7;text-align:center}
+.note b{color:#dbe7ff}
+</style>
+</head>
+<body>
+<h1>SKIN LAB</h1>
+<p class="sub">Four skeuomorphic directions for NewSurge dark mode.<br>Same sample panel, four materials. Reply with the letter.</p>
+
+<div class="opt">
+<div class="opt-name">A — BRUSHED GUNMETAL</div>
+<div class="opt-desc">Machined dark metal, engraved labels, corner screws. Hardware feel — matches the silver aesthetic.</div>
+<div class="sp sp-metal">
+<span class="screw" style="top:10px;left:10px"></span><span class="screw" style="top:10px;right:10px"></span>
+<span class="screw" style="bottom:10px;left:10px"></span><span class="screw" style="bottom:10px;right:10px"></span>
+<h3>DESCENT · ENGRAVED</h3><div class="big">197.7 LBS</div>
+<p class="small">Cut into the metal like a nameplate. No shine, no gloss — just machined texture and etched type.</p>
+<span class="btn">ENTER THE ARMORY</span>
+</div>
+</div>
+
+<div class="opt">
+<div class="opt-name">B — TACTICAL</div>
+<div class="opt-desc">Olive-black armor plate, stencil type, brass rivets, hazard-stripe accent. Built for the Prayer Armory's "St. Michael's Unit" vibe.</div>
+<div class="sp sp-tac">
+<span class="rivet" style="bottom:10px;left:12px"></span><span class="rivet" style="bottom:10px;right:12px"></span>
+<h3>DESCENT // UNIT-07</h3><div class="big">197.7 LBS</div>
+<p class="small">Stencil markings on armor plating. Reads like equipment, not a website. Hazard stripe marks the section edge.</p>
+<span class="btn">ENTER THE ARMORY</span>
+</div>
+</div>
+
+<div class="opt">
+<div class="opt-name">C — CRT PHOSPHOR</div>
+<div class="opt-desc">Old terminal screen: phosphor-green glow type, scanlines, dark bezel. Retro-tech, N64-adjacent.</div>
+<div class="sp sp-crt">
+<h3>&gt; DESCENT.SYS</h3><div class="big">197.7 LBS</div>
+<p class="small">Glowing phosphor on black glass with scanlines. The most retro of the four — a nod to the N64 era.</p>
+<span class="btn">ENTER THE ARMORY</span>
+</div>
+</div>
+
+<div class="opt">
+<div class="opt-name">D — MIDNIGHT CLAY (CURRENT)</div>
+<div class="opt-desc">The live dark-clay panels — soft extruded shapes, neon accents. Keep this one and refine it.</div>
+<div class="sp sp-clay">
+<h3>DESCENT</h3><div class="big">197.7 LBS</div>
+<p class="small">Soft 3D clay shapes pressed out of the dark background. Friendly, chunky, modern.</p>
+<span class="btn">ENTER THE ARMORY</span>
+</div>
+</div>
+
+<p class="note">Reply with <b>A</b>, <b>B</b>, <b>C</b>, or <b>D</b> —<br>or mix them (e.g. "B for the armory, A everywhere else").</p>
+</body>
+</html>

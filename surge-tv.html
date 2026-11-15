@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RETRO SURGE — NewSurge's 24/7 Retro TV</title>
+<meta name="description" content="RETRO SURGE: five public-domain channels, always on — Superman cartoons, Prelinger Americana, space-age newsreels, NASA footage and late-night classic features. Every viewer of a channel watches the same moment.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#06232e;--deep:#083344;--aqua:#35bce0;--aqua2:#7fe7e6;--mint:#a7f3d0;--paper:#eafcff}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:linear-gradient(180deg,#d9fbff 0%,#aeeef5 34%,#8fe3ee 62%,#c9f7ef 100%);min-height:100vh}
+a{color:#0b6e8f}
+.rs-wrap{max-width:980px;margin:0 auto;padding:18px 14px 40px}
+.rs-top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:4px 0 14px}
+.rs-brand{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:clamp(24px,5vw,38px);letter-spacing:.04em;color:var(--ink)}
+.rs-brand .tv{color:#0e7ea6}
+.rs-back{font-family:Silkscreen,monospace;font-size:13px;text-decoration:none;background:rgba(255,255,255,.55);border:1.5px solid rgba(6,35,46,.25);border-radius:999px;padding:8px 14px;color:var(--ink)}
+.rs-tag{font-size:15px;line-height:1.5;color:#0a3d4f;max-width:640px;margin:0 0 16px}
+.rs-tag b{color:#075e7a}
+/* ---- channel bar ---- */
+.rs-chans{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}
+.rs-chan{font-family:Silkscreen,monospace;font-size:12.5px;cursor:pointer;border-radius:12px;padding:10px 13px;border:1.5px solid rgba(6,35,46,.25);background:rgba(255,255,255,.5);color:var(--ink);display:flex;flex-direction:column;gap:2px;align-items:flex-start;min-width:118px;flex:1 1 auto}
+.rs-chan .n{font-size:10.5px;letter-spacing:.12em;color:#0b6e8f}
+.rs-chan .onnow{font-family:Inter,system-ui,sans-serif;font-size:11px;color:#40626f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:190px}
+.rs-chan.on{background:linear-gradient(135deg,#67e8f9,#35bce0 55%,#0e7ea6);color:#03222e;border-color:rgba(6,35,46,.35);box-shadow:0 6px 18px rgba(14,126,166,.35)}
+.rs-chan.on .n,.rs-chan.on .onnow{color:#04303f}
+/* ---- the set ---- */
+.rs-tv{background:linear-gradient(160deg,#0b3547,#04161f 70%);border-radius:28px;padding:clamp(10px,2.6vw,22px);box-shadow:0 24px 60px rgba(4,40,56,.45),inset 0 1px 0 rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.14)}
+.rs-screen{position:relative;border-radius:16px;overflow:hidden;background:#000;aspect-ratio:16/9;box-shadow:inset 0 0 60px rgba(0,0,0,.8)}
+.rs-screen video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
+.rs-scan{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.028) 0 1px,transparent 1px 3px);mix-blend-mode:overlay}
+.rs-glare{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 18% 0%,rgba(255,255,255,.14),transparent 46%)}
+.rs-bug{position:absolute;top:10px;left:12px;font-family:Silkscreen,monospace;font-size:12px;letter-spacing:.08em;color:#dffaff;background:rgba(3,20,28,.55);border:1px solid rgba(127,231,230,.4);padding:5px 9px;border-radius:8px;display:flex;gap:7px;align-items:center;backdrop-filter:blur(3px)}
+.rs-dot{width:8px;height:8px;border-radius:50%;background:#ff5d5d;box-shadow:0 0 8px #ff5d5d;animation:rspulse 1.6s infinite}
+@keyframes rspulse{0%,100%{opacity:1}50%{opacity:.35}}
+.rs-msg{position:absolute;inset:auto 0 12px 0;text-align:center;font-family:Silkscreen,monospace;font-size:13px;color:#bffcff;text-shadow:0 1px 8px #000;pointer-events:none}
+/* ---- CH 8 retro weather (WeatherStar-style, Decatur AL only) ---- */
+.rs-wx{position:absolute;inset:0;display:none;background:linear-gradient(180deg,#0a1e5e 0%,#103a8f 46%,#0a2a6e 78%,#071c4a 100%);color:#fff;overflow:hidden}
+.rs-wx.on{display:block}
+.rs-wx-head{position:absolute;top:0;left:0;right:0;background:linear-gradient(180deg,#123a9e,#0a2470);border-bottom:3px solid #f7c948;padding:10px 18px 9px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.rs-wx-logo{font-family:Silkscreen,monospace;font-size:14px;letter-spacing:.1em;color:#ffe98a}
+.rs-wx-city{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:clamp(17px,3.2vw,25px);letter-spacing:.02em}
+.rs-wx-clock{margin-left:auto;font-family:Silkscreen,monospace;font-size:12px;color:#bfe0ff}
+.rs-wx-panel{position:absolute;top:64px;left:0;right:0;bottom:34px;padding:14px 22px;display:none;overflow:hidden}
+.rs-wx-panel.on{display:block}
+.rs-wx-ptitle{font-family:Silkscreen,monospace;font-size:11.5px;letter-spacing:.22em;color:#7fe7e6;margin:0 0 12px}
+.rs-wx-big{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:clamp(50px,9.5vw,82px);line-height:1;text-shadow:0 3px 0 rgba(0,0,0,.35)}
+.rs-wx-cond{font-size:clamp(17px,3.2vw,25px);font-weight:600;color:#ffe98a;margin:5px 0 14px}
+.rs-wx-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px 26px;max-width:560px;font-size:clamp(13.5px,2.3vw,16.5px)}
+.rs-wx-grid b{color:#9fd8ff;font-weight:600}
+.rs-wx-narr{font-size:clamp(14.5px,2.6vw,19.5px);line-height:1.5;max-width:620px;margin:0 0 13px}
+.rs-wx-narr b{color:#ffe98a;font-family:Silkscreen,monospace;font-size:.82em;letter-spacing:.06em}
+.rs-wx-days{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;max-width:740px}
+.rs-wx-day{background:rgba(255,255,255,.08);border:1px solid rgba(159,216,255,.35);border-radius:10px;padding:10px 5px;text-align:center}
+.rs-wx-day .d{font-family:Silkscreen,monospace;font-size:10.5px;letter-spacing:.06em;color:#7fe7e6}
+.rs-wx-day .c{font-size:11.5px;line-height:1.3;min-height:30px;margin:5px 0;color:#fff}
+.rs-wx-day .lo{color:#9fd8ff}.rs-wx-day .hi{color:#ffe98a;font-weight:700}
+.rs-wx-tick{position:absolute;left:0;right:0;bottom:0;background:#071233;border-top:2px solid #f7c948;color:#ffe98a;font-family:Silkscreen,monospace;font-size:11.5px;letter-spacing:.05em;padding:7px 12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rs-wx-err{position:absolute;top:64px;left:0;right:0;bottom:34px;display:none;padding:28px 22px;font-family:Silkscreen,monospace;font-size:15px;line-height:1.8;color:#ffe98a;background:linear-gradient(180deg,#0d2f7d,#0a2470)}
+.rs-wx-err.on{display:block}
+.rs-wx-err2{font-size:11.5px;color:#9fd8ff;letter-spacing:.04em}
+/* ---- controls ---- */
+.rs-controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:14px 2px 0}
+.rs-btn{font-family:Silkscreen,monospace;font-size:14px;cursor:pointer;border-radius:999px;padding:12px 20px;border:1.5px solid rgba(6,35,46,.3);background:linear-gradient(135deg,#67e8f9,#35bce0 55%,#0e7ea6);color:#03222e;box-shadow:0 6px 18px rgba(14,126,166,.35)}
+.rs-btn.ghost{background:rgba(255,255,255,.14);color:#dffaff;border-color:rgba(127,231,230,.45);box-shadow:none}
+.rs-btn.cast{background:rgba(127,231,230,.16);color:#dffaff;border-color:rgba(127,231,230,.45);box-shadow:none;display:inline-flex;align-items:center;gap:8px}
+.rs-btn.cast svg{flex:0 0 auto}
+.rs-btn.cast.on{background:linear-gradient(135deg,#a7f3d0,#34d399 55%,#0e9f6e);color:#03222e;border-color:rgba(6,35,46,.3)}
+.rs-clock{margin-left:auto;font-family:Silkscreen,monospace;font-size:12px;color:#9be9f5;letter-spacing:.05em}
+/* ---- guide ---- */
+.rs-guide{margin-top:20px;background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.75);border-radius:20px;padding:16px 16px 8px;backdrop-filter:blur(8px);box-shadow:0 10px 30px rgba(6,60,80,.12)}
+.rs-glab{font-family:Silkscreen,monospace;font-size:11px;letter-spacing:.14em;color:#0b6e8f;margin:0 0 6px}
+.rs-now{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:clamp(19px,3.4vw,26px);line-height:1.2;margin:0}
+.rs-meta{font-size:13px;color:#0a4a61;margin:3px 0 10px}
+.rs-bar{height:9px;border-radius:99px;background:rgba(6,35,46,.14);overflow:hidden;margin:0 0 4px}
+.rs-bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,#35bce0,#34d399);border-radius:99px;transition:width .8s linear}
+.rs-barlab{display:flex;justify-content:space-between;font-size:11.5px;color:#0a4a61;margin-bottom:12px}
+.rs-next{list-style:none;margin:0;padding:0}
+.rs-next li{display:flex;gap:10px;align-items:baseline;padding:8px 0;border-top:1px dashed rgba(6,35,46,.16);font-size:14px}
+.rs-next .t{font-family:Silkscreen,monospace;font-size:12px;color:#0b6e8f;white-space:nowrap;min-width:74px}
+.rs-next .k{margin-left:auto;font-size:11.5px;color:#5b8291;white-space:nowrap}
+.rs-all{margin-top:14px}
+.rs-all summary{font-family:Silkscreen,monospace;font-size:12px;letter-spacing:.1em;color:#0b6e8f;cursor:pointer;padding:6px 0}
+.rs-all li.on{font-weight:700;color:#075e7a}
+/* ---- full channel guide: every channel, now + next (Nov 15 2026) ---- */
+.rs-guide2{margin-top:16px;background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.75);border-radius:20px;padding:16px;backdrop-filter:blur(8px);box-shadow:0 10px 30px rgba(6,60,80,.12)}
+.rs-grow{display:flex;gap:12px;align-items:center;width:100%;text-align:left;cursor:pointer;background:rgba(255,255,255,.45);border:1.5px solid rgba(6,35,46,.14);border-radius:14px;padding:11px 13px;margin:0 0 8px;font-family:Inter,system-ui,sans-serif;color:var(--ink);transition:border-color .15s ease,background .15s ease,transform .12s ease}
+.rs-grow:active{transform:scale(.985)}
+.rs-grow:hover{border-color:rgba(14,126,166,.55)}
+.rs-grow.on{background:linear-gradient(135deg,#67e8f9,#35bce0 55%,#0e7ea6);color:#03222e;border-color:rgba(6,35,46,.35);box-shadow:0 6px 18px rgba(14,126,166,.3)}
+.rs-gch{font-family:Silkscreen,monospace;font-size:12px;letter-spacing:.06em;flex:0 0 auto;background:rgba(6,35,46,.08);border-radius:8px;padding:7px 8px;white-space:nowrap}
+.rs-grow.on .rs-gch{background:rgba(3,34,46,.18)}
+.rs-gmain{flex:1 1 auto;min-width:0}
+.rs-gname{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:14.5px;letter-spacing:.02em;display:flex;align-items:center;gap:8px}
+.rs-glive{font-family:Silkscreen,monospace;font-size:9px;letter-spacing:.1em;color:#c22727;background:rgba(255,93,93,.14);border:1px solid rgba(194,39,39,.35);border-radius:99px;padding:2px 7px}
+.rs-grow.on .rs-glive{color:#7a1010;background:rgba(255,255,255,.35);border-color:rgba(122,16,16,.3)}
+.rs-gnow{display:block;font-size:13px;line-height:1.4;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rs-gnext{display:block;font-size:11.5px;color:#40626f;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rs-grow.on .rs-gnext{color:#04303f}
+@media(max-width:560px){.rs-gnow,.rs-gnext{white-space:normal}}
+.rs-foot{margin:20px 2px 0;font-size:12.5px;line-height:1.65;color:#0a4256}
+.rs-foot b{color:#075e7a}
+</style></head>
+<body>
+<div class="rs-wrap">
+  <div class="rs-top">
+    <div class="rs-brand">RETRO <span class="tv">SURGE</span> 📺</div>
+    <a class="rs-back" href="/">← NEWSURGE.TV</a>
+  </div>
+  <p class="rs-tag">A whole dial of channels, always on — <b>every viewer of a channel watches the same moment</b>, like TV used to be. Public-domain treasures only: Fleischer <b>Superman</b> cartoons, <b>Prelinger</b> Americana, space-age <b>newsreels</b>, <b>NASA</b> footage, and classic features after dark.</p>
+
+  <div class="rs-chans" id="rsChans"></div>
+
+  <div class="rs-tv">
+    <div class="rs-screen">
+      <video id="rstv" muted autoplay playsinline x-webkit-airplay="allow" preload="auto"></video>
+      <div class="rs-wx" id="rsWx" aria-hidden="true">
+        <div class="rs-wx-head"><span class="rs-wx-logo">RETRO WEATHER</span><span class="rs-wx-city">Decatur, Alabama</span><span class="rs-wx-clock" id="rsWxClock"></span></div>
+        <div class="rs-wx-panel" id="rsWxP0"><p class="rs-wx-ptitle">CURRENT CONDITIONS · DECATUR, AL</p><p class="rs-wx-narr">Tuning the weather wire…</p></div>
+        <div class="rs-wx-panel" id="rsWxP1"></div>
+        <div class="rs-wx-panel" id="rsWxP2"></div>
+        <div class="rs-wx-panel" id="rsWxP3"></div>
+        <div class="rs-wx-err" id="rsWxErr">WEATHER WIRE DOWN — TRY AGAIN IN A FEW<br><span class="rs-wx-err2">THE JAZZ PLAYS ON · DECATUR WILL BE BACK SHORTLY</span></div>
+        <div class="rs-wx-tick" id="rsWxTick">LOCAL ON THE 8s · DECATUR, ALABAMA · THE ONLY CITY ON THIS CHANNEL</div>
+      </div>
+      <div class="rs-scan"></div><div class="rs-glare"></div>
+      <div class="rs-bug"><span class="rs-dot"></span><span id="rsBug">RETRO SURGE · LIVE</span></div>
+      <div class="rs-msg" id="rsmsg">TUNING THE SET…</div>
+    </div>
+    <div class="rs-controls">
+      <button class="rs-btn" id="rsTune" type="button">🔇 TUNE IN — SOUND OFF</button>
+      <button class="rs-btn ghost" id="rsSync" type="button">⏺ BACK TO LIVE</button>
+      <button class="rs-btn ghost" id="rsJazzBtn" type="button" hidden>🎷 JAZZ ON</button>
+      <audio id="rsJazz" preload="none"></audio>
+      <button class="rs-btn cast" id="rsAir" type="button" hidden><svg width="17" height="15" viewBox="0 0 24 20" fill="none" aria-hidden="true"><path d="M12 3.2 21.5 15h-4.6L12 8.6 7.1 15H2.5L12 3.2Z" fill="currentColor"/><path d="M4.6 16.8h14.8v2.4H4.6z" fill="currentColor"/></svg>AIRPLAY</button>
+      <button class="rs-btn cast" id="rsCast" type="button" hidden><svg width="17" height="15" viewBox="0 0 24 20" fill="none" aria-hidden="true"><path d="M21 3H3a2 2 0 0 0-2 2v3h2V5h18v10h-7v2h7a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z" fill="currentColor"/><path d="M4.6 17.6a5.4 5.4 0 0 1 3.8 1.6l-1.5 1.5a3.3 3.3 0 0 0-2.3-1v-2.1Zm0-4.4a9.7 9.7 0 0 1 6.8 2.8l-1.5 1.5a7.6 7.6 0 0 0-5.3-2.2v-2.1Zm0-4.4a14 14 0 0 1 9.8 4l-1.5 1.5a11.9 11.9 0 0 0-8.3-3.4V8.8Z" fill="currentColor" transform="translate(-1.6 -1.6)"/></svg>CAST</button>
+      <span class="rs-clock" id="rsClock"></span>
+    </div>
+  </div>
+
+  <div class="rs-guide">
+    <p class="rs-glab" id="rsGuideLab">ON NOW</p>
+    <p class="rs-now" id="rsNow">—</p>
+    <p class="rs-meta" id="rsMeta">Loading the reel…</p>
+    <div class="rs-bar"><i id="rsFill"></i></div>
+    <div class="rs-barlab"><span id="rsElapsed">—</span><span id="rsEnds">—</span></div>
+    <p class="rs-glab">UP NEXT</p>
+    <ul class="rs-next" id="rsNext"></ul>
+    <details class="rs-all"><summary id="rsAllLab">FULL LINEUP — THE WHOLE REEL</summary><ul class="rs-next" id="rsAll"></ul></details>
+  </div>
+
+  <div class="rs-guide2">
+    <p class="rs-glab">CHANNEL GUIDE — ALL 8 CHANNELS, RIGHT NOW · TAP ONE TO TUNE IN</p>
+    <div id="rsGuideAll"><p class="rs-meta">Loading the dial…</p></div>
+  </div>
+
+  <p class="rs-foot">Every programme on Retro Surge is <b>public domain</b> — the Prelinger Collection, Universal Newsreels, Fleischer Studios' Superman (1941–43), NASA footage (courtesy NASA; no endorsement implied), and classic features including <i>Night of the Living Dead</i> (1968), <i>Charade</i> (1963) and <i>Carnival of Souls</i> (1962). Played straight from the <b>Internet Archive</b>. Each channel runs on its own clock-set loop — <b>CH 1</b> ~3 h 13 min · <b>CH 2</b> ~1 h 53 min · <b>CH 3</b> ~3 h 15 min · <b>CH 4</b> ~1 h 47 min · <b>CH 5</b> ~12 h 43 min · <b>CH 6</b> ~17 h 49 min · <b>CH 7</b> ~4 h 44 min · <b>CH 8</b> Retro Weather — always Decatur, around the clock — so if you leave and come back, the channel has moved on without you, just like the old days. CH 8's soundtrack: "Modern Jazz Samba", "Backed Vibes" and "As I Figure" by Kevin MacLeod (CC BY) and "Immersion In Smooth Jazz" by Nick Gordy (CC BY-NC-SA 3.0), via the Internet Archive.</p>
+</div>
+
+<script>
+(function(){
+'use strict';
+var v=document.getElementById('rstv'),msg=document.getElementById('rsmsg'),
+nowEl=document.getElementById('rsNow'),metaEl=document.getElementById('rsMeta'),
+fill=document.getElementById('rsFill'),elap=document.getElementById('rsElapsed'),
+endsEl=document.getElementById('rsEnds'),nextEl=document.getElementById('rsNext'),
+allEl=document.getElementById('rsAll'),clockEl=document.getElementById('rsClock'),
+tuneBtn=document.getElementById('rsTune'),syncBtn=document.getElementById('rsSync'),
+airBtn=document.getElementById('rsAir'),castBtn=document.getElementById('rsCast'),
+chansEl=document.getElementById('rsChans'),bugEl=document.getElementById('rsBug'),
+guideLab=document.getElementById('rsGuideLab'),allLab=document.getElementById('rsAllLab'),
+wxEl=document.getElementById('rsWx'),wxErr=document.getElementById('rsWxErr'),
+wxTick=document.getElementById('rsWxTick'),wxClockEl=document.getElementById('rsWxClock'),
+au=document.getElementById('rsJazz'),jazzBtn=document.getElementById('rsJazzBtn');
+var chans=null,chIdx=0,reel=null,total=0,cum=[],cur=-1,pendingSeek=null,started=false;
+var castActive=false;
+/* Each channel gets its own phase on the shared epoch clock, so the five
+   channels are never all sitting at the same point of their loops. */
+var PHASE=[0,19777,39539,59311,79193];
+
+function pad(n){return (n<10?'0':'')+n;}
+function fmtClock(d){var h=d.getHours(),ap=h>=12?'PM':'AM';h=h%12||12;return h+':'+pad(d.getMinutes())+' '+ap;}
+function fmtDur(s){s=Math.round(s);var h=Math.floor(s/3600),m=Math.round((s%3600)/60);if(h)return h+' h '+(m?m+' min':'');if(m)return m+' min';return s+' sec';}
+function fmtElapsed(s){s=Math.max(0,Math.floor(s));var h=Math.floor(s/3600),m=Math.floor((s%3600)/60),ss=s%60;return (h?h+':':'')+pad(m)+':'+pad(ss);}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+
+/* The schedule is anchored to the Unix epoch (+ this channel's phase):
+   position = now mod reel length. Every viewer's clock lands on the same
+   frame. Wraps at the end of the reel. */
+function posFor(items,tot,phase){
+  var t=(Date.now()/1000+phase)%tot,acc=0,k=0;
+  while(k<items.length-1&&t>=acc+items[k].dur){acc+=items[k].dur;k++;}
+  return{k:k,off:t-acc,t:t};
+}
+function pos(){return posFor(reel,total,PHASE[chIdx]||0);}
+
+function setReel(i){
+  chIdx=i;reel=chans[i].items;total=0;cum=[];
+  reel.forEach(function(it){cum.push(total);total+=it.dur;});
+  cur=-1;allEl.dataset.built='';allEl.innerHTML='';
+  bugEl.textContent=chans[i].channel+' · LIVE';
+  guideLab.textContent='ON NOW — CH '+(i+1)+' · '+chans[i].channel;
+  allLab.textContent='FULL LINEUP — CH '+(i+1)+' '+chans[i].channel;
+  var btns=chansEl.children;
+  for(var j=0;j<btns.length;j++)btns[j].className='rs-chan'+(j===i?' on':'');
+  renderGuideAll();
+}
+function buildChanBar(){
+  chansEl.innerHTML=chans.map(function(c,i){
+    return '<button type="button" class="rs-chan" data-ch="'+i+'"><span class="n">CH '+(i+1)+' · '+esc(c.channel)+'</span><span class="onnow" data-onnow="'+i+'">…</span></button>';
+  }).join('');
+  var btns=chansEl.children;
+  for(var j=0;j<btns.length;j++)(function(b){
+    b.addEventListener('click',function(){
+      var i=+b.dataset.ch;
+      if(i===chIdx||castActive)return;
+      if(chans[i].weather){enterWx(i);return;}
+      if(wxOn)exitWx();
+      setReel(i);sync(true);v.play().catch(function(){});
+    });
+  })(btns[j]);
+  refreshChanBar();
+}
+function refreshChanBar(){
+  if(!chans)return;
+  chans.forEach(function(c,i){
+    var tot=0;c.items.forEach(function(it){tot+=it.dur;});
+    var slot=chansEl.querySelector('[data-onnow="'+i+'"]');
+    if(c.weather){if(slot&&slot.textContent==='…')slot.textContent='Decatur, AL — Local Weather';return;}
+    var p=posFor(c.items,tot,PHASE[i]||0);
+    if(slot)slot.textContent=c.items[p.k].title;
+  });
+  renderGuideAll();
+}
+
+/* Full channel guide (Nov 15 2026 — Sergio: "add the channels to retro
+   surge"): every channel with what's playing now and next, refreshed on the
+   same 30 s cycle as the channel bar. Tapping a row tunes the set through
+   the channel bar's own button, so weather / cast / sync behavior is
+   identical no matter which surface tunes. */
+var guideAllEl=document.getElementById('rsGuideAll');
+function renderGuideAll(){
+  if(!guideAllEl||!chans)return;
+  var html='';
+  chans.forEach(function(c,i){
+    var nowTxt,nextTxt;
+    if(c.weather){
+      nowTxt=wxData?('Decatur, AL · '+Math.round(wxData.current.temperature_2m)+'° '+wmoLabel(wxData.current.weather_code)):'Decatur, AL — Local Weather';
+      nextTxt='Always Decatur — conditions, almanac, forecast & the 5-day, panels every 10 sec · 🎷 smooth jazz';
+    }else{
+      var tot=0;c.items.forEach(function(it){tot+=it.dur;});
+      var p=posFor(c.items,tot,PHASE[i]||0);
+      nowTxt=c.items[p.k].title;
+      nextTxt='Next: '+c.items[(p.k+1)%c.items.length].title;
+    }
+    var on=(i===chIdx);
+    html+='<button type="button" class="rs-grow'+(on?' on':'')+'" data-gch="'+i+'">'
+      +'<span class="rs-gch">CH '+(i+1)+'</span>'
+      +'<span class="rs-gmain"><span class="rs-gname">'+esc(c.channel)+(on?'<span class="rs-glive">ON AIR</span>':'')+'</span>'
+      +'<span class="rs-gnow">'+esc(nowTxt)+'</span>'
+      +'<span class="rs-gnext">'+esc(nextTxt)+'</span></span></button>';
+  });
+  guideAllEl.innerHTML=html;
+}
+if(guideAllEl){
+  guideAllEl.addEventListener('click',function(e){
+    var row=e.target.closest?e.target.closest('[data-gch]'):null;
+    if(!row||!chans)return;
+    var i=+row.getAttribute('data-gch');
+    var btn=chansEl.children[i];
+    if(btn)btn.click();
+    var tv=document.querySelector('.rs-tv');
+    if(tv)tv.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+}
+
+function loadItem(p){
+  cur=p.k;pendingSeek=p.off;
+  msg.textContent='TUNING…';
+  v.src=reel[p.k].url;
+  v.load();
+}
+v.addEventListener('loadedmetadata',function(){
+  if(pendingSeek!=null&&isFinite(v.duration)&&pendingSeek<v.duration-1.5){try{v.currentTime=pendingSeek;}catch(e){}}
+  pendingSeek=null;
+});
+v.addEventListener('playing',function(){msg.textContent='';started=true;});
+v.addEventListener('waiting',function(){if(started)msg.textContent='···';});
+v.addEventListener('error',function(){
+  if(!reel||wxOn)return;
+  msg.textContent='SIGNAL LOST — RETUNING…';
+  setTimeout(function(){cur=-1;sync(true);},1800);
+});
+v.addEventListener('ended',function(){sync(true);});
+
+function sync(force){
+  if(!reel||wxOn)return;
+  if(castActive)return; /* a cast session is driving playback; leave the set alone */
+  var p=pos();
+  if(force||p.k!==cur){loadItem(p);renderGuide(p);return;}
+  /* same item: correct drift if playback wandered off the schedule */
+  if(isFinite(v.currentTime)&&Math.abs(v.currentTime-p.off)>5&&v.readyState>1){
+    try{v.currentTime=p.off;}catch(e){}
+  }
+  renderGuide(p);
+}
+
+function renderGuide(p){
+  var it=reel[p.k],now=Date.now();
+  nowEl.textContent=it.title;
+  metaEl.textContent=it.kind+' · '+it.year+(it.credit?' · '+it.credit:'');
+  fill.style.width=(100*p.off/it.dur)+'%';
+  elap.textContent=fmtElapsed(p.off)+' in';
+  endsEl.textContent='ends '+fmtClock(new Date(now+(it.dur-p.off)*1000));
+  var html='',start=p.t;
+  for(var n=1;n<=4;n++){
+    var idx=(p.k+n)%reel.length,ni=reel[idx];
+    start+=reel[(p.k+n-1)%reel.length].dur;
+    html+='<li><span class="t">'+fmtClock(new Date(now+(start-p.t)*1000))+'</span><span>'+esc(ni.title)+'</span><span class="k">'+fmtDur(ni.dur)+'</span></li>';
+  }
+  nextEl.innerHTML=html;
+  if(!allEl.dataset.built){
+    allEl.dataset.built='1';
+    allEl.innerHTML=reel.map(function(ri,i){return '<li data-i="'+i+'"><span class="t">'+fmtDur(ri.dur)+'</span><span>'+esc(ri.title)+'</span><span class="k">'+esc(ri.kind)+'</span></li>';}).join('');
+  }
+  var lis=allEl.children;
+  for(var j=0;j<lis.length;j++)lis[j].className=(+lis[j].dataset.i===p.k)?'on':'';
+}
+
+/* ---------- CH 8 · RETRO WEATHER (Decatur, AL only) + smooth jazz ---------- */
+var WX_IDX=7; /* CH 8 in the channels array (appended after the playlist loads) */
+var WX_URL='https://api.open-meteo.com/v1/forecast?latitude=34.6061&longitude=-86.9834&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,pressure_msl,wind_speed_10m,wind_direction_10m,visibility&hourly=dew_point_2m&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%2FChicago&forecast_days=7';
+var JAZZ=[
+  {t:'Modern Jazz Samba — Kevin MacLeod (CC BY 4.0)',u:'https://archive.org/download/modern-jazz-samba-by-kevin-macleod/modern-jazz-samba-by-kevin-macleod.mp3'},
+  {t:'Backed Vibes (Clean) — Kevin MacLeod (CC BY 3.0)',u:'https://archive.org/download/Jazz_Sampler-9619/Kevin_MacLeod_-_Backed_Vibes_Clean.mp3'},
+  {t:'As I Figure — Kevin MacLeod (CC BY 3.0)',u:'https://archive.org/download/Jazz_Sampler-9619/Kevin_MacLeod_-_As_I_Figure.mp3'},
+  {t:'Immersion In Smooth Jazz — Nick Gordy (CC BY-NC-SA 3.0)',u:'https://archive.org/download/jamendo-429977/01-1662301-Nick%20Gordy-Immersion%20In%20Smooth%20Jazz.mp3'}
+];
+var wxOn=false,wxData=null,wxPanel=0,wxTimer=null,wxRefresh=null,jazzIdx=0,jazzWanted=true;
+var WMO={0:'Clear',1:'Mostly Clear',2:'Partly Cloudy',3:'Cloudy',45:'Fog',48:'Fog',51:'Light Drizzle',53:'Drizzle',55:'Drizzle',56:'Freezing Drizzle',57:'Freezing Drizzle',61:'Light Rain',63:'Rain',65:'Heavy Rain',66:'Freezing Rain',67:'Freezing Rain',71:'Light Snow',73:'Snow',75:'Heavy Snow',77:'Snow Grains',80:'Light Showers',81:'Showers',82:'Heavy Showers',85:'Snow Showers',86:'Snow Showers',95:'Thunderstorms',96:'Thunderstorms w/ Hail',99:'Thunderstorms w/ Hail'};
+function wmoLabel(c){return WMO[c]||'—';}
+function compass(deg){var pts=['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'];return pts[Math.round(deg/22.5)%16];}
+function fmtTime(iso){var p=String(iso).split('T')[1].split(':'),h=+p[0],ap=h>=12?'PM':'AM';h=h%12||12;return h+':'+p[1]+' '+ap;}
+function dayName(iso,idx){if(idx===0)return 'TODAY';var d=new Date(iso+'T12:00:00');return ['SUN','MON','TUE','WED','THU','FRI','SAT'][d.getDay()];}
+function windPhrase(spd,deg){if(spd<1)return 'Calm winds';return 'Winds '+compass(deg)+' at '+Math.round(spd)+' mph';}
+function dewpointNow(d){
+  try{
+    var times=d.hourly.time,vals=d.hourly.dew_point_2m,ct=new Date(d.current.time),best=0,bd=Infinity;
+    for(var i=0;i<times.length;i++){var diff=Math.abs(new Date(times[i])-ct);if(diff<bd){bd=diff;best=i;}}
+    return vals[best];
+  }catch(e){return null;}
+}
+function showWxPanel(n){
+  for(var j=0;j<4;j++){var p=document.getElementById('rsWxP'+j);if(p)p.className='rs-wx-panel'+(j===n?' on':'');}
+}
+function fetchWx(){
+  fetch(WX_URL,{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(d){
+    wxData=d;wxErr.classList.remove('on');
+    renderWx();renderWxGuide();renderGuideAll();
+    var slot=chansEl.querySelector('[data-onnow="'+WX_IDX+'"]');
+    if(slot)slot.textContent='Decatur, AL · '+Math.round(d.current.temperature_2m)+'° '+wmoLabel(d.current.weather_code);
+  }).catch(function(){wxErr.classList.add('on');});
+}
+function renderWx(){
+  if(!wxData)return;
+  var c=wxData.current,dy=wxData.daily,dew=dewpointNow(wxData);
+  var visMi=Math.min(c.visibility/1609.34,10),visTxt=(visMi>=9.95?'10':String(Math.round(visMi*10)/10))+' mi';
+  var windTxt=c.wind_speed_10m<1?'Calm':compass(c.wind_direction_10m)+' '+Math.round(c.wind_speed_10m)+' mph';
+  document.getElementById('rsWxP0').innerHTML='<p class="rs-wx-ptitle">CURRENT CONDITIONS · DECATUR, AL</p>'
+    +'<div class="rs-wx-big">'+Math.round(c.temperature_2m)+'°</div>'
+    +'<p class="rs-wx-cond">'+esc(wmoLabel(c.weather_code))+'</p>'
+    +'<div class="rs-wx-grid">'
+    +'<span><b>Feels Like</b> '+Math.round(c.apparent_temperature)+'°</span>'
+    +'<span><b>Wind</b> '+windTxt+'</span>'
+    +'<span><b>Humidity</b> '+Math.round(c.relative_humidity_2m)+'%</span>'
+    +'<span><b>Dewpoint</b> '+(dew==null?'—':Math.round(dew)+'°')+'</span>'
+    +'<span><b>Pressure</b> '+(c.pressure_msl*0.02953).toFixed(2)+' in</span>'
+    +'<span><b>Visibility</b> '+visTxt+'</span></div>';
+  document.getElementById('rsWxP1').innerHTML='<p class="rs-wx-ptitle">ALMANAC · DECATUR, AL</p>'
+    +'<div class="rs-wx-grid">'
+    +'<span><b>Today Sunrise</b> '+fmtTime(dy.sunrise[0])+'</span>'
+    +'<span><b>Today Sunset</b> '+fmtTime(dy.sunset[0])+'</span>'
+    +'<span><b>Tomorrow Sunrise</b> '+fmtTime(dy.sunrise[1])+'</span>'
+    +'<span><b>Tomorrow Sunset</b> '+fmtTime(dy.sunset[1])+'</span></div>';
+  document.getElementById('rsWxP2').innerHTML='<p class="rs-wx-ptitle">LOCAL FORECAST · DECATUR, AL</p>'
+    +'<p class="rs-wx-narr"><b>TONIGHT</b> — '+esc(wmoLabel(dy.weather_code[0]))+'. Low '+Math.round(dy.temperature_2m_min[0])+'F. '+windPhrase(c.wind_speed_10m,c.wind_direction_10m)+'.</p>'
+    +'<p class="rs-wx-narr"><b>TOMORROW</b> — '+esc(wmoLabel(dy.weather_code[1]))+'. High '+Math.round(dy.temperature_2m_max[1])+'F, low '+Math.round(dy.temperature_2m_min[1])+'F.</p>'
+    +'<p class="rs-wx-narr"><b>TOMORROW NIGHT</b> — '+esc(wmoLabel(dy.weather_code[1]))+'. Low '+Math.round(dy.temperature_2m_min[1])+'F.</p>';
+  var days='';
+  for(var i=0;i<5;i++){
+    days+='<div class="rs-wx-day"><div class="d">'+dayName(dy.time[i],i)+'</div><div class="c">'+esc(wmoLabel(dy.weather_code[i]))+'</div><div><span class="lo">Lo '+Math.round(dy.temperature_2m_min[i])+'</span> · <span class="hi">Hi '+Math.round(dy.temperature_2m_max[i])+'</span></div></div>';
+  }
+  document.getElementById('rsWxP3').innerHTML='<p class="rs-wx-ptitle">EXTENDED FORECAST · DECATUR, AL</p><div class="rs-wx-days">'+days+'</div>';
+  wxTick.textContent='DECATUR, AL · '+Math.round(c.temperature_2m)+'° '+wmoLabel(c.weather_code).toUpperCase()+' · HUMIDITY '+Math.round(c.relative_humidity_2m)+'% · WIND '+windTxt.toUpperCase()+' · LOCAL ON THE 8s · ONLY DECATUR, ALL DAY';
+}
+function renderWxGuide(){
+  var c=wxData?wxData.current:null;
+  nowEl.textContent=c?('Decatur, AL — '+Math.round(c.temperature_2m)+'° '+wmoLabel(c.weather_code)):'Retro Weather — Decatur, AL';
+  metaEl.textContent='Local on the 8s · the only city on this channel · 🎷 '+JAZZ[jazzIdx].t;
+  fill.style.width='100%';
+  elap.textContent='LIVE';endsEl.textContent='always on';
+  nextEl.innerHTML='<li><span class="t">PANEL 1</span><span>Current Conditions</span><span class="k">10 SEC</span></li>'
+    +'<li><span class="t">PANEL 2</span><span>Almanac — sunrise &amp; sunset</span><span class="k">10 SEC</span></li>'
+    +'<li><span class="t">PANEL 3</span><span>Local Forecast</span><span class="k">10 SEC</span></li>'
+    +'<li><span class="t">PANEL 4</span><span>Extended Forecast — 5 days</span><span class="k">10 SEC</span></li>';
+  if(!allEl.dataset.built){
+    allEl.dataset.built='1';
+    allEl.innerHTML='<li class="on"><span class="t">24/7</span><span>Decatur, Alabama — current conditions, almanac, local forecast &amp; the 5-day, with smooth jazz</span><span class="k">Open-Meteo</span></li>';
+  }
+}
+function jazzPlay(){
+  if(!jazzWanted)return;
+  au.src=JAZZ[jazzIdx].u;
+  au.play().catch(function(){});
+  jazzBtn.textContent='🎷 JAZZ ON';
+}
+au.addEventListener('ended',function(){
+  jazzIdx=(jazzIdx+1)%JAZZ.length;
+  if(wxOn){jazzPlay();renderWxGuide();}
+});
+au.addEventListener('error',function(){
+  if(!wxOn)return;
+  jazzIdx=(jazzIdx+1)%JAZZ.length;
+  jazzPlay();
+});
+jazzBtn.addEventListener('click',function(){
+  jazzWanted=!jazzWanted;
+  if(jazzWanted){jazzPlay();}
+  else{au.pause();jazzBtn.textContent='🎷 JAZZ OFF';}
+});
+document.addEventListener('click',function(){
+  if(wxOn&&jazzWanted&&au.paused)jazzPlay();
+});
+function enterWx(i){
+  setReel(i);
+  wxOn=true;wxPanel=0;
+  wxEl.classList.add('on');wxEl.setAttribute('aria-hidden','false');
+  msg.textContent='';
+  try{v.pause();}catch(e){}
+  jazzBtn.hidden=false;jazzBtn.textContent=jazzWanted?'🎷 JAZZ ON':'🎷 JAZZ OFF';
+  if(jazzWanted)jazzPlay();
+  showWxPanel(0);
+  fetchWx();
+  renderWxGuide();
+  wxClockEl.textContent=fmtClock(new Date())+' CT';
+  if(wxTimer)clearInterval(wxTimer);
+  wxTimer=setInterval(function(){wxPanel=(wxPanel+1)%4;showWxPanel(wxPanel);},10000);
+  if(wxRefresh)clearInterval(wxRefresh);
+  wxRefresh=setInterval(fetchWx,600000);
+}
+function exitWx(){
+  wxOn=false;
+  wxEl.classList.remove('on');wxEl.setAttribute('aria-hidden','true');
+  if(wxTimer){clearInterval(wxTimer);wxTimer=null;}
+  if(wxRefresh){clearInterval(wxRefresh);wxRefresh=null;}
+  au.pause();
+  jazzBtn.hidden=true;
+}
+
+tuneBtn.addEventListener('click',function(){
+  if(v.muted){v.muted=false;v.play().catch(function(){});tuneBtn.textContent='🔊 SOUND ON';}
+  else{v.muted=true;tuneBtn.textContent='🔇 TUNE IN — SOUND OFF';}
+});
+syncBtn.addEventListener('click',function(){if(wxOn){fetchWx();return;}castActive=false;sync(true);v.play().catch(function(){});});
+
+/* ---------- AirPlay (Safari / iOS / macOS) ---------- */
+if('webkitShowPlaybackTargetPicker' in v){
+  v.addEventListener('webkitplaybacktargetavailabilitychanged',function(e){
+    airBtn.hidden=(e.availability!=='available');
+  });
+  airBtn.hidden=false; /* picker API exists; availability events refine this */
+  airBtn.addEventListener('click',function(){
+    try{v.webkitShowPlaybackTargetPicker();}catch(e){}
+  });
+  v.addEventListener('webkitcurrentplaybacktargetiswirelesschanged',function(){
+    var wireless=false;
+    try{wireless=v.webkitCurrentPlaybackTargetIsWireless===true;}catch(e){}
+    airBtn.classList.toggle('on',wireless);
+    castActive=wireless;
+    if(!wireless)sync(false); /* back on the phone: rejoin the shared schedule */
+  });
+}
+
+/* ---------- Chromecast (Google Cast, default media receiver) ---------- */
+window.__onGCastApiAvailable=function(available){
+  if(!available||!(window.cast&&cast.framework))return;
+  var ctx=cast.framework.CastContext.getInstance();
+  ctx.setOptions({receiverApplicationId:chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,autoJoinPolicy:chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED});
+  castBtn.hidden=false;
+  ctx.addEventListener(cast.framework.CastContextEventType.SESSION_STATE_CHANGED,function(e){
+    var st=e.sessionState;
+    castActive=(st===cast.framework.SessionState.SESSION_STARTED||st===cast.framework.SessionState.SESSION_RESUMED);
+    castBtn.classList.toggle('on',castActive);
+    if(st===cast.framework.SessionState.SESSION_ENDED){castActive=false;castBtn.classList.remove('on');sync(true);v.play().catch(function(){});}
+  });
+};
+castBtn.addEventListener('click',function(){
+  if(!(window.cast&&cast.framework))return;
+  var ctx=cast.framework.CastContext.getInstance();
+  var session=ctx.getCurrentSession();
+  if(!session){
+    ctx.requestSession().then(function(){
+      var s=ctx.getCurrentSession();
+      if(s)castLoad(s);
+    },function(){});
+    return;
+  }
+  castLoad(session);
+});
+function castLoad(session){
+  if(!reel||cur<0||wxOn)return;
+  var p=pos(),it=reel[p.k];
+  var info=new chrome.cast.media.MediaInfo(it.url,'video/mp4');
+  info.metadata=new chrome.cast.media.GenericMediaMetadata();
+  info.metadata.title=it.title+' — '+chans[chIdx].channel;
+  info.metadata.subtitle=it.kind+' · '+it.year;
+  var req=new chrome.cast.media.LoadRequest(info);
+  req.autoplay=true;
+  req.currentTime=Math.max(0,Math.min(p.off,it.dur-2));
+  session.loadMedia(req).then(function(){},function(){});
+}
+document.addEventListener('visibilitychange',function(){if(!document.hidden)sync(false);});
+
+fetch('surge-tv-playlist.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(d){
+  chans=d.channels||[{channel:'RETRO SURGE',items:d.items}];
+  /* CH 8 · RETRO WEATHER — a virtual channel: no reel, just Decatur, AL.
+     The dummy 24 h item keeps the channel-bar "on now" machinery happy. */
+  chans.push({channel:'RETRO WEATHER',weather:true,items:[{title:'Decatur, AL — Local Weather',kind:'Retro Weather',year:'24/7',dur:86400,url:''}]});
+  buildChanBar();
+  if(location.hash.replace('#','').toLowerCase()==='ch8'){
+    enterWx(WX_IDX); /* surge-tv.html#ch8 — straight to the weather */
+  }else{
+    setReel(0);
+    sync(true);
+    v.play().catch(function(){msg.textContent='PRESS TUNE IN TO START THE SET';});
+  }
+  setInterval(function(){sync(false);},1000);
+  setInterval(function(){refreshChanBar();},30000);
+  setInterval(function(){
+    clockEl.textContent='CH '+(chIdx+1)+' · '+fmtClock(new Date())+' CT · VIEWERS SYNCED';
+    if(wxOn)wxClockEl.textContent=fmtClock(new Date())+' CT';
+  },1000);
+  clockEl.textContent='CH '+(chIdx+1)+' · '+fmtClock(new Date())+' · VIEWERS SYNCED';
+}).catch(function(){msg.textContent='THE REEL WOULD NOT LOAD — REFRESH TO RETRY';nowEl.textContent='Off air (for a second)';});
+})();
+</script>
+<script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1" async></script>
+</body></html>
