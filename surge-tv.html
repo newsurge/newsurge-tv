@@ -45,7 +45,7 @@ a{color:#0b6e8f}
 .rs-screen{position:relative;border-radius:16px;overflow:hidden;background:#000;aspect-ratio:16/9;box-shadow:inset 0 0 60px rgba(0,0,0,.8)}
 .rs-screen video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
 .rs-scan{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.028) 0 1px,transparent 1px 3px);mix-blend-mode:overlay;z-index:6}
-.rs-glare{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 18% 0%,rgba(255,255,255,.14),transparent 46%);z-index:6}
+.rs-glare{position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.12) 0%,rgba(255,255,255,.035) 30%,transparent 48%),radial-gradient(120% 90% at 18% 0%,rgba(255,255,255,.14),transparent 46%);z-index:6}
 .rs-bug{position:absolute;top:10px;left:12px;font-family:Silkscreen,monospace;font-size:12px;letter-spacing:.07em;color:#dffaff;background:rgba(3,20,28,.55);border:1px solid rgba(127,231,230,.4);padding:5px 9px 5px 5px;border-radius:9px;display:flex;gap:7px;align-items:center;backdrop-filter:blur(3px);z-index:7}
 .rs-dot{width:8px;height:8px;border-radius:50%;background:#ff5d5d;box-shadow:0 0 8px #ff5d5d;animation:rspulse 1.6s infinite;flex:0 0 auto}
 @keyframes rspulse{0%,100%{opacity:1}50%{opacity:.35}}
@@ -135,6 +135,22 @@ a{color:#0b6e8f}
 .rs-btn.cast{background:rgba(127,231,230,.16);color:#dffaff;border-color:rgba(127,231,230,.45);box-shadow:none;display:inline-flex;align-items:center;gap:8px}
 .rs-btn.cast svg{flex:0 0 auto}
 .rs-btn.cast.on{background:linear-gradient(135deg,#a7f3d0,#34d399 55%,#0e9f6e);color:#03222e;border-color:rgba(6,35,46,.3)}
+.rs-btn[hidden]{display:none!important}
+.rs-btn.cast.off{opacity:.38}
+.rs-btn.cast:disabled{cursor:default;box-shadow:none}
+.rs-btn.ghost.on{background:linear-gradient(135deg,#a7f3d0,#34d399 55%,#0e9f6e);color:#03222e;border-color:rgba(6,35,46,.3)}
+/* ---- theater mode: the room goes dark, the set stays lit ---- */
+.rs-theater-veil{position:fixed;inset:0;background:rgba(2,10,16,.9);opacity:0;pointer-events:none;transition:opacity .35s ease;z-index:60}
+body.rs-theater{overflow:hidden}
+body.rs-theater .rs-theater-veil{opacity:1;pointer-events:auto}
+body.rs-theater .rs-tv{position:relative;z-index:70;box-shadow:0 30px 90px rgba(0,0,0,.8),0 0 0 1px rgba(127,231,230,.25),inset 0 1px 0 rgba(255,255,255,.18)}
+.rs-tv:fullscreen,.rs-tv:-webkit-full-screen{background:#01080d;border-radius:0;border:none;padding:12px;display:flex;flex-direction:column;justify-content:center}
+.rs-tv:fullscreen .rs-screen,.rs-tv:-webkit-full-screen .rs-screen{width:100%}
+/* ---- CH 2 portrait loop: a blurred cover fills the stage, the board itself stays whole ---- */
+.rs-vbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(20px) brightness(.78) saturate(1.55);display:none;background:#000}
+.rs-vbg.on{display:block}
+/* ---- behind the glass: curvature shading over the picture, under every overlay ---- */
+.rs-glass{position:absolute;inset:0;pointer-events:none;z-index:6;border-radius:16px;box-shadow:inset 0 0 90px rgba(0,0,0,.5),inset 0 0 20px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.07);background:radial-gradient(115% 100% at 50% 42%,transparent 62%,rgba(0,0,0,.28) 100%)}
 .rs-clock{margin-left:auto;font-family:Silkscreen,monospace;font-size:12px;color:#9be9f5;letter-spacing:.05em}
 /* ---- guide ---- */
 .rs-guide{margin-top:20px;background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.75);border-radius:20px;padding:16px 16px 8px;backdrop-filter:blur(8px);box-shadow:0 10px 30px rgba(6,60,80,.12)}
@@ -200,6 +216,7 @@ a{color:#0b6e8f}
 </style></head>
 
 <body>
+<div class="rs-theater-veil" id="rsVeil" aria-hidden="true"></div>
 <div class="rs-wrap">
   <div class="rs-top">
     <div class="rs-brand">RETRO <span class="tv">SURGE</span> 📺</div>
@@ -209,8 +226,9 @@ a{color:#0b6e8f}
 
   <div class="rs-chans" id="rsChans"></div>
 
-  <div class="rs-tv">
+  <div class="rs-tv" id="rsTv">
     <div class="rs-screen">
+      <video class="rs-vbg" id="rstvBg" muted playsinline preload="auto" aria-hidden="true"></video>
       <video id="rstv" muted autoplay playsinline x-webkit-airplay="allow" preload="auto"></video>
       <div class="rs-wx" id="rsWx" aria-hidden="true">
         <div class="rs-wx-head"><span class="rs-wx-logo"><span class="rs-logo sm lg-wx">⛅</span>RETRO WEATHER</span><span class="rs-wx-city">Decatur, Alabama</span><span class="rs-wx-clock" id="rsWxClock"></span></div>
@@ -275,18 +293,19 @@ a{color:#0b6e8f}
       <div class="rs-osd" id="rsOsd">CH 1</div>
       <div class="rs-ident" id="rsIdent"><span id="rsIdentLogo"></span><span class="ch" id="rsIdentCh">CH 1</span><span class="nm" id="rsIdentName">—</span><span class="tg" id="rsIdentTag">—</span></div>
       <button class="rs-filmchip" id="rsFilmChip" type="button">🕯 RETURN TO THE PRAYER STREAM</button>
-      <div class="rs-scan"></div><div class="rs-glare"></div>
+      <div class="rs-scan"></div><div class="rs-glare"></div><div class="rs-glass"></div>
       <div class="rs-bug"><span id="rsBugLogo"></span><span class="rs-dot"></span><span id="rsBug">RETRO SURGE · LIVE</span></div>
       <div class="rs-msg" id="rsmsg">TUNING THE SET…</div>
     </div>
     <div class="rs-controls">
       <button class="rs-btn" id="rsTune" type="button">🔇 TUNE IN — SOUND OFF</button>
       <button class="rs-btn ghost" id="rsSync" type="button">⏺ BACK TO LIVE</button>
+      <button class="rs-btn ghost" id="rsTheater" type="button" aria-pressed="false">🎭 THEATER</button>
+      <button class="rs-btn ghost" id="rsFull" type="button">⛶ FULL SCREEN</button>
       <button class="rs-btn ghost" id="rsJazzBtn" type="button" hidden>🎷 JAZZ ON</button>
       <audio id="rsJazz" preload="none"></audio>
       <audio id="rsPrayAu" preload="none"></audio>
       <button class="rs-btn cast" id="rsAir" type="button" hidden><svg width="17" height="15" viewBox="0 0 24 20" fill="none" aria-hidden="true"><path d="M12 3.2 21.5 15h-4.6L12 8.6 7.1 15H2.5L12 3.2Z" fill="currentColor"/><path d="M4.6 16.8h14.8v2.4H4.6z" fill="currentColor"/></svg>AIRPLAY</button>
-      <button class="rs-btn cast" id="rsCast" type="button" hidden><svg width="17" height="15" viewBox="0 0 24 20" fill="none" aria-hidden="true"><path d="M21 3H3a2 2 0 0 0-2 2v3h2V5h18v10h-7v2h7a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z" fill="currentColor"/><path d="M4.6 17.6a5.4 5.4 0 0 1 3.8 1.6l-1.5 1.5a3.3 3.3 0 0 0-2.3-1v-2.1Zm0-4.4a9.7 9.7 0 0 1 6.8 2.8l-1.5 1.5a7.6 7.6 0 0 0-5.3-2.2v-2.1Zm0-4.4a14 14 0 0 1 9.8 4l-1.5 1.5a11.9 11.9 0 0 0-8.3-3.4V8.8Z" fill="currentColor" transform="translate(-1.6 -1.6)"/></svg>CAST</button>
       <span class="rs-clock" id="rsClock"></span>
     </div>
   </div>
@@ -319,7 +338,9 @@ fill=document.getElementById('rsFill'),elap=document.getElementById('rsElapsed')
 endsEl=document.getElementById('rsEnds'),nextEl=document.getElementById('rsNext'),
 allEl=document.getElementById('rsAll'),clockEl=document.getElementById('rsClock'),
 tuneBtn=document.getElementById('rsTune'),syncBtn=document.getElementById('rsSync'),
-airBtn=document.getElementById('rsAir'),castBtn=document.getElementById('rsCast'),
+airBtn=document.getElementById('rsAir'),theaterBtn=document.getElementById('rsTheater'),
+fullBtn=document.getElementById('rsFull'),veilEl=document.getElementById('rsVeil'),
+tvEl=document.getElementById('rsTv'),vBg=document.getElementById('rstvBg'),
 chansEl=document.getElementById('rsChans'),bugEl=document.getElementById('rsBug'),
 bugLogo=document.getElementById('rsBugLogo'),
 guideLab=document.getElementById('rsGuideLab'),allLab=document.getElementById('rsAllLab'),
@@ -450,6 +471,7 @@ function unloadAudio(a){try{a.pause();}catch(e){}a.removeAttribute('src');try{a.
 var wxTimer=null,wxRefresh=null,auxTimer=null,prayTimer=null,candleRAF=null,identTimer=null,osdTimer=null;
 function stopAllMedia(){
   unloadVideo();unloadAudio(au);unloadAudio(prayAu);
+  try{vBg.pause();}catch(e){}vBg.removeAttribute('src');try{vBg.load();}catch(e){}vBg.classList.remove('on');
   wxOn=false;auxOn=false;prayOn=false;prayFilm=false;loopOn=false;briefOn=false;talkOn=false;
   override=null;cur=-1;pendingSeek=null;
   wxEl.classList.remove('on');wxEl.setAttribute('aria-hidden','true');
@@ -547,7 +569,7 @@ function loadItem(p){
   v.src=it.url;
   v.load();
 }
-function startItem(k){override={k:k,at:Date.now()};loadItem({k:k,off:0});renderGuide(curPos());}
+function startItem(k){if(loopOn)return;override={k:k,at:Date.now()};loadItem({k:k,off:0});renderGuide(curPos());}
 v.addEventListener('loadedmetadata',function(){
   if(pendingSeek!=null&&isFinite(v.duration)&&pendingSeek<v.duration-1.5){try{v.currentTime=pendingSeek;}catch(e){}}
   pendingSeek=null;
@@ -565,7 +587,7 @@ v.addEventListener('error',function(){
   setTimeout(function(){cur=-1;sync(true);},1800);
 });
 v.addEventListener('ended',function(){
-  if(loopOn)return;
+  if(loopOn){try{v.currentTime=0;}catch(e){}v.play().catch(function(){});if(vBg.classList.contains('on')){try{vBg.currentTime=0;}catch(e){}vBg.play().catch(function(){});}return;}
   if(override){override=null;sync(true);return;}
   sync(true);
 });
@@ -617,10 +639,14 @@ function renderGuide(p){
 function enterLoop(){
   loopOn=true;
   var it=reel[0];
-  v.loop=true;
   v.src=it.url;
   v.load();
+  v.loop=true;
+  try{v.setAttribute('loop','');}catch(e){}
+  vBg.src=it.url;vBg.loop=true;try{vBg.setAttribute('loop','');}catch(e){}
+  vBg.load();vBg.classList.add('on');
   v.play().catch(function(){});
+  vBg.play().catch(function(){});
   nowEl.textContent=it.title;
   metaEl.textContent='Surreal chess loop · art by KRILLWILL · loops every 58 seconds, forever';
   fill.style.width='100%';
@@ -1020,14 +1046,31 @@ syncBtn.addEventListener('click',function(){
   castActive=false;override=null;cur=-1;sync(true);v.play().catch(function(){});
 });
 
-/* ---------- AirPlay (Safari / iOS / macOS) ---------- */
-if('webkitShowPlaybackTargetPicker' in v){
-  v.addEventListener('webkitplaybacktargetavailabilitychanged',function(e){
-    airBtn.hidden=(e.availability!=='available');
-  });
+/* ---------- AirPlay (Safari / iOS / macOS) ----------
+   The picker lives on the <video> itself, and the tap is the user gesture
+   it needs. The button appears only where that API exists, and it disables
+   on channels with nothing to send (CH 3 board, CH 8 weather, CH 9 prayer
+   cards, CH 10 brief cards). There is no Chromecast button: the Cast sender
+   framework does not run in iOS Safari, so the old CAST button could only
+   ever sit there dead — a button that silently does nothing is worse than
+   none. AirPlay is the casting route on this page. */
+var airOK=('webkitShowPlaybackTargetPicker' in v);
+function videoBacked(){
+  if(wxOn||auxOn||briefOn)return false;
+  if(prayOn&&!prayFilm)return false;
+  return !!v.getAttribute('src');
+}
+function updateAirState(){
+  if(!airOK)return;
   airBtn.hidden=false;
+  var ok=videoBacked();
+  airBtn.disabled=!ok;
+  airBtn.classList.toggle('off',!ok);
+}
+if(airOK){
   airBtn.addEventListener('click',function(){
-    try{v.webkitShowPlaybackTargetPicker();}catch(e){}
+    if(!videoBacked())return;
+    try{v.webkitShowPlaybackTargetPicker();}catch(e){setTheater(true);}
   });
   v.addEventListener('webkitcurrentplaybacktargetiswirelesschanged',function(){
     var wireless=false;
@@ -1036,57 +1079,73 @@ if('webkitShowPlaybackTargetPicker' in v){
     castActive=wireless;
     if(!wireless)sync(false);
   });
+  v.addEventListener('loadedmetadata',updateAirState);
+  v.addEventListener('emptied',updateAirState);
+  updateAirState();
 }
 
-/* ---------- Chromecast (Google Cast, default media receiver) ---------- */
-window.__onGCastApiAvailable=function(available){
-  if(!available||!(window.cast&&cast.framework))return;
-  var ctx=cast.framework.CastContext.getInstance();
-  ctx.setOptions({receiverApplicationId:chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,autoJoinPolicy:chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED});
-  castBtn.hidden=false;
-  ctx.addEventListener(cast.framework.CastContextEventType.SESSION_STATE_CHANGED,function(e){
-    var st=e.sessionState;
-    castActive=(st===cast.framework.SessionState.SESSION_STARTED||st===cast.framework.SessionState.SESSION_RESUMED);
-    castBtn.classList.toggle('on',castActive);
-    if(st===cast.framework.SessionState.SESSION_ENDED){castActive=false;castBtn.classList.remove('on');sync(true);v.play().catch(function(){});}
-  });
-};
-castBtn.addEventListener('click',function(){
-  if(!(window.cast&&cast.framework))return;
-  var ctx=cast.framework.CastContext.getInstance();
-  var session=ctx.getCurrentSession();
-  if(!session){
-    ctx.requestSession().then(function(){
-      var s=ctx.getCurrentSession();
-      if(s)castLoad(s);
-    },function(){});
+/* ---------- theater mode + fullscreen ---------- */
+var theaterOn=false;
+function setTheater(on){
+  theaterOn=!!on;
+  document.body.classList.toggle('rs-theater',theaterOn);
+  theaterBtn.classList.toggle('on',theaterOn);
+  theaterBtn.setAttribute('aria-pressed',theaterOn?'true':'false');
+  theaterBtn.textContent=theaterOn?'🎭 THEATER ON':'🎭 THEATER';
+}
+theaterBtn.addEventListener('click',function(){setTheater(!theaterOn);});
+veilEl.addEventListener('click',function(){setTheater(false);});
+document.addEventListener('keydown',function(e){if((e.key==='Escape'||e.key==='Esc')&&theaterOn)setTheater(false);});
+function fsActive(){return !!(document.fullscreenElement||document.webkitFullscreenElement);}
+function fsVideo(){
+  /* iPhone Safari has no element fullscreen — only the <video> can go. */
+  try{if(v.webkitEnterFullscreen&&videoBacked()){v.webkitEnterFullscreen();return true;}}catch(e){}
+  return false;
+}
+function fsFallback(){
+  setTheater(true);
+  msg.textContent='FULL SCREEN LIVES ON VIDEO CHANNELS HERE — THEATER MODE INSTEAD';
+  setTimeout(function(){if(msg.textContent.indexOf('THEATER MODE INSTEAD')>-1)msg.textContent='';},2800);
+}
+function goFullscreen(){
+  if(fsActive()){
+    try{if(document.exitFullscreen)document.exitFullscreen();else if(document.webkitExitFullscreen)document.webkitExitFullscreen();}catch(e){}
     return;
   }
-  castLoad(session);
-});
-function castLoad(session){
-  if(!reel||cur<0||wxOn||auxOn||prayOn||loopOn||briefOn)return;
-  var p=pos(),it=reel[p.k];
-  var info=new chrome.cast.media.MediaInfo(it.url,'video/mp4');
-  info.metadata=new chrome.cast.media.GenericMediaMetadata();
-  info.metadata.title=it.title+' — '+chans[chIdx].name;
-  info.metadata.subtitle=it.kind;
-  var req=new chrome.cast.media.LoadRequest(info);
-  req.autoplay=true;
-  req.currentTime=Math.max(0,Math.min(p.off,it.dur-2));
-  session.loadMedia(req).then(function(){},function(){});
+  var req=tvEl.requestFullscreen||tvEl.webkitRequestFullscreen;
+  if(req){
+    try{
+      var p=req.call(tvEl);
+      if(p&&p.catch)p.catch(function(){if(!fsVideo())fsFallback();});
+      return;
+    }catch(e){}
+  }
+  if(!fsVideo())fsFallback();
 }
+fullBtn.addEventListener('click',goFullscreen);
+function fsLabel(){fullBtn.textContent=fsActive()?'⛶ EXIT FULL SCREEN':'⛶ FULL SCREEN';}
+document.addEventListener('fullscreenchange',fsLabel);
+document.addEventListener('webkitfullscreenchange',fsLabel);
+vBg.addEventListener('loadedmetadata',function(){try{if(isFinite(v.currentTime))vBg.currentTime=v.currentTime;}catch(e){}});
+
+/* Chromecast is intentionally not offered (see the AirPlay note above). */
+
 document.addEventListener('visibilitychange',function(){if(!document.hidden)sync(false);});
 
 /* ---------- QA handle (used by the phone-width switching tests) ---------- */
 window.RS={
   tune:function(i){tuneTo(i,false);},
+  theater:function(on){setTheater(!!on);},
+  full:function(){goFullscreen();},
+  airUpdate:function(){updateAirState();},
   state:function(){
     return {ch:chIdx+1,name:chans?chans[chIdx].name:null,
       videoPaused:v.paused,videoSrc:(v.getAttribute('src')||''),videoLoop:v.loop,
       jazzPaused:au.paused,jazzSrc:(au.getAttribute('src')||''),
       prayPaused:prayAu.paused,praySrc:(prayAu.getAttribute('src')||''),
       wxOn:wxOn,auxOn:auxOn,prayOn:prayOn,prayFilm:prayFilm,loopOn:loopOn,briefOn:briefOn,talkOn:talkOn,
+      theater:theaterOn,airOK:airOK,airHidden:airBtn.hidden,airDisabled:!!airBtn.disabled,
+      bgOn:vBg.classList.contains('on'),videoLoop:v.loop,fsOn:fsActive(),
       edition:talkOn&&editionActive()};
   }
 };
@@ -1099,7 +1158,7 @@ fetch('surge-tv-playlist.json',{cache:'no-cache'}).then(function(r){return r.jso
   var m=(location.hash||'').replace('#','').toLowerCase().match(/^ch(\d+)$/);
   if(m){var n=+m[1];if(n>=1&&n<=chans.length)start=n-1;}
   tuneTo(start,true);
-  setInterval(function(){sync(false);if(talkOn)editionTick();},1000);
+  setInterval(function(){sync(false);if(talkOn)editionTick();if(loopOn&&!v.ended&&v.paused)v.play().catch(function(){});if(loopOn&&vBg.classList.contains('on')&&vBg.paused)vBg.play().catch(function(){});},1000);
   setInterval(function(){refreshChanBar();},30000);
   setInterval(function(){
     clockEl.textContent='CH '+(chIdx+1)+' · '+fmtClock(new Date())+' CT · VIEWERS SYNCED';
@@ -1110,5 +1169,4 @@ fetch('surge-tv-playlist.json',{cache:'no-cache'}).then(function(r){return r.jso
 }).catch(function(){msg.textContent='THE REEL WOULD NOT LOAD — REFRESH TO RETRY';nowEl.textContent='Off air (for a second)';});
 })();
 </script>
-<script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1" async></script>
 </body></html>
