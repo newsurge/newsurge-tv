@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>RETRO SURGE — NewSurge's 24/7 Retro TV</title>
-<meta name="description" content="RETRO SURGE: five public-domain channels, always on — Superman cartoons, Prelinger Americana, space-age newsreels, NASA footage and late-night classic features. Every viewer of a channel watches the same moment.">
+<title>RETRO SURGE TV — NewSurge's 24/7 Retro TV Dial</title>
+<meta name="description" content="RETRO SURGE TV: a whole dial of public-domain channels, always on — classic cartoons, the chessboard loop, Decatur local aux, classic movies, Americana, Spanish classics, creature features, retro weather, a prayer stream and the Surge Report. Every viewer of a channel watches the same moment.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{--ink:#06232e;--deep:#083344;--aqua:#35bce0;--aqua2:#7fe7e6;--mint:#a7f3d0;--paper:#eafcff}
@@ -17,10 +17,26 @@ a{color:#0b6e8f}
 .rs-back{font-family:Silkscreen,monospace;font-size:13px;text-decoration:none;background:rgba(255,255,255,.55);border:1.5px solid rgba(6,35,46,.25);border-radius:999px;padding:8px 14px;color:var(--ink)}
 .rs-tag{font-size:15px;line-height:1.5;color:#0a3d4f;max-width:640px;margin:0 0 16px}
 .rs-tag b{color:#075e7a}
+/* ---- channel logos: one mark per channel, same in the bug, the bar and the guide ---- */
+.rs-logo{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;font-family:Silkscreen,monospace;border-radius:24%;box-shadow:inset 0 0 0 2px rgba(255,255,255,.28),0 2px 7px rgba(0,0,0,.35);line-height:1}
+.rs-logo.lg{width:46px;height:46px;font-size:24px}
+.rs-logo.sm{width:25px;height:25px;font-size:13px;border-radius:7px}
+.rs-logo.xl{width:86px;height:86px;font-size:47px;border-radius:19px}
+.lg-toon{background:radial-gradient(circle at 50% 42%,#fff6d8 0 36%,#e63946 37% 70%,#1d3557 71%);color:#d90429;text-shadow:0 1px 0 rgba(255,255,255,.5)}
+.lg-gambit{background:repeating-conic-gradient(#22331f 0 25%,#0b130b 0 50%);background-size:18px 18px;color:#fff;text-shadow:0 1px 3px #000}
+.lg-aux{background:#0000a8;color:#fff}
+.lg-late{background:linear-gradient(160deg,#2b1055,#5b7fc4);color:#ffe98a}
+.lg-glory{background:linear-gradient(180deg,#0a2470 0 40%,#b22234 40% 55%,#f5f5f5 55% 68%,#b22234 68% 82%,#f5f5f5 82%);color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.75)}
+.lg-sol{background:linear-gradient(135deg,#ff2e88,#ff8a00);color:#fff;text-shadow:0 1px 2px rgba(120,20,0,.5)}
+.lg-dead{background:radial-gradient(circle at 50% 38%,#20351f,#000 78%);color:#a7f3a0}
+.lg-wx{background:linear-gradient(180deg,#16409f,#0a2470);color:#ffe98a}
+.lg-oratory{background:radial-gradient(circle at 50% 80%,#ffb347 0,#5a2a6e 55%,#1c0b2e 88%);color:#fff}
+.lg-talk{background:linear-gradient(135deg,#b22234 0 54%,#0a2470 54%);color:#fff}
 /* ---- channel bar ---- */
 .rs-chans{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}
-.rs-chan{font-family:Silkscreen,monospace;font-size:12.5px;cursor:pointer;border-radius:12px;padding:10px 13px;border:1.5px solid rgba(6,35,46,.25);background:rgba(255,255,255,.5);color:var(--ink);display:flex;flex-direction:column;gap:2px;align-items:flex-start;min-width:118px;flex:1 1 auto}
-.rs-chan .n{font-size:10.5px;letter-spacing:.12em;color:#0b6e8f}
+.rs-chan{font-family:Silkscreen,monospace;font-size:12.5px;cursor:pointer;border-radius:12px;padding:10px 13px;border:1.5px solid rgba(6,35,46,.25);background:rgba(255,255,255,.5);color:var(--ink);display:flex;flex-direction:column;gap:3px;align-items:flex-start;min-width:118px;flex:1 1 auto;text-align:left}
+.rs-chan-top{display:flex;gap:7px;align-items:center}
+.rs-chan .n{font-size:10.5px;letter-spacing:.1em;color:#0b6e8f}
 .rs-chan .onnow{font-family:Inter,system-ui,sans-serif;font-size:11px;color:#40626f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:190px}
 .rs-chan.on{background:linear-gradient(135deg,#67e8f9,#35bce0 55%,#0e7ea6);color:#03222e;border-color:rgba(6,35,46,.35);box-shadow:0 6px 18px rgba(14,126,166,.35)}
 .rs-chan.on .n,.rs-chan.on .onnow{color:#04303f}
@@ -28,17 +44,27 @@ a{color:#0b6e8f}
 .rs-tv{background:linear-gradient(160deg,#0b3547,#04161f 70%);border-radius:28px;padding:clamp(10px,2.6vw,22px);box-shadow:0 24px 60px rgba(4,40,56,.45),inset 0 1px 0 rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.14)}
 .rs-screen{position:relative;border-radius:16px;overflow:hidden;background:#000;aspect-ratio:16/9;box-shadow:inset 0 0 60px rgba(0,0,0,.8)}
 .rs-screen video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
-.rs-scan{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.028) 0 1px,transparent 1px 3px);mix-blend-mode:overlay}
-.rs-glare{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 18% 0%,rgba(255,255,255,.14),transparent 46%)}
-.rs-bug{position:absolute;top:10px;left:12px;font-family:Silkscreen,monospace;font-size:12px;letter-spacing:.08em;color:#dffaff;background:rgba(3,20,28,.55);border:1px solid rgba(127,231,230,.4);padding:5px 9px;border-radius:8px;display:flex;gap:7px;align-items:center;backdrop-filter:blur(3px)}
-.rs-dot{width:8px;height:8px;border-radius:50%;background:#ff5d5d;box-shadow:0 0 8px #ff5d5d;animation:rspulse 1.6s infinite}
+.rs-scan{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.028) 0 1px,transparent 1px 3px);mix-blend-mode:overlay;z-index:6}
+.rs-glare{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 18% 0%,rgba(255,255,255,.14),transparent 46%);z-index:6}
+.rs-bug{position:absolute;top:10px;left:12px;font-family:Silkscreen,monospace;font-size:12px;letter-spacing:.07em;color:#dffaff;background:rgba(3,20,28,.55);border:1px solid rgba(127,231,230,.4);padding:5px 9px 5px 5px;border-radius:9px;display:flex;gap:7px;align-items:center;backdrop-filter:blur(3px);z-index:7}
+.rs-dot{width:8px;height:8px;border-radius:50%;background:#ff5d5d;box-shadow:0 0 8px #ff5d5d;animation:rspulse 1.6s infinite;flex:0 0 auto}
 @keyframes rspulse{0%,100%{opacity:1}50%{opacity:.35}}
-.rs-msg{position:absolute;inset:auto 0 12px 0;text-align:center;font-family:Silkscreen,monospace;font-size:13px;color:#bffcff;text-shadow:0 1px 8px #000;pointer-events:none}
+.rs-msg{position:absolute;inset:auto 0 12px 0;text-align:center;font-family:Silkscreen,monospace;font-size:13px;color:#bffcff;text-shadow:0 1px 8px #000;pointer-events:none;z-index:7}
+/* static burst + channel ident + OSD */
+.rs-static{position:absolute;inset:0;width:100%;height:100%;display:none;z-index:8;background:#111}
+.rs-static.on{display:block}
+.rs-osd{position:absolute;top:12px;right:16px;font-family:Silkscreen,monospace;font-weight:700;font-size:clamp(22px,4.6vw,34px);color:#4dff7a;text-shadow:0 0 10px rgba(60,255,110,.65),0 2px 0 rgba(0,0,0,.6);display:none;z-index:9;letter-spacing:.06em}
+.rs-osd.on{display:block}
+.rs-ident{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:9px;background:radial-gradient(90% 90% at 50% 40%,#123a4f,#02090f 78%);z-index:8;text-align:center;padding:12px}
+.rs-ident.on{display:flex}
+.rs-ident .ch{font-family:Silkscreen,monospace;font-size:13px;letter-spacing:.34em;color:#7fe7e6}
+.rs-ident .nm{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:clamp(24px,5.4vw,40px);color:#fff;letter-spacing:.05em;line-height:1.05}
+.rs-ident .tg{font-size:clamp(12px,2.4vw,15px);color:#bfe9f5;max-width:480px;line-height:1.45}
 /* ---- CH 8 retro weather (WeatherStar-style, Decatur AL only) ---- */
-.rs-wx{position:absolute;inset:0;display:none;background:linear-gradient(180deg,#0a1e5e 0%,#103a8f 46%,#0a2a6e 78%,#071c4a 100%);color:#fff;overflow:hidden}
+.rs-wx{position:absolute;inset:0;display:none;background:linear-gradient(180deg,#0a1e5e 0%,#103a8f 46%,#0a2a6e 78%,#071c4a 100%);color:#fff;overflow:hidden;z-index:3}
 .rs-wx.on{display:block}
-.rs-wx-head{position:absolute;top:0;left:0;right:0;background:linear-gradient(180deg,#123a9e,#0a2470);border-bottom:3px solid #f7c948;padding:10px 18px 9px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
-.rs-wx-logo{font-family:Silkscreen,monospace;font-size:14px;letter-spacing:.1em;color:#ffe98a}
+.rs-wx-head{position:absolute;top:0;left:0;right:0;background:linear-gradient(180deg,#123a9e,#0a2470);border-bottom:3px solid #f7c948;padding:10px 18px 9px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.rs-wx-logo{font-family:Silkscreen,monospace;font-size:14px;letter-spacing:.1em;color:#ffe98a;display:flex;align-items:center;gap:8px}
 .rs-wx-city{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:clamp(17px,3.2vw,25px);letter-spacing:.02em}
 .rs-wx-clock{margin-left:auto;font-family:Silkscreen,monospace;font-size:12px;color:#bfe0ff}
 .rs-wx-panel{position:absolute;top:64px;left:0;right:0;bottom:34px;padding:14px 22px;display:none;overflow:hidden}
@@ -59,6 +85,49 @@ a{color:#0b6e8f}
 .rs-wx-err{position:absolute;top:64px;left:0;right:0;bottom:34px;display:none;padding:28px 22px;font-family:Silkscreen,monospace;font-size:15px;line-height:1.8;color:#ffe98a;background:linear-gradient(180deg,#0d2f7d,#0a2470)}
 .rs-wx-err.on{display:block}
 .rs-wx-err2{font-size:11.5px;color:#9fd8ff;letter-spacing:.04em}
+.rs-wx-icon{float:right;width:clamp(64px,13vw,104px);height:auto;image-rendering:pixelated;margin:2px 0 8px 14px}
+.rs-wx-scene{display:block;width:100%;height:clamp(40px,8.5vw,64px);image-rendering:pixelated;margin-top:12px;border-radius:6px}
+/* ---- CH 3 LOCAL AUX (the AV input that carries Decatur) ---- */
+.rs-aux{position:absolute;inset:0;display:none;background:#0000a8;color:#fff;overflow:hidden;z-index:3;font-family:Silkscreen,monospace}
+.rs-aux.on{display:block}
+.rs-aux-head{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;gap:10px;padding:12px 18px;border-bottom:3px solid #fff}
+.rs-aux-play{margin-left:auto;font-size:14px;letter-spacing:.14em;animation:rsblink 1.15s steps(1) infinite}
+@keyframes rsblink{0%,55%{opacity:1}56%,100%{opacity:0}}
+.rs-aux-panel{position:absolute;top:70px;left:0;right:0;bottom:40px;padding:16px 24px;display:none}
+.rs-aux-panel.on{display:block}
+.rs-aux-big{font-size:clamp(28px,6vw,46px);letter-spacing:.06em;color:#ffe98a;margin:4px 0 10px;line-height:1.1}
+.rs-aux-clock{font-size:clamp(30px,6.4vw,50px);color:#fff;margin:6px 0}
+.rs-aux-line{font-family:Inter,system-ui,sans-serif;font-size:clamp(14px,2.7vw,19px);line-height:1.55;margin:0 0 9px;max-width:620px}
+.rs-aux-line b{color:#ffe98a;font-family:Silkscreen,monospace;font-size:.8em;letter-spacing:.08em}
+.rs-aux-ptitle{font-size:12px;letter-spacing:.26em;color:#9fd8ff;margin:0 0 12px}
+.rs-aux-tick{position:absolute;left:0;right:0;bottom:0;border-top:3px solid #fff;padding:8px 14px;font-size:11.5px;letter-spacing:.06em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* ---- CH 9 THE ORATORY (prayer stream draft) ---- */
+.rs-pray{position:absolute;inset:0;display:none;background:radial-gradient(120% 100% at 50% 0%,#2a1545 0%,#170a2a 55%,#0a0514 100%);color:#f3e9d2;overflow:hidden;z-index:3}
+.rs-pray.on{display:block}
+.rs-pray-head{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;gap:10px;padding:12px 18px}
+.rs-pray-name{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:17px;letter-spacing:.06em}
+.rs-pray-motto{font-family:Silkscreen,monospace;font-size:10.5px;letter-spacing:.22em;color:#d9b96a}
+.rs-pray-draft{margin-left:auto;font-family:Silkscreen,monospace;font-size:10px;letter-spacing:.14em;color:#0a0514;background:#d9b96a;border-radius:99px;padding:3px 9px}
+.rs-pray-card{position:absolute;top:64px;left:0;right:0;bottom:104px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px 26px}
+.rs-pray-block{font-family:Silkscreen,monospace;font-size:11px;letter-spacing:.3em;color:#d9b96a;margin:0 0 8px}
+.rs-pray-title{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:clamp(20px,4vw,30px);margin:0 0 12px;color:#fff}
+.rs-pray-text{font-size:clamp(16.5px,3.1vw,23px);line-height:1.62;max-width:640px;margin:0;color:#f7efdb}
+.rs-pray-text.long{font-size:clamp(13.5px,2.5vw,18px);line-height:1.55}
+.rs-pray-candles{position:absolute;left:0;right:0;bottom:26px;width:100%;height:78px}
+.rs-pray-foot{position:absolute;left:0;right:0;bottom:0;text-align:center;padding:7px 12px;font-family:Silkscreen,monospace;font-size:10.5px;letter-spacing:.12em;color:#cbb27a}
+.rs-pray-films{position:absolute;right:14px;bottom:34px;z-index:4;font-family:Silkscreen,monospace;font-size:11px;letter-spacing:.08em;cursor:pointer;background:rgba(217,185,106,.16);color:#f3e9d2;border:1px solid rgba(217,185,106,.55);border-radius:999px;padding:9px 14px}
+.rs-filmchip{position:absolute;left:50%;transform:translateX(-50%);bottom:44px;z-index:7;display:none;font-family:Silkscreen,monospace;font-size:11px;letter-spacing:.08em;cursor:pointer;background:rgba(23,10,42,.82);color:#f3e9d2;border:1px solid rgba(217,185,106,.6);border-radius:999px;padding:9px 15px}
+.rs-filmchip.on{display:block}
+/* ---- CH 10 THE SURGE REPORT: brief segments + editions ---- */
+.rs-brief{position:absolute;inset:0;display:none;background:linear-gradient(160deg,#101d33,#0a2470 58%,#7a1220 130%);color:#fff;overflow:hidden;z-index:3}
+.rs-brief.on{display:block}
+.rs-brief-head{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;gap:10px;padding:12px 18px;border-bottom:3px solid #ffd60a}
+.rs-brief-ed{margin-left:auto;font-family:Silkscreen,monospace;font-size:11px;letter-spacing:.14em;color:#0a1428;background:#ffd60a;border-radius:6px;padding:4px 9px}
+.rs-brief-card{position:absolute;top:72px;left:0;right:0;bottom:20px;padding:8px 26px;display:flex;flex-direction:column;justify-content:center}
+.rs-brief-kick{font-family:Silkscreen,monospace;font-size:11px;letter-spacing:.3em;color:#ffd60a;margin:0 0 10px}
+.rs-brief-h{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:clamp(22px,4.6vw,36px);line-height:1.12;margin:0 0 14px;max-width:640px}
+.rs-brief-line{font-size:clamp(14.5px,2.7vw,19px);line-height:1.55;margin:0 0 8px;max-width:600px;color:#dbe9ff}
+.rs-brief-line b{color:#ffd60a}
 /* ---- controls ---- */
 .rs-controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:14px 2px 0}
 .rs-btn{font-family:Silkscreen,monospace;font-size:14px;cursor:pointer;border-radius:999px;padding:12px 20px;border:1.5px solid rgba(6,35,46,.3);background:linear-gradient(135deg,#67e8f9,#35bce0 55%,#0e7ea6);color:#03222e;box-shadow:0 6px 18px rgba(14,126,166,.35)}
@@ -82,8 +151,10 @@ a{color:#0b6e8f}
 .rs-all{margin-top:14px}
 .rs-all summary{font-family:Silkscreen,monospace;font-size:12px;letter-spacing:.1em;color:#0b6e8f;cursor:pointer;padding:6px 0}
 .rs-all li.on{font-weight:700;color:#075e7a}
-/* ---- full channel guide: every channel, now + next (Nov 15 2026) ---- */
+/* ---- TV Guide board: every channel, logo + now + next ---- */
 .rs-guide2{margin-top:16px;background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.75);border-radius:20px;padding:16px;backdrop-filter:blur(8px);box-shadow:0 10px 30px rgba(6,60,80,.12)}
+.rs-ghead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0 0 10px}
+.rs-gtitle{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:19px;letter-spacing:.03em}
 .rs-grow{display:flex;gap:12px;align-items:center;width:100%;text-align:left;cursor:pointer;background:rgba(255,255,255,.45);border:1.5px solid rgba(6,35,46,.14);border-radius:14px;padding:11px 13px;margin:0 0 8px;font-family:Inter,system-ui,sans-serif;color:var(--ink);transition:border-color .15s ease,background .15s ease,transform .12s ease}
 .rs-grow:active{transform:scale(.985)}
 .rs-grow:hover{border-color:rgba(14,126,166,.55)}
@@ -91,23 +162,50 @@ a{color:#0b6e8f}
 .rs-gch{font-family:Silkscreen,monospace;font-size:12px;letter-spacing:.06em;flex:0 0 auto;background:rgba(6,35,46,.08);border-radius:8px;padding:7px 8px;white-space:nowrap}
 .rs-grow.on .rs-gch{background:rgba(3,34,46,.18)}
 .rs-gmain{flex:1 1 auto;min-width:0}
-.rs-gname{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:14.5px;letter-spacing:.02em;display:flex;align-items:center;gap:8px}
+.rs-gname{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:14.5px;letter-spacing:.02em;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .rs-glive{font-family:Silkscreen,monospace;font-size:9px;letter-spacing:.1em;color:#c22727;background:rgba(255,93,93,.14);border:1px solid rgba(194,39,39,.35);border-radius:99px;padding:2px 7px}
+.rs-glive.draft{color:#7a5200;background:rgba(247,201,72,.2);border-color:rgba(160,110,0,.4)}
 .rs-grow.on .rs-glive{color:#7a1010;background:rgba(255,255,255,.35);border-color:rgba(122,16,16,.3)}
+.rs-gtag{display:block;font-size:11.5px;color:#40626f;margin-top:1px}
+.rs-grow.on .rs-gtag{color:#04303f}
 .rs-gnow{display:block;font-size:13px;line-height:1.4;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .rs-gnext{display:block;font-size:11.5px;color:#40626f;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .rs-grow.on .rs-gnext{color:#04303f}
 @media(max-width:560px){.rs-gnow,.rs-gnext{white-space:normal}}
+/* short 16:9 screens at phone width: tighten the virtual-channel overlays */
+@media(max-width:560px){
+  .rs-pray-head{padding:8px 12px}
+  .rs-pray-name,.rs-pray-motto{display:none}
+  .rs-pray-card{top:52px;bottom:50px;padding:6px 18px}
+  .rs-pray-block{font-size:9.5px;margin-bottom:4px}
+  .rs-pray-title{font-size:17px;margin-bottom:6px}
+  .rs-pray-text{font-size:14px;line-height:1.5}
+  .rs-pray-text.long{font-size:11.5px;line-height:1.42}
+  .rs-pray-candles{height:36px;bottom:15px}
+  .rs-pray-foot{display:none}
+  .rs-pray-films{bottom:5px;right:8px;padding:6px 10px;font-size:10px}
+  .rs-aux-head{padding:8px 12px}
+  .rs-aux-panel{top:54px;bottom:34px;padding:10px 16px}
+  .rs-aux-ptitle{font-size:10px;margin-bottom:7px}
+  .rs-aux-big{font-size:23px;margin:2px 0 6px}
+  .rs-aux-clock{font-size:25px;margin:3px 0}
+  .rs-aux-line{font-size:12.5px;line-height:1.45;margin-bottom:5px}
+  .rs-aux-hideS{display:none}
+  .rs-brief-card{top:60px;padding:6px 18px}
+  .rs-brief-h{font-size:20px;margin-bottom:8px}
+  .rs-brief-line{font-size:13.5px;margin-bottom:5px}
+}
 .rs-foot{margin:20px 2px 0;font-size:12.5px;line-height:1.65;color:#0a4256}
 .rs-foot b{color:#075e7a}
 </style></head>
+
 <body>
 <div class="rs-wrap">
   <div class="rs-top">
     <div class="rs-brand">RETRO <span class="tv">SURGE</span> 📺</div>
     <a class="rs-back" href="/">← NEWSURGE.TV</a>
   </div>
-  <p class="rs-tag">A whole dial of channels, always on — <b>every viewer of a channel watches the same moment</b>, like TV used to be. Public-domain treasures only: Fleischer <b>Superman</b> cartoons, <b>Prelinger</b> Americana, space-age <b>newsreels</b>, <b>NASA</b> footage, and classic features after dark.</p>
+  <p class="rs-tag">A whole dial of channels, always on — <b>every viewer of a channel watches the same moment</b>, like TV used to be. Ten channels, each with its own name and its own bug in the corner: golden-age <b>cartoons</b>, a non-stop <b>chessboard loop</b>, Decatur on the <b>AUX input</b>, classic <b>movies</b>, <b>Americana</b>, <b>Canal Sol</b>, creature features on <b>Dead Air</b>, <b>Retro Weather</b>, a <b>prayer stream</b>, and <b>The Surge Report</b>. Public-domain treasures only.</p>
 
   <div class="rs-chans" id="rsChans"></div>
 
@@ -115,7 +213,7 @@ a{color:#0b6e8f}
     <div class="rs-screen">
       <video id="rstv" muted autoplay playsinline x-webkit-airplay="allow" preload="auto"></video>
       <div class="rs-wx" id="rsWx" aria-hidden="true">
-        <div class="rs-wx-head"><span class="rs-wx-logo">RETRO WEATHER</span><span class="rs-wx-city">Decatur, Alabama</span><span class="rs-wx-clock" id="rsWxClock"></span></div>
+        <div class="rs-wx-head"><span class="rs-wx-logo"><span class="rs-logo sm lg-wx">⛅</span>RETRO WEATHER</span><span class="rs-wx-city">Decatur, Alabama</span><span class="rs-wx-clock" id="rsWxClock"></span></div>
         <div class="rs-wx-panel" id="rsWxP0"><p class="rs-wx-ptitle">CURRENT CONDITIONS · DECATUR, AL</p><p class="rs-wx-narr">Tuning the weather wire…</p></div>
         <div class="rs-wx-panel" id="rsWxP1"></div>
         <div class="rs-wx-panel" id="rsWxP2"></div>
@@ -123,8 +221,62 @@ a{color:#0b6e8f}
         <div class="rs-wx-err" id="rsWxErr">WEATHER WIRE DOWN — TRY AGAIN IN A FEW<br><span class="rs-wx-err2">THE JAZZ PLAYS ON · DECATUR WILL BE BACK SHORTLY</span></div>
         <div class="rs-wx-tick" id="rsWxTick">LOCAL ON THE 8s · DECATUR, ALABAMA · THE ONLY CITY ON THIS CHANNEL</div>
       </div>
+      <div class="rs-aux" id="rsAux" aria-hidden="true">
+        <div class="rs-aux-head"><span class="rs-logo sm lg-aux">🔌</span><span>LOCAL AUX · DECATUR, AL</span><span class="rs-aux-play">▶ PLAY</span></div>
+        <div class="rs-aux-panel" id="rsAuxP0">
+          <p class="rs-aux-ptitle">AUX INPUT · COMMUNITY BOARD</p>
+          <div class="rs-aux-big">DECATUR LOCAL</div>
+          <div class="rs-aux-clock" id="rsAuxClock">--:--</div>
+          <p class="rs-aux-line">THE RIVER CITY · DECATUR, ALABAMA · EST. 1823</p>
+          <p class="rs-aux-line rs-aux-hideS">This is the feed on the AUX input — the local board, all day. For weather, flip to <b>CH 8</b>.</p>
+        </div>
+        <div class="rs-aux-panel" id="rsAuxP1">
+          <p class="rs-aux-ptitle">AROUND TOWN</p>
+          <p class="rs-aux-line"><b>POINT MALLARD PARK</b> — water park, golf, trails &amp; the Jubilee in spring.</p>
+          <p class="rs-aux-line"><b>HISTORIC BANK STREET</b> — antique shops &amp; the old downtown.</p>
+          <p class="rs-aux-line"><b>PRINCESS THEATRE</b> — the 1941 art-deco landmark on 2nd Avenue.</p>
+          <p class="rs-aux-line"><b>COOK MUSEUM</b> — natural science, right downtown.</p>
+          <p class="rs-aux-line"><b>INGALLS HARBOR</b> — marina &amp; pavilion on the river.</p>
+        </div>
+        <div class="rs-aux-panel" id="rsAuxP2">
+          <p class="rs-aux-ptitle">ON THE RIVER</p>
+          <p class="rs-aux-line">Decatur sits on <b>WHEELER LAKE</b>, the wide bend of the Tennessee River — some of the best bass water in the South.</p>
+          <p class="rs-aux-line">Ingalls Harbor &amp; the Riverwalk: boats, pavilions, and sunsets over the water.</p>
+          <p class="rs-aux-line">They don't call it <b>THE RIVER CITY</b> for nothing.</p>
+        </div>
+        <div class="rs-aux-panel" id="rsAuxP3">
+          <p class="rs-aux-ptitle">BOARD NOTES</p>
+          <p class="rs-aux-line"><b>ALABAMA JUBILEE</b> — the hot-air balloon classic, a Memorial Day weekend tradition since 1978.</p>
+          <p class="rs-aux-line"><b>SHOP LOCAL</b> — Bank Street &amp; 2nd Avenue keep downtown Decatur humming.</p>
+          <p class="rs-aux-line"><b>FARMERS MARKET</b> — downtown market days: bring a bag, leave with tomatoes.</p>
+        </div>
+        <div class="rs-aux-tick">DECATUR AUX · THE LOCAL FEED ON THE AUX INPUT · WEATHER LIVES ON CH 8 ⛅ · RETRO SURGE TV</div>
+      </div>
+      <div class="rs-pray" id="rsPray" aria-hidden="true">
+        <div class="rs-pray-head"><span class="rs-logo sm lg-oratory">🕯</span><span class="rs-pray-name">THE ORATORY</span><span class="rs-pray-motto">BEAD BY BEAD</span><span class="rs-pray-draft">DRAFT STREAM</span></div>
+        <div class="rs-pray-card">
+          <p class="rs-pray-block" id="rsPrayBlock">THE ORATORY</p>
+          <p class="rs-pray-title" id="rsPrayTitle">A moment of quiet</p>
+          <p class="rs-pray-text" id="rsPrayText">The prayers begin shortly.</p>
+        </div>
+        <canvas class="rs-pray-candles" id="rsCandles" width="640" height="78"></canvas>
+        <button class="rs-pray-films" id="rsPrayFilms" type="button">🎬 SILENT EPIC FILM BLOCK</button>
+        <div class="rs-pray-foot">THE ORATORY · A PRAYER STREAM IN DRAFT · TRADITIONAL PRAYERS, PUBLIC DOMAIN</div>
+      </div>
+      <div class="rs-brief" id="rsBrief" aria-hidden="true">
+        <div class="rs-brief-head"><span class="rs-logo sm lg-talk">🎙</span><span style="font-family:Silkscreen,monospace;letter-spacing:.1em">THE SURGE REPORT</span><span class="rs-brief-ed" id="rsBriefEd" hidden>THE BRIEF</span></div>
+        <div class="rs-brief-card">
+          <p class="rs-brief-kick" id="rsBriefKick">THE BRIEF</p>
+          <p class="rs-brief-h" id="rsBriefH">—</p>
+          <div id="rsBriefLines"></div>
+        </div>
+      </div>
+      <canvas class="rs-static" id="rsStatic" width="240" height="135"></canvas>
+      <div class="rs-osd" id="rsOsd">CH 1</div>
+      <div class="rs-ident" id="rsIdent"><span id="rsIdentLogo"></span><span class="ch" id="rsIdentCh">CH 1</span><span class="nm" id="rsIdentName">—</span><span class="tg" id="rsIdentTag">—</span></div>
+      <button class="rs-filmchip" id="rsFilmChip" type="button">🕯 RETURN TO THE PRAYER STREAM</button>
       <div class="rs-scan"></div><div class="rs-glare"></div>
-      <div class="rs-bug"><span class="rs-dot"></span><span id="rsBug">RETRO SURGE · LIVE</span></div>
+      <div class="rs-bug"><span id="rsBugLogo"></span><span class="rs-dot"></span><span id="rsBug">RETRO SURGE · LIVE</span></div>
       <div class="rs-msg" id="rsmsg">TUNING THE SET…</div>
     </div>
     <div class="rs-controls">
@@ -132,6 +284,7 @@ a{color:#0b6e8f}
       <button class="rs-btn ghost" id="rsSync" type="button">⏺ BACK TO LIVE</button>
       <button class="rs-btn ghost" id="rsJazzBtn" type="button" hidden>🎷 JAZZ ON</button>
       <audio id="rsJazz" preload="none"></audio>
+      <audio id="rsPrayAu" preload="none"></audio>
       <button class="rs-btn cast" id="rsAir" type="button" hidden><svg width="17" height="15" viewBox="0 0 24 20" fill="none" aria-hidden="true"><path d="M12 3.2 21.5 15h-4.6L12 8.6 7.1 15H2.5L12 3.2Z" fill="currentColor"/><path d="M4.6 16.8h14.8v2.4H4.6z" fill="currentColor"/></svg>AIRPLAY</button>
       <button class="rs-btn cast" id="rsCast" type="button" hidden><svg width="17" height="15" viewBox="0 0 24 20" fill="none" aria-hidden="true"><path d="M21 3H3a2 2 0 0 0-2 2v3h2V5h18v10h-7v2h7a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z" fill="currentColor"/><path d="M4.6 17.6a5.4 5.4 0 0 1 3.8 1.6l-1.5 1.5a3.3 3.3 0 0 0-2.3-1v-2.1Zm0-4.4a9.7 9.7 0 0 1 6.8 2.8l-1.5 1.5a7.6 7.6 0 0 0-5.3-2.2v-2.1Zm0-4.4a14 14 0 0 1 9.8 4l-1.5 1.5a11.9 11.9 0 0 0-8.3-3.4V8.8Z" fill="currentColor" transform="translate(-1.6 -1.6)"/></svg>CAST</button>
       <span class="rs-clock" id="rsClock"></span>
@@ -150,11 +303,11 @@ a{color:#0b6e8f}
   </div>
 
   <div class="rs-guide2">
-    <p class="rs-glab">CHANNEL GUIDE — ALL 8 CHANNELS, RIGHT NOW · TAP ONE TO TUNE IN</p>
+    <div class="rs-ghead"><span class="rs-gtitle">📺 CHANNEL GUIDE</span><span class="rs-glab" style="margin:0">THE WHOLE DIAL · TAP A CHANNEL TO TUNE IN</span></div>
     <div id="rsGuideAll"><p class="rs-meta">Loading the dial…</p></div>
   </div>
 
-  <p class="rs-foot">Every programme on Retro Surge is <b>public domain</b> — the Prelinger Collection, Universal Newsreels, Fleischer Studios' Superman (1941–43), NASA footage (courtesy NASA; no endorsement implied), and classic features including <i>Night of the Living Dead</i> (1968), <i>Charade</i> (1963) and <i>Carnival of Souls</i> (1962). Played straight from the <b>Internet Archive</b>. Each channel runs on its own clock-set loop — <b>CH 1</b> ~3 h 13 min · <b>CH 2</b> ~1 h 53 min · <b>CH 3</b> ~3 h 15 min · <b>CH 4</b> ~1 h 47 min · <b>CH 5</b> ~12 h 43 min · <b>CH 6</b> ~17 h 49 min · <b>CH 7</b> ~4 h 44 min · <b>CH 8</b> Retro Weather — always Decatur, around the clock — so if you leave and come back, the channel has moved on without you, just like the old days. CH 8's soundtrack: "Modern Jazz Samba", "Backed Vibes" and "As I Figure" by Kevin MacLeod (CC BY) and "Immersion In Smooth Jazz" by Nick Gordy (CC BY-NC-SA 3.0), via the Internet Archive.</p>
+  <p class="rs-foot">Everything on Retro Surge TV is <b>public domain</b> or clearly licensed, checked title by title: the Fleischer <b>Superman</b> cartoons (1941–43, copyrights never renewed), <b>Prelinger</b> films carrying the Public Domain Dedication, <b>Universal Newsreels</b> (deeded to the U.S. Government), <b>The Big Picture</b> (U.S. Army), NASA footage (courtesy NASA; no endorsement implied), and classic features including <i>Night of the Living Dead</i> (1968), <i>Charade</i> (1963), <i>His Girl Friday</i> (1940) and <i>Carnival of Souls</i> (1962). Played from the <b>Internet Archive</b> and Wikimedia Commons. Each channel runs on its own clock-set loop — <b>CH 1</b> ~2 h 58 min · <b>CH 2</b> the loop, non-stop · <b>CH 3</b> the local board · <b>CH 4</b> ~6 h 16 min · <b>CH 5</b> ~11 h 18 min · <b>CH 6</b> ~4 h 46 min · <b>CH 7</b> ~12 h 2 min · <b>CH 8</b> Retro Weather — always Decatur · <b>CH 9</b> The Oratory — prayer stream (draft) with a silent-epic film block · <b>CH 10</b> The Surge Report — with the Morning Edition at 7 AM CT and the Evening Edition at 7 PM CT — so if you leave and come back, the channel has moved on without you, just like the old days. CH 8's soundtrack: "Modern Jazz Samba", "Backed Vibes" and "As I Figure" by Kevin MacLeod (CC BY) and "Immersion In Smooth Jazz" by Nick Gordy (CC BY-NC-SA 3.0), via the Internet Archive. CH 9's prayer voices come from the Holy Rosary project; its film block plays silent sacred epics of 1912–1928. CH 2's chessboard is art by <b>KRILLWILL</b>.</p>
 </div>
 
 <script>
@@ -168,21 +321,31 @@ allEl=document.getElementById('rsAll'),clockEl=document.getElementById('rsClock'
 tuneBtn=document.getElementById('rsTune'),syncBtn=document.getElementById('rsSync'),
 airBtn=document.getElementById('rsAir'),castBtn=document.getElementById('rsCast'),
 chansEl=document.getElementById('rsChans'),bugEl=document.getElementById('rsBug'),
+bugLogo=document.getElementById('rsBugLogo'),
 guideLab=document.getElementById('rsGuideLab'),allLab=document.getElementById('rsAllLab'),
 wxEl=document.getElementById('rsWx'),wxErr=document.getElementById('rsWxErr'),
 wxTick=document.getElementById('rsWxTick'),wxClockEl=document.getElementById('rsWxClock'),
-au=document.getElementById('rsJazz'),jazzBtn=document.getElementById('rsJazzBtn');
-var chans=null,chIdx=0,reel=null,total=0,cum=[],cur=-1,pendingSeek=null,started=false;
-var castActive=false;
-/* Each channel gets its own phase on the shared epoch clock, so the five
-   channels are never all sitting at the same point of their loops. */
-var PHASE=[0,19777,39539,59311,79193];
+auxEl=document.getElementById('rsAux'),auxClockEl=document.getElementById('rsAuxClock'),
+prayEl=document.getElementById('rsPray'),briefEl=document.getElementById('rsBrief'),
+staticEl=document.getElementById('rsStatic'),osdEl=document.getElementById('rsOsd'),
+identEl=document.getElementById('rsIdent'),filmChip=document.getElementById('rsFilmChip'),
+au=document.getElementById('rsJazz'),jazzBtn=document.getElementById('rsJazzBtn'),
+prayAu=document.getElementById('rsPrayAu');
+var chans=null,chIdx=0,reel=null,total=0,cum=[],cur=-1,pendingSeek=null,started=false,soundOn=false;
+var castActive=false,tuneSeq=0,override=null,skipSet={},errFor='',errN=0;
+var wxOn=false,auxOn=false,prayOn=false,prayFilm=false,loopOn=false,briefOn=false,talkOn=false;
+var WX_IDX=-1;
+/* Each channel gets its own phase on the shared epoch clock, so the channels
+   are never all sitting at the same point of their loops. */
+var PHASE=[0,19777,39539,59311,79193,98807,118517,138239,157961,177683];
 
 function pad(n){return (n<10?'0':'')+n;}
 function fmtClock(d){var h=d.getHours(),ap=h>=12?'PM':'AM';h=h%12||12;return h+':'+pad(d.getMinutes())+' '+ap;}
 function fmtDur(s){s=Math.round(s);var h=Math.floor(s/3600),m=Math.round((s%3600)/60);if(h)return h+' h '+(m?m+' min':'');if(m)return m+' min';return s+' sec';}
 function fmtElapsed(s){s=Math.max(0,Math.floor(s));var h=Math.floor(s/3600),m=Math.floor((s%3600)/60),ss=s%60;return (h?h+':':'')+pad(m)+':'+pad(ss);}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function logoHTML(c,size){return '<span class="rs-logo '+size+' '+c.cls+'">'+c.sym+'</span>';}
+function flagIdx(key){if(!chans)return -1;for(var i=0;i<chans.length;i++)if(chans[i][key])return i;return -1;}
 
 /* The schedule is anchored to the Unix epoch (+ this channel's phase):
    position = now mod reel length. Every viewer's clock lands on the same
@@ -193,72 +356,75 @@ function posFor(items,tot,phase){
   return{k:k,off:t-acc,t:t};
 }
 function pos(){return posFor(reel,total,PHASE[chIdx]||0);}
+function curPos(){if(override)return{k:override.k,off:(Date.now()-override.at)/1000,t:0};return pos();}
 
 function setReel(i){
   chIdx=i;reel=chans[i].items;total=0;cum=[];
   reel.forEach(function(it){cum.push(total);total+=it.dur;});
   cur=-1;allEl.dataset.built='';allEl.innerHTML='';
-  bugEl.textContent=chans[i].channel+' · LIVE';
-  guideLab.textContent='ON NOW — CH '+(i+1)+' · '+chans[i].channel;
-  allLab.textContent='FULL LINEUP — CH '+(i+1)+' '+chans[i].channel;
+  bugLogo.innerHTML=logoHTML(chans[i],'sm');
+  bugEl.textContent=chans[i].name+' · '+(chans[i].live||'LIVE');
+  guideLab.textContent='ON NOW — CH '+(i+1)+' · '+chans[i].name;
+  allLab.textContent='FULL LINEUP — CH '+(i+1)+' '+chans[i].name;
   var btns=chansEl.children;
   for(var j=0;j<btns.length;j++)btns[j].className='rs-chan'+(j===i?' on':'');
   renderGuideAll();
 }
 function buildChanBar(){
   chansEl.innerHTML=chans.map(function(c,i){
-    return '<button type="button" class="rs-chan" data-ch="'+i+'"><span class="n">CH '+(i+1)+' · '+esc(c.channel)+'</span><span class="onnow" data-onnow="'+i+'">…</span></button>';
+    return '<button type="button" class="rs-chan" data-ch="'+i+'"><span class="rs-chan-top">'+logoHTML(c,'sm')+'<span class="n">CH '+(i+1)+' · '+esc(c.name)+'</span></span><span class="onnow" data-onnow="'+i+'">…</span></button>';
   }).join('');
   var btns=chansEl.children;
   for(var j=0;j<btns.length;j++)(function(b){
-    b.addEventListener('click',function(){
-      var i=+b.dataset.ch;
-      if(i===chIdx||castActive)return;
-      if(chans[i].weather){enterWx(i);return;}
-      if(wxOn)exitWx();
-      setReel(i);sync(true);v.play().catch(function(){});
-    });
+    b.addEventListener('click',function(){tuneTo(+b.dataset.ch,false);});
   })(btns[j]);
   refreshChanBar();
+}
+function chanNowText(c,i){
+  if(c.weather)return wxData?('Decatur, AL · '+Math.round(wxData.current.temperature_2m)+'° '+wmoLabel(wxData.current.weather_code)):'Decatur, AL — Local Weather';
+  if(c.aux)return 'Decatur Local — Community Board';
+  if(c.loop)return 'The Chessboard — KRILLWILL (looping)';
+  if(c.prayer)return 'The Prayer Stream — prayers in rotation';
+  if(c.talk&&editionActive())return (editionName())+' — premiering now';
+  var tot=0;c.items.forEach(function(it){tot+=it.dur;});
+  var p=posFor(c.items,tot,PHASE[i]||0);
+  return c.items[p.k].title;
+}
+function chanNextText(c,i){
+  if(c.weather)return 'Always Decatur — conditions, almanac, forecast & the 5-day · 🎷 smooth jazz';
+  if(c.aux)return 'Around Town · On the River · Board Notes — rotating every 10 sec';
+  if(c.loop)return 'The same board, forever · a 58-second loop that never stops';
+  if(c.prayer)return 'Film block: '+c.items.map(function(it){return it.title;}).join(' · ');
+  var tot=0;c.items.forEach(function(it){tot+=it.dur;});
+  var p=posFor(c.items,tot,PHASE[i]||0);
+  if(c.talk)return 'Rotation: newsreels, NASA & The Brief · Editions 7 AM & 7 PM CT · Next: '+c.items[(p.k+1)%c.items.length].title;
+  return 'Next: '+c.items[(p.k+1)%c.items.length].title;
 }
 function refreshChanBar(){
   if(!chans)return;
   chans.forEach(function(c,i){
-    var tot=0;c.items.forEach(function(it){tot+=it.dur;});
     var slot=chansEl.querySelector('[data-onnow="'+i+'"]');
-    if(c.weather){if(slot&&slot.textContent==='…')slot.textContent='Decatur, AL — Local Weather';return;}
-    var p=posFor(c.items,tot,PHASE[i]||0);
-    if(slot)slot.textContent=c.items[p.k].title;
+    if(slot)slot.textContent=chanNowText(c,i);
   });
   renderGuideAll();
 }
 
-/* Full channel guide (Nov 15 2026 — Sergio: "add the channels to retro
-   surge"): every channel with what's playing now and next, refreshed on the
-   same 30 s cycle as the channel bar. Tapping a row tunes the set through
-   the channel bar's own button, so weather / cast / sync behavior is
-   identical no matter which surface tunes. */
+/* The TV Guide board: every channel with its own logo — the same mark as the
+   on-screen bug — plus what's on and what's next. Tap a row to tune in. */
 var guideAllEl=document.getElementById('rsGuideAll');
 function renderGuideAll(){
   if(!guideAllEl||!chans)return;
   var html='';
   chans.forEach(function(c,i){
-    var nowTxt,nextTxt;
-    if(c.weather){
-      nowTxt=wxData?('Decatur, AL · '+Math.round(wxData.current.temperature_2m)+'° '+wmoLabel(wxData.current.weather_code)):'Decatur, AL — Local Weather';
-      nextTxt='Always Decatur — conditions, almanac, forecast & the 5-day, panels every 10 sec · 🎷 smooth jazz';
-    }else{
-      var tot=0;c.items.forEach(function(it){tot+=it.dur;});
-      var p=posFor(c.items,tot,PHASE[i]||0);
-      nowTxt=c.items[p.k].title;
-      nextTxt='Next: '+c.items[(p.k+1)%c.items.length].title;
-    }
     var on=(i===chIdx);
+    var pill=on?'<span class="rs-glive">ON AIR</span>':(c.draft?'<span class="rs-glive draft">DRAFT</span>':'');
     html+='<button type="button" class="rs-grow'+(on?' on':'')+'" data-gch="'+i+'">'
+      +logoHTML(c,'lg')
       +'<span class="rs-gch">CH '+(i+1)+'</span>'
-      +'<span class="rs-gmain"><span class="rs-gname">'+esc(c.channel)+(on?'<span class="rs-glive">ON AIR</span>':'')+'</span>'
-      +'<span class="rs-gnow">'+esc(nowTxt)+'</span>'
-      +'<span class="rs-gnext">'+esc(nextTxt)+'</span></span></button>';
+      +'<span class="rs-gmain"><span class="rs-gname">'+esc(c.name)+pill+'</span>'
+      +'<span class="rs-gtag">'+esc(c.tag||'')+'</span>'
+      +'<span class="rs-gnow">'+esc(chanNowText(c,i))+'</span>'
+      +'<span class="rs-gnext">'+esc(chanNextText(c,i))+'</span></span></button>';
   });
   guideAllEl.innerHTML=html;
 }
@@ -266,41 +432,161 @@ if(guideAllEl){
   guideAllEl.addEventListener('click',function(e){
     var row=e.target.closest?e.target.closest('[data-gch]'):null;
     if(!row||!chans)return;
-    var i=+row.getAttribute('data-gch');
-    var btn=chansEl.children[i];
-    if(btn)btn.click();
+    tuneTo(+row.getAttribute('data-gch'),false);
     var tv=document.querySelector('.rs-tv');
     if(tv)tv.scrollIntoView({behavior:'smooth',block:'center'});
   });
 }
 
+/* ---------- the switch: tear EVERYTHING down, then start only the new channel ----------
+   The old build swapped v.src on a shared <video> and called play() immediately,
+   so on mobile the previous stream kept rendering its audio while the next one
+   buffered — two channels at once. Now every switch runs stopAllMedia() first:
+   pause + unload every media element, kill every overlay timer, and only then,
+   after a static burst, does the new channel start. A tuneSeq guard makes a
+   stale async start (slow network, double-tap) a no-op. */
+function unloadVideo(){try{v.pause();}catch(e){}v.removeAttribute('src');try{v.load();}catch(e){}v.loop=false;}
+function unloadAudio(a){try{a.pause();}catch(e){}a.removeAttribute('src');try{a.load();}catch(e){}}
+var wxTimer=null,wxRefresh=null,auxTimer=null,prayTimer=null,candleRAF=null,identTimer=null,osdTimer=null;
+function stopAllMedia(){
+  unloadVideo();unloadAudio(au);unloadAudio(prayAu);
+  wxOn=false;auxOn=false;prayOn=false;prayFilm=false;loopOn=false;briefOn=false;talkOn=false;
+  override=null;cur=-1;pendingSeek=null;
+  wxEl.classList.remove('on');wxEl.setAttribute('aria-hidden','true');
+  auxEl.classList.remove('on');auxEl.setAttribute('aria-hidden','true');
+  prayEl.classList.remove('on');prayEl.setAttribute('aria-hidden','true');
+  briefEl.classList.remove('on');briefEl.setAttribute('aria-hidden','true');
+  filmChip.classList.remove('on');
+  jazzBtn.hidden=true;
+  if(wxTimer){clearInterval(wxTimer);wxTimer=null;}
+  if(wxRefresh){clearInterval(wxRefresh);wxRefresh=null;}
+  if(auxTimer){clearInterval(auxTimer);auxTimer=null;}
+  if(prayTimer){clearInterval(prayTimer);prayTimer=null;}
+  if(candleRAF){cancelAnimationFrame(candleRAF);candleRAF=null;}
+  if(identTimer){clearTimeout(identTimer);identTimer=null;}
+  identEl.classList.remove('on');
+  stopStatic();
+  msg.textContent='';
+}
+function tuneTo(i,instant){
+  if(!chans||castActive)return;
+  if(i===chIdx&&started&&!instant)return;
+  var my=++tuneSeq;
+  stopAllMedia();
+  setReel(i);
+  showOsd(i);
+  if(instant){activate(i);return;}
+  staticBurst(380,function(){
+    if(my!==tuneSeq)return;
+    showIdent(i,1250);
+    activate(i);
+  });
+}
+function activate(i){
+  var c=chans[i];
+  if(c.weather){enterWx();return;}
+  if(c.aux){enterAux();return;}
+  if(c.prayer){enterPrayer();return;}
+  if(c.loop){enterLoop();return;}
+  if(c.talk)talkOn=true;
+  sync(true);
+  v.play().catch(function(){if(!soundOn)msg.textContent='PRESS TUNE IN TO START THE SET';});
+}
+function showOsd(i){
+  osdEl.textContent='CH '+(i+1);
+  osdEl.classList.add('on');
+  if(osdTimer)clearTimeout(osdTimer);
+  osdTimer=setTimeout(function(){osdEl.classList.remove('on');},2200);
+}
+function showIdent(i,ms){
+  var c=chans[i];
+  document.getElementById('rsIdentLogo').innerHTML=logoHTML(c,'xl');
+  document.getElementById('rsIdentCh').textContent='CH '+(i+1);
+  document.getElementById('rsIdentName').textContent=c.name;
+  document.getElementById('rsIdentTag').textContent=c.tag||'';
+  identEl.classList.add('on');
+  if(identTimer)clearTimeout(identTimer);
+  identTimer=setTimeout(function(){identEl.classList.remove('on');},ms);
+}
+/* static: canvas noise + one short, quiet WebAudio burst with a hard stop */
+var staticCtx=staticEl.getContext('2d'),staticRAF=null,actx=null;
+function noiseBurst(){
+  try{
+    if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();
+    if(actx.state==='suspended')actx.resume();
+    var dur=0.3,buf=actx.createBuffer(1,Math.floor(actx.sampleRate*dur),actx.sampleRate),d=buf.getChannelData(0);
+    for(var i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*(1-i/d.length);
+    var src=actx.createBufferSource();src.buffer=buf;
+    var g=actx.createGain();g.gain.value=0.045;
+    src.connect(g);g.connect(actx.destination);src.start();
+  }catch(e){}
+}
+function staticBurst(ms,cb){
+  staticEl.classList.add('on');noiseBurst();
+  var t0=Date.now();
+  (function frame(){
+    var img=staticCtx.createImageData(240,135),dd=img.data;
+    for(var i=0;i<dd.length;i+=4){var n=Math.random()*255|0;dd[i]=dd[i+1]=dd[i+2]=n;dd[i+3]=255;}
+    staticCtx.putImageData(img,0,0);
+    if(Date.now()-t0<ms){staticRAF=requestAnimationFrame(frame);}
+    else{stopStatic();if(cb)cb();}
+  })();
+}
+function stopStatic(){if(staticRAF)cancelAnimationFrame(staticRAF);staticRAF=null;staticEl.classList.remove('on');}
+
+/* ---------- reel playback ---------- */
 function loadItem(p){
-  cur=p.k;pendingSeek=p.off;
+  var it=reel[p.k];
+  cur=p.k;
+  if(it.brief!==undefined&&it.brief!==null){enterBrief(it.brief,null);unloadVideo();pendingSeek=null;return;}
+  exitBrief();
+  if(it.url&&skipSet[it.url]){startItem((p.k+1)%reel.length);return;}
+  pendingSeek=p.off;
   msg.textContent='TUNING…';
-  v.src=reel[p.k].url;
+  v.loop=false;
+  v.src=it.url;
   v.load();
 }
+function startItem(k){override={k:k,at:Date.now()};loadItem({k:k,off:0});renderGuide(curPos());}
 v.addEventListener('loadedmetadata',function(){
   if(pendingSeek!=null&&isFinite(v.duration)&&pendingSeek<v.duration-1.5){try{v.currentTime=pendingSeek;}catch(e){}}
   pendingSeek=null;
 });
 v.addEventListener('playing',function(){msg.textContent='';started=true;});
-v.addEventListener('waiting',function(){if(started)msg.textContent='···';});
+v.addEventListener('waiting',function(){if(started&&!briefOn)msg.textContent='···';});
 v.addEventListener('error',function(){
-  if(!reel||wxOn)return;
+  if(!reel||wxOn||auxOn||briefOn)return;
+  if(prayOn&&!prayFilm)return;
+  if(loopOn){msg.textContent='PLEASE STAND BY — THE LOOP RETURNS SHORTLY';return;}
+  var it=reel[cur];if(!it||!it.url)return;
+  if(errFor===it.url)errN++;else{errFor=it.url;errN=1;}
+  if(errN>=3){skipSet[it.url]=1;msg.textContent='SKIPPING A DEAD REEL…';setTimeout(function(){if(reel)startItem((cur+1)%reel.length);},700);return;}
   msg.textContent='SIGNAL LOST — RETUNING…';
   setTimeout(function(){cur=-1;sync(true);},1800);
 });
-v.addEventListener('ended',function(){sync(true);});
+v.addEventListener('ended',function(){
+  if(loopOn)return;
+  if(override){override=null;sync(true);return;}
+  sync(true);
+});
 
 function sync(force){
-  if(!reel||wxOn)return;
-  if(castActive)return; /* a cast session is driving playback; leave the set alone */
+  if(!reel||wxOn||auxOn||loopOn)return;
+  if(prayOn&&!prayFilm)return;
+  if(castActive)return;
+  if(talkOn&&editionActive()){editionTick();return;}
+  if(override){
+    var ooff=(Date.now()-override.at)/1000;
+    if(ooff>=reel[override.k].dur-0.25){override=null;sync(true);return;}
+    if(cur!==override.k){loadItem({k:override.k,off:ooff});renderGuide(curPos());}
+    return;
+  }
   var p=pos();
   if(force||p.k!==cur){loadItem(p);renderGuide(p);return;}
-  /* same item: correct drift if playback wandered off the schedule */
-  if(isFinite(v.currentTime)&&Math.abs(v.currentTime-p.off)>5&&v.readyState>1){
-    try{v.currentTime=p.off;}catch(e){}
+  if(reel[p.k].brief===undefined||reel[p.k].brief===null){
+    if(isFinite(v.currentTime)&&Math.abs(v.currentTime-p.off)>5&&v.readyState>1){
+      try{v.currentTime=p.off;}catch(e){}
+    }
   }
   renderGuide(p);
 }
@@ -308,7 +594,7 @@ function sync(force){
 function renderGuide(p){
   var it=reel[p.k],now=Date.now();
   nowEl.textContent=it.title;
-  metaEl.textContent=it.kind+' · '+it.year+(it.credit?' · '+it.credit:'');
+  metaEl.textContent=it.kind+(it.year?' · '+it.year:'')+(it.credit?' · '+it.credit:'');
   fill.style.width=(100*p.off/it.dur)+'%';
   elap.textContent=fmtElapsed(p.off)+' in';
   endsEl.textContent='ends '+fmtClock(new Date(now+(it.dur-p.off)*1000));
@@ -327,8 +613,23 @@ function renderGuide(p){
   for(var j=0;j<lis.length;j++)lis[j].className=(+lis[j].dataset.i===p.k)?'on':'';
 }
 
-/* ---------- CH 8 · RETRO WEATHER (Decatur, AL only) + smooth jazz ---------- */
-var WX_IDX=7; /* CH 8 in the channels array (appended after the playlist loads) */
+/* ---------- CH 2 · THE LOOP ---------- */
+function enterLoop(){
+  loopOn=true;
+  var it=reel[0];
+  v.loop=true;
+  v.src=it.url;
+  v.load();
+  v.play().catch(function(){});
+  nowEl.textContent=it.title;
+  metaEl.textContent='Surreal chess loop · art by KRILLWILL · loops every 58 seconds, forever';
+  fill.style.width='100%';
+  elap.textContent='NON-STOP';endsEl.textContent='never ends';
+  nextEl.innerHTML='<li><span class="t">FOREVER</span><span>The same board, again</span><span class="k">58 SEC</span></li>';
+  if(!allEl.dataset.built){allEl.dataset.built='1';allEl.innerHTML='<li class="on"><span class="t">58 SEC</span><span>'+esc(it.title)+'</span><span class="k">'+esc(it.kind)+'</span></li>';}
+}
+
+/* ---------- CH 8 · RETRO WEATHER (Decatur, AL only) + smooth jazz + low-bit art ---------- */
 var WX_URL='https://api.open-meteo.com/v1/forecast?latitude=34.6061&longitude=-86.9834&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,pressure_msl,wind_speed_10m,wind_direction_10m,visibility&hourly=dew_point_2m&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%2FChicago&forecast_days=7';
 var JAZZ=[
   {t:'Modern Jazz Samba — Kevin MacLeod (CC BY 4.0)',u:'https://archive.org/download/modern-jazz-samba-by-kevin-macleod/modern-jazz-samba-by-kevin-macleod.mp3'},
@@ -336,7 +637,7 @@ var JAZZ=[
   {t:'As I Figure — Kevin MacLeod (CC BY 3.0)',u:'https://archive.org/download/Jazz_Sampler-9619/Kevin_MacLeod_-_As_I_Figure.mp3'},
   {t:'Immersion In Smooth Jazz — Nick Gordy (CC BY-NC-SA 3.0)',u:'https://archive.org/download/jamendo-429977/01-1662301-Nick%20Gordy-Immersion%20In%20Smooth%20Jazz.mp3'}
 ];
-var wxOn=false,wxData=null,wxPanel=0,wxTimer=null,wxRefresh=null,jazzIdx=0,jazzWanted=true;
+var wxData=null,wxPanel=0,jazzIdx=0,jazzWanted=true;
 var WMO={0:'Clear',1:'Mostly Clear',2:'Partly Cloudy',3:'Cloudy',45:'Fog',48:'Fog',51:'Light Drizzle',53:'Drizzle',55:'Drizzle',56:'Freezing Drizzle',57:'Freezing Drizzle',61:'Light Rain',63:'Rain',65:'Heavy Rain',66:'Freezing Rain',67:'Freezing Rain',71:'Light Snow',73:'Snow',75:'Heavy Snow',77:'Snow Grains',80:'Light Showers',81:'Showers',82:'Heavy Showers',85:'Snow Showers',86:'Snow Showers',95:'Thunderstorms',96:'Thunderstorms w/ Hail',99:'Thunderstorms w/ Hail'};
 function wmoLabel(c){return WMO[c]||'—';}
 function compass(deg){var pts=['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'];return pts[Math.round(deg/22.5)%16];}
@@ -356,10 +657,61 @@ function showWxPanel(n){
 function fetchWx(){
   fetch(WX_URL,{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(d){
     wxData=d;wxErr.classList.remove('on');
-    renderWx();renderWxGuide();renderGuideAll();
+    renderWx();if(wxOn)renderWxGuide();renderGuideAll();
     var slot=chansEl.querySelector('[data-onnow="'+WX_IDX+'"]');
     if(slot)slot.textContent='Decatur, AL · '+Math.round(d.current.temperature_2m)+'° '+wmoLabel(d.current.weather_code);
   }).catch(function(){wxErr.classList.add('on');});
+}
+/* low-bit pixel sprites, drawn from string maps — WeatherStar soul, phone-cheap */
+var PX={'Y':'#ffd93b','O':'#ff9f1c','W':'#f4f9ff','G':'#aebdcf','B':'#57b7ff'};
+var SPRITES={
+sun:['............','....YYYY....','..YYYYYYYY..','.YYYYYYYYYY.','.YYOOOOOOYY.','.YYOOOOOOYY.','.YYOOOOOOYY.','.YYYYYYYYYY.','..YYYYYYYY..','....YYYY....','............','............'],
+moon:['.....WWWW...','...WWWWWW...','..WWWW......','..WWW.......','.WWW........','.WW.........','.WW.........','..WWW.......','..WWWW......','...WWWWWW...','.....WWWW...','............'],
+cloud:['............','....WWWW....','..WWWWWWWW..','.WWWWWWWWWW.','WWWWWWWWWWWW','WWGGGGGGGGWW','..GGGGGGGG..','............','............','............','............','............'],
+partly:['..YYYY......','.YYYYYY.....','.YYOOYY.WW..','..YYYYWWWW..','...WWWWWWWW.','..WWWWWWWWWW','..GGGGGGGG..','............','............','............','............','............'],
+rain:['............','....WWWW....','..WWWWWWWW..','.WWWWWWWWWW.','WWWWWWWWWWWW','WWGGGGGGGGWW','..GGGGGGGG..','............','..B...B...B.','....B...B...','.B...B...B..','............'],
+snow:['............','....WWWW....','..WWWWWWWW..','.WWWWWWWWWW.','WWWWWWWWWWWW','WWGGGGGGGGWW','..GGGGGGGG..','............','..W...W...W.','....W...W...','.W...W...W..','............'],
+storm:['............','....WWWW....','..WWWWWWWW..','.WWWWWWWWWW.','WWWWWWWWWWWW','WWGGGGGGGGWW','..GGGGGGGG..','.....YY.....','....YY......','...YYYY.....','....YY......','...YY.......'],
+fog:['............','....WWWW....','..WWWWWWWW..','.WWWWWWWWWW.','WWGGGGGGGGWW','..GGGGGGGG..','............','.GGGGGGGGGG.','............','..GGGGGGGG..','............','............']
+};
+function spriteFor(code){
+  var h=new Date().getHours(),night=(h<6||h>=19);
+  if(code===0)return night?'moon':'sun';
+  if(code===1||code===2)return 'partly';
+  if(code===3)return 'cloud';
+  if(code===45||code===48)return 'fog';
+  if(code>=95)return 'storm';
+  if((code>=71&&code<=77)||code===85||code===86)return 'snow';
+  return 'rain';
+}
+function drawWxIcon(code){
+  var cv=document.getElementById('rsWxIcon');if(!cv)return;
+  var x=cv.getContext('2d');x.clearRect(0,0,48,48);
+  var map=SPRITES[spriteFor(code)];
+  for(var r=0;r<map.length;r++)for(var c=0;c<map[r].length;c++){
+    var ch=map[r].charAt(c);if(ch==='.')continue;
+    x.fillStyle=PX[ch]||'#fff';x.fillRect(c*4,r*4,4,4);
+  }
+}
+function drawWxScene(){
+  var cv=document.getElementById('rsWxScene');if(!cv)return;
+  var x=cv.getContext('2d');
+  var h=new Date().getHours(),night=(h<6||h>=19),i;
+  var sky=night?['#0a1440','#12245e','#1b2f6e']:['#3f7fbf','#6fa8dc','#a8cdf0'];
+  for(var b=0;b<3;b++){x.fillStyle=sky[b];x.fillRect(0,b*12,200,12);}
+  if(night){x.fillStyle='#dfe9ff';[[12,4],[40,9],[88,3],[150,8],[178,4],[64,12],[120,6]].forEach(function(s){x.fillRect(s[0],s[1],2,2);});}
+  if(night){x.fillStyle='#e8eef7';x.fillRect(168,6,14,14);x.fillStyle=sky[0];x.fillRect(175,4,12,12);}
+  else{x.fillStyle='#ffd93b';x.fillRect(166,5,16,16);x.fillStyle='#ffec9e';x.fillRect(170,9,8,8);}
+  x.fillStyle=night?'#26386b':'#f4f9ff';
+  [[18,9],[52,15],[104,8]].forEach(function(c){x.fillRect(c[0],c[1],26,6);x.fillRect(c[0]+5,c[1]-4,15,4);});
+  x.fillStyle=night?'#0d2b1a':'#1e5c38';x.fillRect(0,34,200,6);
+  x.fillStyle=night?'#14335f':'#2f6fb4';x.fillRect(0,40,200,10);
+  x.fillStyle=night?'#7fa8d8':'#bfe0ff';
+  [[8,44],[36,47],[70,43],[112,46],[150,44],[186,47]].forEach(function(s){x.fillRect(s[0],s[1],4,1);});
+  x.fillStyle='#0a0f1c';x.fillRect(0,38,200,2);x.fillRect(59,26,3,14);x.fillRect(139,26,3,14);
+  for(i=0;i<80;i+=4){x.fillRect(60+i,27+Math.round(Math.sin(i/80*Math.PI)*8),2,1);x.fillRect(60+i,27+Math.round(Math.sin(i/80*Math.PI)*8),2,1);}
+  for(i=0;i<58;i+=4){x.fillRect(2+i,38-Math.round(Math.sin(i/58*Math.PI)*9),2,1);x.fillRect(140+i,29+Math.round(Math.sin(i/58*Math.PI)*9),2,1);}
+  x.fillStyle=night?'#08130c':'#14402a';x.fillRect(0,50,200,6);
 }
 function renderWx(){
   if(!wxData)return;
@@ -367,6 +719,7 @@ function renderWx(){
   var visMi=Math.min(c.visibility/1609.34,10),visTxt=(visMi>=9.95?'10':String(Math.round(visMi*10)/10))+' mi';
   var windTxt=c.wind_speed_10m<1?'Calm':compass(c.wind_direction_10m)+' '+Math.round(c.wind_speed_10m)+' mph';
   document.getElementById('rsWxP0').innerHTML='<p class="rs-wx-ptitle">CURRENT CONDITIONS · DECATUR, AL</p>'
+    +'<canvas class="rs-wx-icon" id="rsWxIcon" width="48" height="48"></canvas>'
     +'<div class="rs-wx-big">'+Math.round(c.temperature_2m)+'°</div>'
     +'<p class="rs-wx-cond">'+esc(wmoLabel(c.weather_code))+'</p>'
     +'<div class="rs-wx-grid">'
@@ -375,7 +728,9 @@ function renderWx(){
     +'<span><b>Humidity</b> '+Math.round(c.relative_humidity_2m)+'%</span>'
     +'<span><b>Dewpoint</b> '+(dew==null?'—':Math.round(dew)+'°')+'</span>'
     +'<span><b>Pressure</b> '+(c.pressure_msl*0.02953).toFixed(2)+' in</span>'
-    +'<span><b>Visibility</b> '+visTxt+'</span></div>';
+    +'<span><b>Visibility</b> '+visTxt+'</span></div>'
+    +'<canvas class="rs-wx-scene" id="rsWxScene" width="200" height="56"></canvas>';
+  drawWxIcon(c.weather_code);drawWxScene();
   document.getElementById('rsWxP1').innerHTML='<p class="rs-wx-ptitle">ALMANAC · DECATUR, AL</p>'
     +'<div class="rs-wx-grid">'
     +'<span><b>Today Sunrise</b> '+fmtTime(dy.sunrise[0])+'</span>'
@@ -431,12 +786,10 @@ jazzBtn.addEventListener('click',function(){
 document.addEventListener('click',function(){
   if(wxOn&&jazzWanted&&au.paused)jazzPlay();
 });
-function enterWx(i){
-  setReel(i);
+function enterWx(){
   wxOn=true;wxPanel=0;
   wxEl.classList.add('on');wxEl.setAttribute('aria-hidden','false');
   msg.textContent='';
-  try{v.pause();}catch(e){}
   jazzBtn.hidden=false;jazzBtn.textContent=jazzWanted?'🎷 JAZZ ON':'🎷 JAZZ OFF';
   if(jazzWanted)jazzPlay();
   showWxPanel(0);
@@ -448,27 +801,231 @@ function enterWx(i){
   if(wxRefresh)clearInterval(wxRefresh);
   wxRefresh=setInterval(fetchWx,600000);
 }
-function exitWx(){
-  wxOn=false;
-  wxEl.classList.remove('on');wxEl.setAttribute('aria-hidden','true');
-  if(wxTimer){clearInterval(wxTimer);wxTimer=null;}
-  if(wxRefresh){clearInterval(wxRefresh);wxRefresh=null;}
-  au.pause();
-  jazzBtn.hidden=true;
+
+/* ---------- CH 3 · LOCAL AUX ---------- */
+var auxPanel=0;
+function showAuxPanel(n){
+  for(var j=0;j<4;j++){var p=document.getElementById('rsAuxP'+j);if(p)p.className='rs-aux-panel'+(j===n?' on':'');}
+}
+function enterAux(){
+  auxOn=true;auxPanel=0;
+  auxEl.classList.add('on');auxEl.setAttribute('aria-hidden','false');
+  msg.textContent='';
+  auxClockEl.textContent=fmtClock(new Date());
+  showAuxPanel(0);
+  if(auxTimer)clearInterval(auxTimer);
+  auxTimer=setInterval(function(){auxPanel=(auxPanel+1)%4;showAuxPanel(auxPanel);},10000);
+  nowEl.textContent='Decatur Local — Community Board';
+  metaEl.textContent='LOCAL AUX · the Decatur feed on the AUX input · panels rotate every 10 sec · silent, like a good bulletin board';
+  fill.style.width='100%';
+  elap.textContent='LOCAL';endsEl.textContent='always on';
+  nextEl.innerHTML='<li><span class="t">BOARD</span><span>Around Town</span><span class="k">10 SEC</span></li>'
+    +'<li><span class="t">BOARD</span><span>On the River</span><span class="k">10 SEC</span></li>'
+    +'<li><span class="t">BOARD</span><span>Board Notes</span><span class="k">10 SEC</span></li>';
+  if(!allEl.dataset.built){
+    allEl.dataset.built='1';
+    allEl.innerHTML='<li class="on"><span class="t">24/7</span><span>Decatur, Alabama — community board on the AUX input</span><span class="k">Local</span></li>';
+  }
 }
 
-tuneBtn.addEventListener('click',function(){
-  if(v.muted){v.muted=false;v.play().catch(function(){});tuneBtn.textContent='🔊 SOUND ON';}
-  else{v.muted=true;tuneBtn.textContent='🔇 TUNE IN — SOUND OFF';}
+/* ---------- CH 9 · THE ORATORY (prayer stream draft + silent-epic film block) ---------- */
+var PRAYERS=[
+ {b:'TO BEGIN',t:'Sign of the Cross',x:'In the name of the Father, and of the Son, and of the Holy Spirit. Amen.'},
+ {b:'THE ROSARY',t:"The Apostles' Creed",x:'I believe in God, the Father almighty, Creator of heaven and earth, and in Jesus Christ, His only Son, our Lord, who was conceived by the Holy Spirit, born of the Virgin Mary, suffered under Pontius Pilate, was crucified, died and was buried; He descended into hell; on the third day He rose again from the dead; He ascended into heaven, and is seated at the right hand of God the Father almighty; from there He will come to judge the living and the dead. I believe in the Holy Spirit, the holy catholic Church, the communion of saints, the forgiveness of sins, the resurrection of the body, and life everlasting. Amen.'},
+ {b:'THE ROSARY',t:'Our Father',x:'Our Father, who art in heaven, hallowed be Thy name; Thy kingdom come; Thy will be done on earth as it is in heaven. Give us this day our daily bread; and forgive us our trespasses, as we forgive those who trespass against us; and lead us not into temptation, but deliver us from evil. Amen.'},
+ {b:'THE ROSARY',t:'Hail Mary',x:'Hail Mary, full of grace, the Lord is with thee. Blessed art thou among women, and blessed is the fruit of thy womb, Jesus. Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death. Amen.'},
+ {b:'THE ROSARY',t:'Glory Be',x:'Glory be to the Father, and to the Son, and to the Holy Spirit, as it was in the beginning, is now, and ever shall be, world without end. Amen.'},
+ {b:'THE ROSARY',t:'The Fatima Prayer',x:'O my Jesus, forgive us our sins, save us from the fires of hell; lead all souls to Heaven, especially those most in need of Thy mercy.'},
+ {b:'DIVINE MERCY',t:'Eternal Father',x:'Eternal Father, I offer You the Body and Blood, Soul and Divinity of Your dearly beloved Son, Our Lord Jesus Christ, in atonement for our sins and those of the whole world.'},
+ {b:'DIVINE MERCY',t:'For the Sake of His Sorrowful Passion',x:'For the sake of His sorrowful Passion, have mercy on us and on the whole world. Holy God, Holy Mighty One, Holy Immortal One, have mercy on us and on the whole world.'},
+ {b:'ST. MICHAEL',t:'Prayer to St. Michael the Archangel',x:'St. Michael the Archangel, defend us in battle. Be our protection against the wickedness and snares of the devil. May God rebuke him, we humbly pray; and do thou, O Prince of the heavenly host, by the power of God, cast into hell Satan and all the evil spirits who prowl about the world seeking the ruin of souls. Amen.'},
+ {b:'MORNING',t:'Morning Offering',x:'O Jesus, through the Immaculate Heart of Mary, I offer You my prayers, works, joys and sufferings of this day for all the intentions of Your Sacred Heart, in union with the Holy Sacrifice of the Mass throughout the world, in reparation for my sins, for the intentions of all my relatives and friends, and in particular for the intentions of the Holy Father. Amen.'},
+ {b:'ALWAYS',t:'The Jesus Prayer',x:'Lord Jesus Christ, Son of God, have mercy on me, a sinner.'},
+ {b:'THE ROSARY',t:'Hail, Holy Queen',x:'Hail, holy Queen, Mother of mercy, our life, our sweetness and our hope. To thee do we cry, poor banished children of Eve; to thee do we send up our sighs, mourning and weeping in this valley of tears. Turn then, most gracious advocate, thine eyes of mercy toward us; and after this our exile, show unto us the blessed fruit of thy womb, Jesus. O clement, O loving, O sweet Virgin Mary. Pray for us, O holy Mother of God, that we may be made worthy of the promises of Christ. Amen.'},
+ {b:'EVENING',t:'Act of Contrition',x:'O my God, I am heartily sorry for having offended Thee, and I detest all my sins because of Thy just punishments, but most of all because they offend Thee, my God, who art all good and deserving of all my love. I firmly resolve, with the help of Thy grace, to sin no more and to avoid the near occasions of sin. Amen.'},
+ {b:'NIGHT',t:'Angel of God',x:"Angel of God, my guardian dear, to whom God's love commits me here, ever this day be at my side, to light and guard, to rule and guide. Amen."}
+];
+var PAU=['sign','creed','our-father','hail-mary','glory-be','fatima','hail-holy-queen','closing'];
+var pauIdx=0,prayIdx=0;
+function renderPrayCard(){
+  var p=PRAYERS[prayIdx];
+  document.getElementById('rsPrayBlock').textContent=p.b;
+  document.getElementById('rsPrayTitle').textContent=p.t;
+  var tx=document.getElementById('rsPrayText');
+  tx.textContent=p.x;
+  tx.className='rs-pray-text'+(p.x.length>260?' long':'');
+}
+function playPrayAu(){
+  prayAu.src='assets/prayer-audio/'+PAU[pauIdx]+'.mp3';
+  prayAu.play().catch(function(){});
+}
+prayAu.addEventListener('ended',function(){
+  if(!prayOn||prayFilm)return;
+  pauIdx=(pauIdx+1)%PAU.length;playPrayAu();
 });
-syncBtn.addEventListener('click',function(){if(wxOn){fetchWx();return;}castActive=false;sync(true);v.play().catch(function(){});});
+prayAu.addEventListener('error',function(){
+  if(!prayOn||prayFilm)return;
+  pauIdx=(pauIdx+1)%PAU.length;
+  if(pauIdx!==0)playPrayAu();
+});
+function drawCandles(t){
+  if(!prayOn||prayFilm)return;
+  var cv=document.getElementById('rsCandles');if(!cv)return;
+  var x=cv.getContext('2d'),W=cv.width,H=cv.height;
+  x.clearRect(0,0,W,H);
+  var n=7;
+  for(var i=0;i<n;i++){
+    var cx=44+i*(W-88)/(n-1),hgt=26+((i*37)%18),base=H-6;
+    var g=x.createRadialGradient(cx,base-hgt-8,2,cx,base-hgt-8,27);
+    g.addColorStop(0,'rgba(255,180,80,.5)');g.addColorStop(1,'rgba(255,180,80,0)');
+    x.fillStyle=g;x.fillRect(cx-27,base-hgt-35,54,54);
+    x.fillStyle=i%2?'#e8dcc0':'#f4ecd8';x.fillRect(cx-5,base-hgt,10,hgt);
+    x.fillStyle='#cbb27a';x.fillRect(cx-5,base-hgt,10,3);
+    var fl=Math.sin(t/170+i*1.7)*1.6+Math.sin(t/61+i)*0.7;
+    x.fillStyle='#ffca6a';x.beginPath();x.ellipse(cx+fl,base-hgt-7,3.4,6.4,0,0,7);x.fill();
+    x.fillStyle='#fff3c4';x.beginPath();x.ellipse(cx+fl,base-hgt-5,1.6,3.4,0,0,7);x.fill();
+  }
+  candleRAF=requestAnimationFrame(drawCandles);
+}
+function renderPrayGuide(){
+  nowEl.textContent='The Oratory — Prayer Stream (Draft)';
+  metaEl.textContent='Bead by Bead · prayers in rotation · voices from the Holy Rosary project';
+  fill.style.width='100%';
+  elap.textContent='STREAM';endsEl.textContent='always on';
+  nextEl.innerHTML=reel.slice(0,3).map(function(it){return '<li><span class="t">FILM BLOCK</span><span>'+esc(it.title)+'</span><span class="k">'+fmtDur(it.dur)+'</span></li>';}).join('')
+    +'<li><span class="t">🎬</span><span>Tap SILENT EPIC FILM BLOCK on the set to watch</span><span class="k">ON SET</span></li>';
+  if(!allEl.dataset.built){
+    allEl.dataset.built='1';
+    allEl.innerHTML='<li class="on"><span class="t">STREAM</span><span>The prayer stream — Rosary, Divine Mercy, St. Michael, morning &amp; night prayers</span><span class="k">DRAFT</span></li>'
+      +reel.map(function(ri,i){return '<li data-i="'+i+'"><span class="t">'+fmtDur(ri.dur)+'</span><span>'+esc(ri.title)+'</span><span class="k">Film Block</span></li>';}).join('');
+  }
+}
+function enterPrayer(){
+  prayOn=true;prayFilm=false;
+  prayEl.classList.add('on');prayEl.setAttribute('aria-hidden','false');
+  filmChip.classList.remove('on');
+  msg.textContent='';
+  prayIdx=Math.floor(Date.now()/40000)%PRAYERS.length;
+  renderPrayCard();
+  if(prayTimer)clearInterval(prayTimer);
+  prayTimer=setInterval(function(){prayIdx=(prayIdx+1)%PRAYERS.length;renderPrayCard();},40000);
+  if(candleRAF)cancelAnimationFrame(candleRAF);
+  candleRAF=requestAnimationFrame(drawCandles);
+  pauIdx=0;playPrayAu();
+  renderPrayGuide();
+}
+document.getElementById('rsPrayFilms').addEventListener('click',function(){
+  if(!prayOn||prayFilm)return;
+  prayFilm=true;
+  prayEl.classList.remove('on');prayEl.setAttribute('aria-hidden','true');
+  filmChip.classList.add('on');
+  unloadAudio(prayAu);
+  if(prayTimer){clearInterval(prayTimer);prayTimer=null;}
+  if(candleRAF){cancelAnimationFrame(candleRAF);candleRAF=null;}
+  cur=-1;sync(true);v.play().catch(function(){});
+});
+filmChip.addEventListener('click',function(){
+  if(!prayOn||!prayFilm)return;
+  unloadVideo();
+  enterPrayer();
+});
+
+/* ---------- CH 10 · THE SURGE REPORT: The Brief + 7 AM / 7 PM editions ---------- */
+var BRIEFS=[
+ {h:'How to Read a News Story',l:['<b>Check the source.</b> Who is telling you this — and how would they know?','<b>Check the date.</b> Old stories wear new headlines all the time.','<b>Find the document.</b> The quote, the filing, the video — not just the summary of it.','<b>Separate news from opinion.</b> Both are fine. They are not the same thing.']},
+ {h:'The Space Race in Five Dates',l:['<b>1957</b> — Sputnik 1: the first satellite, and America looks up.','<b>April 1961</b> — Yuri Gagarin orbits; Alan Shepard answers a month later.','<b>February 1962</b> — John Glenn orbits the Earth three times.','<b>July 1969</b> — Apollo 11 lands on the Moon.','<b>1975</b> — Apollo–Soyuz: the race ends with a handshake in orbit.']},
+ {h:"What 'Public Domain' Actually Means",l:['Works whose copyright <b>expired</b>, was <b>never renewed</b>, or that were <b>made by the U.S. government</b>.','That is the whole legal engine of this dial — every channel, checked title by title.','Old does not automatically mean free: renewals, restorations and trademarks still count.','When in doubt, we check the record — and if it is not clear, it does not air.']},
+ {h:'How a Bill Becomes a Law',l:['<b>Introduced</b> in the House or the Senate, and sent to committee.','<b>Committee</b> hearings and markup — where most bills quietly end.','<b>Floor votes</b> in both chambers; differences ironed out in conference.','<b>The President</b> signs it — or vetoes it, and Congress can override with two-thirds.']},
+ {h:'Why Newsreels Mattered',l:['Before TV news, the news came to the <b>theater</b> — ten minutes at a time.','Universal Newsreel ran 1929–1967; MCA later <b>deeded the library to the U.S. Government</b>.','That deed is why this channel can play them today, free and clear.','You are watching the same reels a 1962 moviegoer watched.']}
+];
+function enterBrief(idx,edLabel){
+  briefOn=true;
+  var b=BRIEFS[idx%BRIEFS.length];
+  document.getElementById('rsBriefKick').textContent=edLabel?('THE SURGE REPORT · '+edLabel):'THE BRIEF · A SURGE REPORT SEGMENT';
+  document.getElementById('rsBriefH').textContent=b.h;
+  document.getElementById('rsBriefLines').innerHTML=b.l.map(function(s){return '<p class="rs-brief-line">'+s+'</p>';}).join('');
+  var ed=document.getElementById('rsBriefEd');
+  ed.hidden=!edLabel;ed.textContent=edLabel||'THE BRIEF';
+  briefEl.classList.add('on');briefEl.setAttribute('aria-hidden','false');
+}
+function exitBrief(){
+  briefOn=false;
+  briefEl.classList.remove('on');briefEl.setAttribute('aria-hidden','true');
+}
+function ctNow(){return new Date(new Date().toLocaleString('en-US',{timeZone:'America/Chicago'}));}
+function editionActive(){
+  var d=ctNow(),m=d.getHours()*60+d.getMinutes();
+  return (m>=420&&m<450)||(m>=1140&&m<1170);
+}
+function editionName(){return ctNow().getHours()<12?'MORNING EDITION':'EVENING EDITION';}
+function editionStartSec(){
+  var d=ctNow(),s=new Date(d);
+  if(d.getHours()<12)s.setHours(7,0,0,0);else s.setHours(19,0,0,0);
+  return Math.max(0,(d-s)/1000);
+}
+var ED_CYCLE=[{type:'title',dur:15},{type:'brief',idx:4,dur:45},{type:'brief',idx:0,dur:45},{type:'video',dur:369.79},{type:'brief',idx:1,dur:45},{type:'brief',idx:2,dur:45},{type:'brief',idx:3,dur:45}];
+var ED_TOTAL=609.79,edKey=null;
+function editionTick(){
+  if(!talkOn)return;
+  if(!editionActive()){
+    if(edKey){edKey=null;exitBrief();cur=-1;sync(true);}
+    return;
+  }
+  var t=editionStartSec()%ED_TOTAL,acc=0,seg=null,segOff=0;
+  for(var i=0;i<ED_CYCLE.length;i++){
+    if(t<acc+ED_CYCLE[i].dur){seg=ED_CYCLE[i];segOff=t-acc;break;}
+    acc+=ED_CYCLE[i].dur;
+  }
+  if(!seg)return;
+  var key=editionName()+':'+ED_CYCLE.indexOf(seg);
+  if(edKey===key)return;
+  edKey=key;
+  var label=editionName()+' · '+(editionName().indexOf('MORNING')===0?'7:00 AM':'7:00 PM')+' CT';
+  if(seg.type==='video'){
+    exitBrief();
+    loadItem({k:0,off:segOff});
+    v.play().catch(function(){});
+  }else if(seg.type==='title'){
+    unloadVideo();
+    briefOn=true;
+    document.getElementById('rsBriefKick').textContent='THE SURGE REPORT';
+    document.getElementById('rsBriefH').textContent=editionName()+' — The Brief';
+    document.getElementById('rsBriefLines').innerHTML='<p class="rs-brief-line">The day in plain English: briefs, clips and the reels that made the news. <b>Premiering at '+(editionName().indexOf('MORNING')===0?'7:00 AM':'7:00 PM')+' CT</b> — then this edition folds into the rotation.</p>';
+    var ed=document.getElementById('rsBriefEd');
+    ed.hidden=false;ed.textContent=label;
+    briefEl.classList.add('on');briefEl.setAttribute('aria-hidden','false');
+  }else{
+    unloadVideo();
+    enterBrief(seg.idx,label);
+  }
+}
+
+/* ---------- controls ---------- */
+tuneBtn.addEventListener('click',function(){
+  soundOn=!soundOn;
+  v.muted=!soundOn;
+  prayAu.muted=!soundOn;
+  if(soundOn){
+    v.play().catch(function(){});
+    if(prayOn&&!prayFilm&&prayAu.paused)playPrayAu();
+    if(wxOn&&jazzWanted&&au.paused)jazzPlay();
+    tuneBtn.textContent='🔊 SOUND ON';
+  }else{
+    tuneBtn.textContent='🔇 TUNE IN — SOUND OFF';
+  }
+});
+syncBtn.addEventListener('click',function(){
+  if(wxOn){fetchWx();return;}
+  if(prayOn&&!prayFilm)return;
+  castActive=false;override=null;cur=-1;sync(true);v.play().catch(function(){});
+});
 
 /* ---------- AirPlay (Safari / iOS / macOS) ---------- */
 if('webkitShowPlaybackTargetPicker' in v){
   v.addEventListener('webkitplaybacktargetavailabilitychanged',function(e){
     airBtn.hidden=(e.availability!=='available');
   });
-  airBtn.hidden=false; /* picker API exists; availability events refine this */
+  airBtn.hidden=false;
   airBtn.addEventListener('click',function(){
     try{v.webkitShowPlaybackTargetPicker();}catch(e){}
   });
@@ -477,7 +1034,7 @@ if('webkitShowPlaybackTargetPicker' in v){
     try{wireless=v.webkitCurrentPlaybackTargetIsWireless===true;}catch(e){}
     airBtn.classList.toggle('on',wireless);
     castActive=wireless;
-    if(!wireless)sync(false); /* back on the phone: rejoin the shared schedule */
+    if(!wireless)sync(false);
   });
 }
 
@@ -508,12 +1065,12 @@ castBtn.addEventListener('click',function(){
   castLoad(session);
 });
 function castLoad(session){
-  if(!reel||cur<0||wxOn)return;
+  if(!reel||cur<0||wxOn||auxOn||prayOn||loopOn||briefOn)return;
   var p=pos(),it=reel[p.k];
   var info=new chrome.cast.media.MediaInfo(it.url,'video/mp4');
   info.metadata=new chrome.cast.media.GenericMediaMetadata();
-  info.metadata.title=it.title+' — '+chans[chIdx].channel;
-  info.metadata.subtitle=it.kind+' · '+it.year;
+  info.metadata.title=it.title+' — '+chans[chIdx].name;
+  info.metadata.subtitle=it.kind;
   var req=new chrome.cast.media.LoadRequest(info);
   req.autoplay=true;
   req.currentTime=Math.max(0,Math.min(p.off,it.dur-2));
@@ -521,24 +1078,33 @@ function castLoad(session){
 }
 document.addEventListener('visibilitychange',function(){if(!document.hidden)sync(false);});
 
-fetch('surge-tv-playlist.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(d){
-  chans=d.channels||[{channel:'RETRO SURGE',items:d.items}];
-  /* CH 8 · RETRO WEATHER — a virtual channel: no reel, just Decatur, AL.
-     The dummy 24 h item keeps the channel-bar "on now" machinery happy. */
-  chans.push({channel:'RETRO WEATHER',weather:true,items:[{title:'Decatur, AL — Local Weather',kind:'Retro Weather',year:'24/7',dur:86400,url:''}]});
-  buildChanBar();
-  if(location.hash.replace('#','').toLowerCase()==='ch8'){
-    enterWx(WX_IDX); /* surge-tv.html#ch8 — straight to the weather */
-  }else{
-    setReel(0);
-    sync(true);
-    v.play().catch(function(){msg.textContent='PRESS TUNE IN TO START THE SET';});
+/* ---------- QA handle (used by the phone-width switching tests) ---------- */
+window.RS={
+  tune:function(i){tuneTo(i,false);},
+  state:function(){
+    return {ch:chIdx+1,name:chans?chans[chIdx].name:null,
+      videoPaused:v.paused,videoSrc:(v.getAttribute('src')||''),videoLoop:v.loop,
+      jazzPaused:au.paused,jazzSrc:(au.getAttribute('src')||''),
+      prayPaused:prayAu.paused,praySrc:(prayAu.getAttribute('src')||''),
+      wxOn:wxOn,auxOn:auxOn,prayOn:prayOn,prayFilm:prayFilm,loopOn:loopOn,briefOn:briefOn,talkOn:talkOn,
+      edition:talkOn&&editionActive()};
   }
-  setInterval(function(){sync(false);},1000);
+};
+
+fetch('surge-tv-playlist.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(d){
+  chans=d.channels;
+  WX_IDX=flagIdx('weather');
+  buildChanBar();
+  var start=0;
+  var m=(location.hash||'').replace('#','').toLowerCase().match(/^ch(\d+)$/);
+  if(m){var n=+m[1];if(n>=1&&n<=chans.length)start=n-1;}
+  tuneTo(start,true);
+  setInterval(function(){sync(false);if(talkOn)editionTick();},1000);
   setInterval(function(){refreshChanBar();},30000);
   setInterval(function(){
     clockEl.textContent='CH '+(chIdx+1)+' · '+fmtClock(new Date())+' CT · VIEWERS SYNCED';
     if(wxOn)wxClockEl.textContent=fmtClock(new Date())+' CT';
+    if(auxOn)auxClockEl.textContent=fmtClock(new Date());
   },1000);
   clockEl.textContent='CH '+(chIdx+1)+' · '+fmtClock(new Date())+' · VIEWERS SYNCED';
 }).catch(function(){msg.textContent='THE REEL WOULD NOT LOAD — REFRESH TO RETRY';nowEl.textContent='Off air (for a second)';});
