@@ -100,6 +100,22 @@ const FEEDS = {
     { name: 'Daily Wire', site: 'https://www.dailywire.com', url: 'https://news.google.com/rss/search?q=site:dailywire.com+(%22good+news%22+OR+uplifting+OR+heartwarming+OR+%22feel-good%22+OR+%22acts+of+kindness%22+OR+%22faith+in+humanity%22+OR+inspiring+OR+miracle+OR+reunited)+when:7d&hl=en-US&gl=US&ceid=US:en' },
     { name: 'Daily Wire: Heroes', site: 'https://www.dailywire.com', url: 'https://news.google.com/rss/search?q=site:dailywire.com+(%22saved+his+life%22+OR+%22saved+her+life%22+OR+%22saved+their+lives%22+OR+rescue+OR+hero+OR+%22beating+cancer%22+OR+%22cancer-free%22)+when:7d&hl=en-US&gl=US&ceid=US:en' },
   ],
+  zerohedge: [
+    // direct feed (Nov 17 2026 — Sergio's call: "ZeroHedge News needs to be on
+    // the site"). Runs RAW like alexjones (see RAW_CATS below): it is a
+    // markets/geopolitics firehose and passes the positivity gate ~0% of the
+    // time, so gating it would mean a permanently empty channel. Balance cap
+    // in MAX_OVERRIDE keeps it from flooding the newest-first wire.
+    { name: 'ZeroHedge', site: 'https://www.zerohedge.com', url: 'https://feeds.feedburner.com/zerohedge/feed' },
+  ],
+  rerumnovarum: [
+    // Telegram channel mirror (Nov 17 2026 — Sergio's call: Rerum Novarum is
+    // his favorite news source and "needs to be featured"). He posts mostly on
+    // Telegram (@rnintel); the channel's public preview page is parsed into
+    // wire items by parseTelegram below. Runs RAW like alexjones/zerohedge:
+    // breaking-war alerts would never pass the positivity gate.
+    { name: 'Rerum Novarum', site: 'https://t.me/rnintel', url: 'https://t.me/s/rnintel', telegram: true },
+  ],
   // ---- LEFT ----
   msnbc: [
     { name: 'MSNBC', site: 'https://www.msnbc.com', url: 'https://news.google.com/rss/search?q=site:msnbc.com+(%22good+news%22+OR+uplifting+OR+heartwarming+OR+%22feel-good%22+OR+%22acts+of+kindness%22+OR+%22faith+in+humanity%22+OR+inspiring+OR+miracle+OR+reunited)+when:7d&hl=en-US&gl=US&ceid=US:en' },
@@ -403,7 +419,7 @@ function passesPositivity(textLow) {
 // RAW channels (Sergio's call, Oct 5 2026): latest as the outlet publishes it, no positivity/politics filter.
 // Alex Jones: "latest stories and news from the Alex Jones show" in the center ("he's a patriot",
 // reliability critiques dismissed). Filters would nuke the whole feed, so this channel runs raw.
-const RAW_CATS = new Set(['alexjones']);
+const RAW_CATS = new Set(['alexjones', 'zerohedge', 'rerumnovarum']);
 // sports channels (Sergio's call, Oct 6 2026): their own outlet's stories are welcome
 // in the sports channels, still blocked from leaking into the news channels
 const SPORTS_CATS = new Set(['espn', 'foxsports']);
@@ -418,7 +434,7 @@ const MAX_PER_CAT = 10;
 // balance caps (Oct 10 2026 — Sergio's call: the wire must feel balanced).
 // Raw high-volume channels get a smaller slice so no single voice floods
 // the newest-first wire. The channel itself is untouched — still raw, still his.
-const MAX_OVERRIDE = { alexjones: 4 };
+const MAX_OVERRIDE = { alexjones: 4, zerohedge: 4, rerumnovarum: 4 };
 const FETCH_TIMEOUT = 8000;
 
 function clean(s) {
@@ -545,6 +561,53 @@ function parseFeed(xml, raw, gated) {
     items.push({ title, link, ts: isNaN(ts) ? 0 : ts, desc, img: extractImg(b, rawHtml) });
   }
   return items;
+}
+
+// ---- Telegram channel mirrors (Nov 17 2026) ----
+// A public Telegram channel's preview page (t.me/s/<name>) is server-rendered
+// HTML, not RSS: each post block carries data-post="<name>/<id>", the text in
+// .tgme_widget_message_text, an ISO datetime, and often a photo. Parsed into
+// the same item shape parseFeed returns. Wired only for RAW channels Sergio
+// follows directly (Rerum Novarum).
+function parseTelegram(html) {
+  const items = [];
+  const blocks = String(html || '').split('data-post="').slice(1);
+  for (const b of blocks) {
+    const idm = b.match(/^([\w/]+)"/);
+    if (!idm) continue;
+    const link = 'https://t.me/' + idm[1];
+    const tm = b.match(/tgme_widget_message_text[^>]*>([\s\S]*?)<\/div>/);
+    if (!tm) continue;
+    let title = clean(tm[1].replace(/<br\s*\/?>/gi, ' '));
+    if (!title) continue;
+    if (title.length > 200) {
+      title = title.slice(0, 200);
+      const sp = title.lastIndexOf(' ');
+      title = (sp > 100 ? title.slice(0, sp) : title) + '…';
+    }
+    const dm = b.match(/datetime="([^"]+)"/);
+    const ts = dm ? Date.parse(dm[1]) : NaN;
+    const pm = b.match(/tgme_widget_message_photo_wrap[^>]*background-image:url\('([^']+)'\)/);
+    items.push({ title, link, ts: isNaN(ts) ? 0 : ts, desc: '', img: pm ? pm[1] : '' });
+  }
+  return items;
+}
+
+async function fetchTelegram(url) {
+  const ctrl = new AbortController();
+  const to = setTimeout(() => ctrl.abort(), FETCH_TIMEOUT);
+  try {
+    const r = await fetch(url, {
+      signal: ctrl.signal,
+      headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) NewSurgeWire/1.0', Accept: 'text/html' },
+    });
+    if (!r.ok) return [];
+    return parseTelegram(await r.text());
+  } catch {
+    return [];
+  } finally {
+    clearTimeout(to);
+  }
 }
 
 // ---- story thumbnails (Oct 12 2026 — Sergio: every article gets a small
@@ -677,7 +740,7 @@ async function buildWire() {
     await Promise.all(
       cats.map(async (cat) => {
         const feeds = FEEDS[cat] || [];
-        const results = await Promise.all(feeds.map((f) => fetchFeed(f.url, RAW_CATS.has(cat), !!f.direct && !f.section)));
+        const results = await Promise.all(feeds.map((f) => f.telegram ? fetchTelegram(f.url) : fetchFeed(f.url, RAW_CATS.has(cat), !!f.direct && !f.section)));
         const seen = new Set();
         const merged = [];
         for (const list of results) {
