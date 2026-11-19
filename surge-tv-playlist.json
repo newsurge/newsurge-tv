@@ -1,204 +1,6 @@
 {
  "channels": [
   {
-   "name": "CLASSIC CARTOONS",
-   "sym": "✦",
-   "cls": "lg-toon",
-   "tag": "Golden-age animation gold — all 17 Fleischer Superman shorts, Popeye & friends",
-   "items": [
-    {
-     "title": "Superman: The Mad Scientist (1941)",
-     "kind": "Fleischer Superman · 1941",
-     "dur": 628.26,
-     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%20%281941%3B%20HD%29.mp4"
-    },
-    {
-     "title": "Superman: The Mechanical Monsters (1941)",
-     "kind": "Fleischer Superman · 1941",
-     "dur": 616,
-     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%EF%BC%9A%20The%20Mechanical%20Monsters%20%281941%3B%20HD%29.mp4"
-    },
-    {
-     "title": "Superman: Billion Dollar Limited (1942)",
-     "kind": "Fleischer Superman · 1942",
-     "dur": 516.78,
-     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%EF%BC%9A%20Billion%20Dollar%20Limited%20%281942%3B%20HD%29.mp4"
-    },
-    {
-     "title": "Superman: The Arctic Giant (1942)",
-     "kind": "Fleischer Superman · 1942",
-     "dur": 516.48,
-     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%EF%BC%9A%20The%20Arctic%20Giant%20%281942%3B%20HD%29.mp4"
-    },
-    {
-     "title": "Superman: The Bulleteers (1942)",
-     "kind": "Fleischer Superman · 1942",
-     "dur": 484.83,
-     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%EF%BC%9A%20The%20Bulleteers%20%281942%3B%20HD%29.mp4"
-    },
-    {
-     "title": "Superman: The Magnetic Telescope (1942)",
-     "kind": "Fleischer Superman · 1942",
-     "dur": 460.52,
-     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%EF%BC%9A%20The%20Magnetic%20Telescope%20%281942%3B%20HD%29.mp4"
-    },
-    {
-     "title": "Superman: Electric Earthquake (1942)",
-     "kind": "Fleischer Superman · 1942",
-     "dur": 524.91,
-     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%EF%BC%9A%20Electric%20Earthquake%20%281942%3B%20HD%29.mp4"
-    },
-    {
-     "title": "Superman: Volcano (1942)",
-     "kind": "Fleischer Superman · 1942",
-     "dur": 477.4,
-     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%EF%BC%9A%20Volcano%20%281942%3B%20HD%29.mp4"
-    },
-    {
-     "title": "Superman: Terror on the Midway (1942)",
-     "kind": "Fleischer Superman · 1942",
-     "dur": 502.43,
-     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%EF%BC%9A%20Terror%20on%20the%20Midway%20%281942%3B%20HD%29.mp4"
-    },
-    {
-     "title": "Superman: Japoteurs (1942)",
-     "kind": "Fleischer Superman · 1942",
-     "dur": 547.16,
-     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%EF%BC%9A%20Japoteurs%20%281942%3B%20HD%29.mp4"
-    },
-    {
-     "title": "Superman: Showdown (1942)",
-     "kind": "Fleischer Superman · 1942",
-     "dur": 501.55,
-     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%EF%BC%9A%20Showdown%20%281942%3B%20HD%29.mp4"
-    },
-    {
-     "title": "Superman: Eleventh Hour (1942)",
-     "kind": "Fleischer Superman · 1942",
-     "dur": 539.73,
-     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%EF%BC%9A%20Eleventh%20Hour%20%281942%3B%20HD%29.mp4"
-    },
-    {
-     "title": "Superman: Destruction Inc. (1943)",
-     "kind": "Fleischer Superman · 1943",
-     "dur": 514.11,
-     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%EF%BC%9A%20Destruction%20Inc.%20%281943%3B%20HD%29.mp4"
-    },
-    {
-     "title": "Superman: The Mummy Strikes (1943)",
-     "kind": "Fleischer Superman · 1943",
-     "dur": 468.23,
-     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%EF%BC%9A%20The%20Mummy%20Strikes%20%281943%3B%20HD%29.mp4"
-    },
-    {
-     "title": "Superman: Jungle Drums (1943)",
-     "kind": "Fleischer Superman · 1943",
-     "dur": 540.14,
-     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%EF%BC%9A%20Jungle%20Drums%20%281943%3B%20HD%29.mp4"
-    },
-    {
-     "title": "Superman: The Underground World (1943)",
-     "kind": "Fleischer Superman · 1943",
-     "dur": 493.63,
-     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%EF%BC%9A%20The%20Underground%20World%20%281943%3B%20HD%29.mp4"
-    },
-    {
-     "title": "Superman: Secret Agent (1943)",
-     "kind": "Fleischer Superman · 1943",
-     "dur": 460.52,
-     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%EF%BC%9A%20Secret%20Agent%20%281943%3B%20HD%29.mp4"
-    },
-    {
-     "title": "Popeye the Sailor Meets Sindbad the Sailor",
-     "year": 1936,
-     "kind": "Fleischer Studios cartoon",
-     "dur": 966.4,
-     "url": "https://archive.org/download/PopeyeTheSailorMeetsSindbadTheSailor_540/Popeye_meetsSinbadtheSailor.mp4"
-    },
-    {
-     "title": "Falling Hare",
-     "year": 1943,
-     "kind": "Warner Bros. cartoon",
-     "dur": 512.14,
-     "url": "https://archive.org/download/falling-hare-1943/Falling%20Hare%20%281943%29.mp4"
-    },
-    {
-     "title": "Pantry Panic",
-     "year": 1941,
-     "kind": "Walter Lantz cartoon",
-     "dur": 396.69,
-     "url": "https://archive.org/download/PantryPanic1941/Pantry%20Panic%20%281941%29.mp4"
-    }
-   ],
-   "live": "LIVE",
-   "total": 10667.91
-  },
-  {
-   "name": "THE LOOP",
-   "sym": "♞",
-   "cls": "lg-gambit",
-   "tag": "The chessboard, non-stop · surreal loop art by KRILLWILL",
-   "items": [
-    {
-     "title": "The Chessboard — KRILLWILL",
-     "kind": "Surreal Chess Loop · KRILLWILL",
-     "dur": 58.3,
-     "url": "assets/chess-loop.mp4"
-    }
-   ],
-   "loop": true,
-   "live": "EN BUCLE",
-   "total": 58.3
-  },
-  {
-   "name": "LOCAL AUX",
-   "sym": "🔌",
-   "cls": "lg-aux",
-   "tag": "Decatur, AL on the AUX input — the local community board",
-   "items": [
-    {
-     "title": "Decatur Local — Community Board",
-     "kind": "AUX Input · Local Board",
-     "dur": 86400,
-     "url": ""
-    }
-   ],
-   "aux": true,
-   "live": "LOCAL",
-   "total": 86400
-  },
-  {
-   "name": "THE MOVIE CHANNEL",
-   "sym": "☾",
-   "cls": "lg-late",
-   "tag": "Classic features, all public domain",
-   "items": [
-    {
-     "title": "His Girl Friday",
-     "year": 1940,
-     "kind": "Feature film",
-     "dur": 5504.57,
-     "url": "https://archive.org/download/his_girl_friday/his_girl_friday.mp4"
-    },
-    {
-     "title": "The Stranger",
-     "year": 1946,
-     "kind": "Feature film",
-     "dur": 5698.17,
-     "url": "https://archive.org/download/TheStranger720p/TheStranger720p.mp4"
-    },
-    {
-     "title": "Charade",
-     "year": 1963,
-     "kind": "Feature film",
-     "dur": 6785.01,
-     "url": "https://archive.org/download/charade-1963-cary-grant-audrey-hepburn-comedy-mystery-romance-thriller-full-movie/Charade_READY.mp4"
-    }
-   ],
-   "live": "LIVE",
-   "total": 17987.75
-  },
-  {
    "name": "AMERICANA",
    "sym": "★",
    "cls": "lg-glory",
@@ -488,10 +290,559 @@
      "kind": "Drive-In Intermission",
      "dur": 603.07,
      "url": "https://archive.org/download/Drive-inIntermission8/Drive-inIntermission8_512kb.mp4"
+    },
+    {
+     "title": "Master Hands",
+     "kind": "Prelinger · 1936",
+     "dur": 1915.03,
+     "url": "https://archive.org/download/0555_Master_Hands_18_27_28_00/0555_Master_Hands_18_27_28_00.mp4"
+    },
+    {
+     "title": "What to Do on a Date",
+     "kind": "Prelinger · 1950",
+     "dur": 645.95,
+     "url": "https://archive.org/download/WhattoDo1950/WhattoDo1950.mp4"
+    },
+    {
+     "title": "Cheating",
+     "kind": "Prelinger · 1952",
+     "dur": 697.96,
+     "url": "https://archive.org/download/Cheating1952/Cheating1952.mp4"
+    },
+    {
+     "title": "The House in the Middle",
+     "kind": "Civil Defense · 1954",
+     "dur": 726.27,
+     "url": "https://archive.org/download/0844_House_in_the_Middle_The_10_14_07_24/0844_House_in_the_Middle_The_10_14_07_24.mp4"
+    },
+    {
+     "title": "Operation Cue",
+     "kind": "U.S. Government · 1955",
+     "dur": 910.78,
+     "url": "https://archive.org/download/Operatio1955/Operatio1955.mp4"
+    },
+    {
+     "title": "In the Suburbs",
+     "kind": "Prelinger · 1957",
+     "dur": 1176.02,
+     "url": "https://archive.org/download/0736_In_the_Suburbs_01_00_57_00/0736_In_the_Suburbs_01_00_57_00.mp4"
+    },
+    {
+     "title": "The Memphis Belle: A Story of a Flying Fortress",
+     "kind": "U.S. Government · 1944",
+     "dur": 2490.42,
+     "url": "https://archive.org/download/TheMemphisBelleAStoryofaFlyingFortress/Memphis.BelleTheA.Story.Of.A.Flying.Fortress.1944.mp4"
+    },
+    {
+     "title": "My Man Godfrey",
+     "kind": "Feature · 1936",
+     "dur": 5687.1,
+     "url": "https://archive.org/download/my-man-godfrey-1936/My%20Man%20Godfrey1936.mp4"
+    },
+    {
+     "title": "A Star Is Born",
+     "kind": "Feature · 1937",
+     "dur": 6694.54,
+     "url": "https://archive.org/download/a-star-is-born-1937/A%20Star%20is%20Born%20(1937).mp4"
+    },
+    {
+     "title": "Nothing Sacred",
+     "kind": "Feature · 1937",
+     "dur": 4435.56,
+     "url": "https://archive.org/download/NothingSacredVideoQualityUpgrade/NothingSacredVideoQualityUpgrade.mp4"
+    },
+    {
+     "title": "Meet John Doe",
+     "kind": "Feature · 1941",
+     "dur": 7337.84,
+     "url": "https://archive.org/download/meet-john-doe-frank-capra-1941/Meet%20John%20Doe%20-Frank%20Capra%20(1941).mp4"
+    },
+    {
+     "title": "Penny Serenade",
+     "kind": "Feature · 1941",
+     "dur": 7147.25,
+     "url": "https://archive.org/download/PennySerenade/PennySerenadePresentedByMoviePowder.mp4"
+    },
+    {
+     "title": "Angel and the Badman",
+     "kind": "Feature · 1947",
+     "dur": 6007.02,
+     "url": "https://archive.org/download/angel-and-the-badman-1947/Angel%20and%20the%20Badman%20(1947).mp4"
+    },
+    {
+     "title": "Blue Steel",
+     "kind": "Western · 1934",
+     "dur": 3256.08,
+     "url": "https://archive.org/download/BlueSteel/BlueSteel.mp4"
+    },
+    {
+     "title": "Four Days of Gemini 4",
+     "kind": "NASA · 1965",
+     "dur": 1663.06,
+     "url": "https://archive.org/download/four_days_of_gemini_4/four_days_of_gemini_4.mp4"
     }
    ],
    "live": "LIVE",
-   "total": 40654.25
+   "total": 91445.13
+  },
+  {
+   "name": "THE LOOP",
+   "sym": "♞",
+   "cls": "lg-gambit",
+   "tag": "The chessboard, non-stop · surreal loop art by KRILLWILL",
+   "items": [
+    {
+     "title": "The Chessboard — KRILLWILL",
+     "kind": "Surreal Chess Loop · KRILLWILL",
+     "dur": 58.3,
+     "url": "assets/chess-loop.mp4"
+    }
+   ],
+   "loop": true,
+   "live": "EN BUCLE",
+   "total": 58.3
+  },
+  {
+   "name": "THE TIME MACHINE",
+   "sym": "🕰",
+   "cls": "lg-time",
+   "tag": "A time machine — old Decatur & Alabama news and photographs, drifting by",
+   "items": [
+    {
+     "title": "The Valley of the Tennessee",
+     "year": 1944,
+     "kind": "OWI Documentary · 1944",
+     "dur": 1733,
+     "url": "https://archive.org/download/306-202/306-202.mp4"
+    },
+    {
+     "title": "The Old State Bank — Main Elevation",
+     "kind": "Photograph · Time Machine",
+     "year": "1934",
+     "dur": 12,
+     "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Historic_American_Buildings_Survey_W._N._Manning%2C_Photographer%2C_Feb._10th%2C_1934._MAIN_ELEVATION_-_%28FRONT%2C_GEN%27L._VIEW%29_-_State_Bank_of_Alabama%2C_Decatur_Branch%2C_Bank_Street_and_Wilson_Avenue%2C_Decatur%2C_HABS_ALA%2C52-DECA%2C1-1.tif/lossy-page1-1920px-thumbnail.tif.jpg",
+     "caption": "The Old State Bank (State Bank of Alabama, Decatur Branch), Bank Street at Wilson Avenue, Decatur — main elevation, photographed for the Historic American Buildings Survey by W. N. Manning, Feb 10, 1934",
+     "credit": "Library of Congress · HABS"
+    },
+    {
+     "title": "The Old State Bank — Front View",
+     "kind": "Photograph · Time Machine",
+     "year": "1934",
+     "dur": 12,
+     "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Historic_American_Buildings_Survey_W._N._Manning%2C_Photographer%2C_April_24%2C_1934._FRONT_%28GENERAL_VIEW%29._%28MAIN_ELEV.%29_-_State_Bank_of_Alabama%2C_Decatur_Branch%2C_Bank_Street_and_Wilson_Avenue%2C_Decatur%2C_HABS_ALA%2C52-DECA%2C1-2.tif/lossy-page1-1920px-thumbnail.tif.jpg",
+     "caption": "The Old State Bank, Decatur — front general view, HABS photograph by W. N. Manning, Apr 24, 1934",
+     "credit": "Library of Congress · HABS"
+    },
+    {
+     "title": "The Old State Bank — Entrance Detail",
+     "kind": "Photograph · Time Machine",
+     "year": "1934",
+     "dur": 12,
+     "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Historic_American_Buildings_Survey_W._N._Manning%2C_Photographer%2C_April_24%2C_1934._DETAIL_OF_ENTRANCE._-_State_Bank_of_Alabama%2C_Decatur_Branch%2C_Bank_Street_and_Wilson_Avenue%2C_Decatur%2C_Morgan_County%2C_AL_HABS_ALA%2C52-DECA%2C1-3.tif/lossy-page1-1920px-thumbnail.tif.jpg",
+     "caption": "Detail of the entrance of the Old State Bank, Decatur — HABS photograph by W. N. Manning, Apr 24, 1934",
+     "credit": "Library of Congress · HABS"
+    },
+    {
+     "title": "The Rhea-McEntire House",
+     "kind": "Photograph · Time Machine",
+     "year": "1930s",
+     "dur": 12,
+     "img": "https://upload.wikimedia.org/wikipedia/commons/9/99/Hinds-McEntire_House%2C_120_Sycamore_St.%2C_Decatur%2C_Morgan_County%2C_Alabama_%28LOC%29.jpg",
+     "caption": "The Rhea-McEntire House, 120 Sycamore Street, Decatur — photographed for the Historic American Buildings Survey in the 1930s",
+     "credit": "Library of Congress · HABS"
+    },
+    {
+     "title": "Five Cities of June",
+     "year": 1963,
+     "kind": "USIA Documentary · 1963",
+     "dur": 1640,
+     "url": "https://archive.org/download/306-5932/306_5932.mp4"
+    },
+    {
+     "title": "The Raised Area Riverfront",
+     "kind": "Photograph · Time Machine",
+     "year": "1937",
+     "dur": 12,
+     "img": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Decatur%2C_Raised_Area_-_NARA_-_280066.jpg",
+     "caption": "The “raised area” riverfront neighborhood, Decatur — TVA photograph, 1937",
+     "credit": "TVA · National Archives"
+    },
+    {
+     "title": "Decatur Negro Public School",
+     "kind": "Photograph · Time Machine",
+     "year": "1937",
+     "dur": 12,
+     "img": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Decatur_Negro_Public_School_-_NARA_-_280264.jpg",
+     "caption": "Decatur Negro Public School (the TVA record's title), Decatur — TVA photograph, 1937",
+     "credit": "TVA · National Archives"
+    },
+    {
+     "title": "Across Dry Creek Toward the School",
+     "kind": "Photograph · Time Machine",
+     "year": "1937",
+     "dur": 12,
+     "img": "https://upload.wikimedia.org/wikipedia/commons/6/6d/View_across_Dry_Creek_towards_Negro_School_-_NARA_-_280094.jpg",
+     "caption": "View across Dry Creek toward the school, Decatur — TVA photograph, 1937",
+     "credit": "TVA · National Archives"
+    },
+    {
+     "title": "Goodyear Mills",
+     "kind": "Photograph · Time Machine",
+     "year": "1937",
+     "dur": 12,
+     "img": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Goodyear_Mills_-_NARA_-_280083.jpg",
+     "caption": "The Goodyear Mills plant, Decatur — TVA photograph, 1937",
+     "credit": "TVA · National Archives"
+    },
+    {
+     "title": "City Water Pumping Plant",
+     "kind": "Photograph · Time Machine",
+     "year": "1937",
+     "dur": 12,
+     "img": "https://upload.wikimedia.org/wikipedia/commons/3/3b/City_water_pumping_plant_-_NARA_-_280095.jpg",
+     "caption": "Decatur's city water pumping plant — TVA photograph, 1937",
+     "credit": "TVA · National Archives"
+    },
+    {
+     "title": "The Big Picture: Launch of Explorer 1",
+     "year": 1958,
+     "kind": "U.S. Army · The Big Picture · 1958",
+     "dur": 1721,
+     "url": "https://archive.org/download/71512TheBigPicture_201808/71512%20The%20Big%20Picture.mp4"
+    },
+    {
+     "title": "Danville Road Bridge",
+     "kind": "Photograph · Time Machine",
+     "year": "1936",
+     "dur": 12,
+     "img": "https://upload.wikimedia.org/wikipedia/commons/8/85/Danville_Road_Bridge_-_NARA_-_280060.jpg",
+     "caption": "The Danville Road bridge, Decatur — TVA photograph, 1936",
+     "credit": "TVA · National Archives"
+    },
+    {
+     "title": "The Home of Dr. Murphree",
+     "kind": "Photograph · Time Machine",
+     "year": "1937",
+     "dur": 12,
+     "img": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Murphree%2C_Dr.%2C_home_-_NARA_-_280263.jpg",
+     "caption": "The home of Dr. Murphree, Decatur — TVA photograph, 1937",
+     "credit": "TVA · National Archives"
+    },
+    {
+     "title": "Boat Races on the Tennessee River",
+     "kind": "Photograph · Time Machine",
+     "year": "1940",
+     "dur": 12,
+     "img": "https://upload.wikimedia.org/wikipedia/commons/4/48/Boats_in_Decatur_Boat_Races_-_NARA_-_281349.jpg",
+     "caption": "Boats in the Decatur boat races on the Tennessee River — TVA photograph, 1940",
+     "credit": "TVA · National Archives"
+    },
+    {
+     "title": "Blankenship's Mussel Camp",
+     "kind": "Photograph · Time Machine",
+     "year": "1951",
+     "dur": 12,
+     "img": "https://upload.wikimedia.org/wikipedia/commons/3/31/Blankenship%27s_mussel_camp._Near_Decatur%2C_Alabama_-_NARA_-_283857.jpg",
+     "caption": "Men shoveling mussels at Blankenship's mussel camp on the Tennessee River near Decatur — TVA photograph, 1951",
+     "credit": "TVA · National Archives"
+    },
+    {
+     "title": "FDR Speaks in Decatur",
+     "kind": "Photograph · Time Machine",
+     "year": "1933",
+     "dur": 12,
+     "img": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Extemporaneous_remarks_of_the_President_in_Decatur%2C_Alabama_-_NARA_-_197407.jpg",
+     "caption": "Franklin D. Roosevelt speaking in Decatur, Alabama — Jan 21, 1933",
+     "credit": "National Archives"
+    },
+    {
+     "title": "Manned Space Flight: A Year of Development Testing",
+     "year": 1965,
+     "kind": "NASA · 1965",
+     "dur": 1088,
+     "url": "https://archive.org/download/68364-nasa-manned-space-flight-1965-a-year-of-development-testing-vwr/68364%20NASA%20Manned%20Space%20Flight%201965%20A%20Year%20Of%20Development%20Testing_vwr.mp4"
+    },
+    {
+     "title": "“Greetings from Decatur” Postcard",
+     "kind": "Photograph · Time Machine",
+     "year": "c. 1930s–1940s",
+     "dur": 12,
+     "img": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Greetings_from_Decatur%2C_Alabama_-_Large_Letter_Postcard_%284237322464%29.jpg",
+     "caption": "“Greetings from Decatur, Alabama” large-letter postcard (Tichnor Bros.)",
+     "credit": "Boston Public Library · CC BY 2.0"
+    },
+    {
+     "title": "Keller Memorial Bridge — Leaves Raised",
+     "kind": "Photograph · Time Machine",
+     "year": "1990",
+     "dur": 12,
+     "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/LOOKING_TO_THE_SOUTHEAST%2C_THE_LEAVES_OF_THE_BASCULE_ARE_RAISED._-_Keller_Memorial_Bridge%2C_Spanning_Tennessee_River_at_U.S._Highway_31%2C_Decatur%2C_Morgan_County%2C_AL_HAER_ALA%2C52-DECA%2C3-2.tif/lossy-page1-1920px-thumbnail.tif.jpg",
+     "caption": "The Keller Memorial Bridge (Decatur's 1928 Tennessee River drawbridge) with its bascule leaves raised — HAER documentation photograph, 1990",
+     "credit": "Library of Congress · HAER"
+    },
+    {
+     "title": "Keller Bridge Arches",
+     "kind": "Photograph · Time Machine",
+     "year": "1990",
+     "dur": 12,
+     "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/VIEW_TO_THE_SOUTHEAST._SPANDREL_ARCHES_OF_THE_KELLER_BRIDGE_ARE_SEEN_ON_THE_LEFT%3B_THE_SUPERSTRUCTURE_OF_THE_TENNESSEE_RIVER_RISES_ABOVE_THE_KELLER_AND_OBSCURES_ITS_ARCHES._-_HAER_ALA%2C52-DECA%2C3-1.tif/lossy-page1-1920px-thumbnail.tif.jpg",
+     "caption": "Spandrel arches of the Keller Bridge with the Tennessee River railroad bridge rising behind it, Decatur — HAER documentation photograph, 1990",
+     "credit": "Library of Congress · HAER"
+    },
+    {
+     "title": "Wheeler Dam Under Construction",
+     "kind": "Photograph · Time Machine",
+     "year": "1935",
+     "dur": 12,
+     "img": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Wheeler_Dam_%281935%29_-_Construction_Top_of_dam_%289136786870%29.jpg",
+     "caption": "Wheeler Dam under construction on the Tennessee River (top of dam) — TVA photograph, 1935; the dam is upriver from Decatur in Lauderdale County",
+     "credit": "Tennessee Valley Authority · CC BY 2.0"
+    },
+    {
+     "title": "The Lock at Wheeler Dam",
+     "kind": "Photograph · Time Machine",
+     "year": "1936",
+     "dur": 12,
+     "img": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Wheeler_Dam_%281936%29_-_Lock_%289134562593%29.jpg",
+     "caption": "The lock at Wheeler Dam on the Tennessee River during construction — TVA photograph, 1936",
+     "credit": "Tennessee Valley Authority · CC BY 2.0"
+    },
+    {
+     "title": "Manned Space Flight: A Year of Qualification Testing",
+     "year": 1965,
+     "kind": "NASA · 1965",
+     "dur": 1282,
+     "url": "https://archive.org/download/19104-nasa-manned-space-flight-a-year-of-qualification-testing-vwr/19104+NASA+Manned+Space+Flight+A+Year+Of+Qualification+Testing_vwr.mp4"
+    },
+    {
+     "title": "Allie Mae Burroughs",
+     "kind": "Photograph · Time Machine",
+     "year": "1936",
+     "dur": 12,
+     "img": "https://upload.wikimedia.org/wikipedia/commons/2/26/Allie_Mae_Burroughs_print.jpg",
+     "caption": "Allie Mae Burroughs, wife of a Hale County, Alabama sharecropper — Walker Evans photograph for the Farm Security Administration, 1936",
+     "credit": "Library of Congress · FSA"
+    },
+    {
+     "title": "Saturn V Leaves the Test Stand",
+     "kind": "Photograph · Time Machine",
+     "year": "1967",
+     "dur": 12,
+     "img": "https://archive.org/download/MSFC-9903035/9903035.jpg",
+     "caption": "The Saturn V first stage leaving the Dynamic Test Stand at NASA's Marshall Space Flight Center, Huntsville — 1967",
+     "credit": "NASA · Marshall Space Flight Center"
+    },
+    {
+     "title": "Saturn V Tanks at Marshall",
+     "kind": "Photograph · Time Machine",
+     "year": "1960",
+     "dur": 12,
+     "img": "https://archive.org/download/MSFC-9903034/9903034.jpg",
+     "caption": "Saturn V first-stage (S-IC) liquid-oxygen and fuel tanks at Marshall Space Flight Center, Huntsville, ready for shipment to the launch site — 1960",
+     "credit": "NASA · Marshall Space Flight Center"
+    },
+    {
+     "title": "Mobile Waterfront",
+     "kind": "Photograph · Time Machine",
+     "year": "1906",
+     "dur": 12,
+     "img": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Mobile%2C_Alabama_waterfront%2C_1906.jpg",
+     "caption": "The Mobile, Alabama waterfront — Detroit Publishing Co. photograph, 1906",
+     "credit": "Library of Congress"
+    },
+    {
+     "title": "Government Street, Mobile",
+     "kind": "Photograph · Time Machine",
+     "year": "1906",
+     "dur": 12,
+     "img": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Government_Street_in_Mobile_in_1906.jpg",
+     "caption": "Government Street, Mobile, in 1906 — Detroit Publishing Co. photograph",
+     "credit": "Library of Congress"
+    },
+    {
+     "title": "Dauphin Street, Mobile",
+     "kind": "Photograph · Time Machine",
+     "year": "1901",
+     "dur": 12,
+     "img": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Dauphin_Street%2C_Mobile_Alabama%2C_Detroit_Photographic_Company_%280001%29.jpg",
+     "caption": "Dauphin Street, Mobile, Alabama — Detroit Photographic Company photograph, 1901",
+     "credit": "Library of Congress"
+    },
+    {
+     "title": "Preparing Saturn V for Launch",
+     "year": "c. 1960s",
+     "kind": "NASA · Marshall Space Flight Center",
+     "dur": 90,
+     "url": "https://archive.org/download/40130PreparingSaturnVForLaunch/40130%20Preparing%20Saturn%20V%20for%20Launch.mp4"
+    }
+   ],
+   "time": true,
+   "live": "LIVE",
+   "total": 7854
+  },
+  {
+   "name": "THE MOVIE CHANNEL",
+   "sym": "☾",
+   "cls": "lg-late",
+   "tag": "Classic features, all public domain",
+   "items": [
+    {
+     "title": "His Girl Friday",
+     "year": 1940,
+     "kind": "Feature film",
+     "dur": 5504.57,
+     "url": "https://archive.org/download/his_girl_friday/his_girl_friday.mp4"
+    },
+    {
+     "title": "The Stranger",
+     "year": 1946,
+     "kind": "Feature film",
+     "dur": 5698.17,
+     "url": "https://archive.org/download/TheStranger720p/TheStranger720p.mp4"
+    },
+    {
+     "title": "Charade",
+     "year": 1963,
+     "kind": "Feature film",
+     "dur": 6785.01,
+     "url": "https://archive.org/download/charade-1963-cary-grant-audrey-hepburn-comedy-mystery-romance-thriller-full-movie/Charade_READY.mp4"
+    }
+   ],
+   "live": "LIVE",
+   "total": 17987.75
+  },
+  {
+   "name": "CLASSIC CARTOONS",
+   "sym": "✦",
+   "cls": "lg-toon",
+   "tag": "Golden-age animation gold — all 17 Fleischer Superman shorts, Popeye & friends",
+   "items": [
+    {
+     "title": "Superman: The Mad Scientist (1941)",
+     "kind": "Fleischer Superman · 1941",
+     "dur": 628.26,
+     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%20%281941%3B%20HD%29.mp4"
+    },
+    {
+     "title": "Superman: The Mechanical Monsters (1941)",
+     "kind": "Fleischer Superman · 1941",
+     "dur": 616,
+     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%EF%BC%9A%20The%20Mechanical%20Monsters%20%281941%3B%20HD%29.mp4"
+    },
+    {
+     "title": "Superman: Billion Dollar Limited (1942)",
+     "kind": "Fleischer Superman · 1942",
+     "dur": 516.78,
+     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%EF%BC%9A%20Billion%20Dollar%20Limited%20%281942%3B%20HD%29.mp4"
+    },
+    {
+     "title": "Superman: The Arctic Giant (1942)",
+     "kind": "Fleischer Superman · 1942",
+     "dur": 516.48,
+     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%EF%BC%9A%20The%20Arctic%20Giant%20%281942%3B%20HD%29.mp4"
+    },
+    {
+     "title": "Superman: The Bulleteers (1942)",
+     "kind": "Fleischer Superman · 1942",
+     "dur": 484.83,
+     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%EF%BC%9A%20The%20Bulleteers%20%281942%3B%20HD%29.mp4"
+    },
+    {
+     "title": "Superman: The Magnetic Telescope (1942)",
+     "kind": "Fleischer Superman · 1942",
+     "dur": 460.52,
+     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%EF%BC%9A%20The%20Magnetic%20Telescope%20%281942%3B%20HD%29.mp4"
+    },
+    {
+     "title": "Superman: Electric Earthquake (1942)",
+     "kind": "Fleischer Superman · 1942",
+     "dur": 524.91,
+     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%EF%BC%9A%20Electric%20Earthquake%20%281942%3B%20HD%29.mp4"
+    },
+    {
+     "title": "Superman: Volcano (1942)",
+     "kind": "Fleischer Superman · 1942",
+     "dur": 477.4,
+     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%EF%BC%9A%20Volcano%20%281942%3B%20HD%29.mp4"
+    },
+    {
+     "title": "Superman: Terror on the Midway (1942)",
+     "kind": "Fleischer Superman · 1942",
+     "dur": 502.43,
+     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%EF%BC%9A%20Terror%20on%20the%20Midway%20%281942%3B%20HD%29.mp4"
+    },
+    {
+     "title": "Superman: Japoteurs (1942)",
+     "kind": "Fleischer Superman · 1942",
+     "dur": 547.16,
+     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%EF%BC%9A%20Japoteurs%20%281942%3B%20HD%29.mp4"
+    },
+    {
+     "title": "Superman: Showdown (1942)",
+     "kind": "Fleischer Superman · 1942",
+     "dur": 501.55,
+     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%EF%BC%9A%20Showdown%20%281942%3B%20HD%29.mp4"
+    },
+    {
+     "title": "Superman: Eleventh Hour (1942)",
+     "kind": "Fleischer Superman · 1942",
+     "dur": 539.73,
+     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%EF%BC%9A%20Eleventh%20Hour%20%281942%3B%20HD%29.mp4"
+    },
+    {
+     "title": "Superman: Destruction Inc. (1943)",
+     "kind": "Fleischer Superman · 1943",
+     "dur": 514.11,
+     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%EF%BC%9A%20Destruction%20Inc.%20%281943%3B%20HD%29.mp4"
+    },
+    {
+     "title": "Superman: The Mummy Strikes (1943)",
+     "kind": "Fleischer Superman · 1943",
+     "dur": 468.23,
+     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%EF%BC%9A%20The%20Mummy%20Strikes%20%281943%3B%20HD%29.mp4"
+    },
+    {
+     "title": "Superman: Jungle Drums (1943)",
+     "kind": "Fleischer Superman · 1943",
+     "dur": 540.14,
+     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%EF%BC%9A%20Jungle%20Drums%20%281943%3B%20HD%29.mp4"
+    },
+    {
+     "title": "Superman: The Underground World (1943)",
+     "kind": "Fleischer Superman · 1943",
+     "dur": 493.63,
+     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%EF%BC%9A%20The%20Underground%20World%20%281943%3B%20HD%29.mp4"
+    },
+    {
+     "title": "Superman: Secret Agent (1943)",
+     "kind": "Fleischer Superman · 1943",
+     "dur": 460.52,
+     "url": "https://archive.org/download/fleischer-superman/Max%20Fleischer%27s%20Superman%EF%BC%9A%20Secret%20Agent%20%281943%3B%20HD%29.mp4"
+    },
+    {
+     "title": "Popeye the Sailor Meets Sindbad the Sailor",
+     "year": 1936,
+     "kind": "Fleischer Studios cartoon",
+     "dur": 966.4,
+     "url": "https://archive.org/download/PopeyeTheSailorMeetsSindbadTheSailor_540/Popeye_meetsSinbadtheSailor.mp4"
+    },
+    {
+     "title": "Falling Hare",
+     "year": 1943,
+     "kind": "Warner Bros. cartoon",
+     "dur": 512.14,
+     "url": "https://archive.org/download/falling-hare-1943/Falling%20Hare%20%281943%29.mp4"
+    },
+    {
+     "title": "Pantry Panic",
+     "year": 1941,
+     "kind": "Walter Lantz cartoon",
+     "dur": 396.69,
+     "url": "https://archive.org/download/PantryPanic1941/Pantry%20Panic%20%281941%29.mp4"
+    }
+   ],
+   "live": "LIVE",
+   "total": 10667.91
   },
   {
    "name": "CANAL SOL",
@@ -665,7 +1016,7 @@
    "name": "THE SURGE REPORT",
    "sym": "🎙",
    "cls": "lg-talk",
-   "tag": "News, briefs & clips in plain English — Morning Edition 7 AM CT · Evening Edition 7 PM CT",
+   "tag": "All the news, all day — newsreels, NASA film & reflective flashbacks · Morning Edition 7 AM CT · Evening Edition 7 PM CT",
    "talk": true,
    "live": "LIVE",
    "items": [
@@ -676,39 +1027,11 @@
      "url": "https://archive.org/download/UniversalNewsreelVolume35Release3905-10-1962/Universal%20Newsreel%20Volume%2035%20Release%2039%2005-10-1962.mp4"
     },
     {
-     "title": "THE BRIEF — How to Read a News Story",
-     "kind": "The Brief · A Surge Report Segment",
+     "title": "FLASHBACK — Glenn Orbits the Earth",
+     "kind": "Flashback · A Surge Report Segment",
      "dur": 90,
      "url": "",
      "brief": 0
-    },
-    {
-     "title": "STS-135 Crew Tribute to the Space Shuttle Program",
-     "year": 2011,
-     "kind": "NASA footage",
-     "dur": 220.58,
-     "url": "https://archive.org/download/Sts-135CrewTributeToTheSpaceShuttleProgram/STS135_TributeFuture_720p.mp4"
-    },
-    {
-     "title": "THE BRIEF — The Space Race in Five Dates",
-     "kind": "The Brief · A Surge Report Segment",
-     "dur": 90,
-     "url": "",
-     "brief": 1
-    },
-    {
-     "title": "Newsreel: First U.S. Satellite Launched!",
-     "year": 1958,
-     "kind": "Universal Newsreel",
-     "dur": 169.54,
-     "url": "https://archive.org/download/1958-02-03_First_US_Satellite_Launched/1958-02-03_First_US_Satellite_Launched_512kb.mp4"
-    },
-    {
-     "title": "THE BRIEF — What 'Public Domain' Actually Means",
-     "kind": "The Brief · A Surge Report Segment",
-     "dur": 90,
-     "url": "",
-     "brief": 2
     },
     {
      "title": "Newsreel: Space Triumph! Glenn Flight Thrills World",
@@ -718,14 +1041,70 @@
      "url": "https://archive.org/download/1962-02-22_Space_Triumph/1962-02-22_Space_Triumph_512kb.mp4"
     },
     {
-     "title": "THE BRIEF — How a Bill Becomes a Law",
-     "kind": "The Brief · A Surge Report Segment",
+     "title": "FLASHBACK — The Eagle Has Landed",
+     "kind": "Flashback · A Surge Report Segment",
+     "dur": 90,
+     "url": "",
+     "brief": 1
+    },
+    {
+     "title": "STS-135 Crew Tribute to the Space Shuttle Program",
+     "year": 2011,
+     "kind": "NASA footage",
+     "dur": 220.58,
+     "url": "https://archive.org/download/Sts-135CrewTributeToTheSpaceShuttleProgram/STS135_TributeFuture_720p.mp4"
+    },
+    {
+     "title": "Artemis I — SLS Rocket Ready for Moon Launch",
+     "year": 2022,
+     "kind": "NASA News · 2022",
+     "dur": 216.41,
+     "url": "https://archive.org/download/nasa_tv-NASA_s_Space_Launch_System_Rocket_Ready_for_Moon_Launch_on_Artemis_I/NASA_s_Space_Launch_System_Rocket_Ready_for_Moon_Launch_on_Artemis_I.mp4"
+    },
+    {
+     "title": "Newsreel: First U.S. Satellite Launched!",
+     "year": 1958,
+     "kind": "Universal Newsreel",
+     "dur": 169.54,
+     "url": "https://archive.org/download/1958-02-03_First_US_Satellite_Launched/1958-02-03_First_US_Satellite_Launched_512kb.mp4"
+    },
+    {
+     "title": "FLASHBACK — A Handshake in Orbit",
+     "kind": "Flashback · A Surge Report Segment",
+     "dur": 90,
+     "url": "",
+     "brief": 2
+    },
+    {
+     "title": "NASA 2023: Nothing Is Beyond Our Reach",
+     "year": 2023,
+     "kind": "NASA News · 2023",
+     "dur": 175.54,
+     "url": "https://archive.org/download/nasa_tv-NASA_2023_-_Nothing_is_Beyond_Our_Reach/NASA_2023_-_Nothing_is_Beyond_Our_Reach.mp4"
+    },
+    {
+     "title": "Artemis II Launch: What's Next?",
+     "year": 2026,
+     "kind": "NASA News · 2026",
+     "dur": 100.5,
+     "url": "https://archive.org/download/nasa_tv-Artemis_II_Launch_-_What_s_Next/Artemis_II_Launch_-_What_s_Next.mp4"
+    },
+    {
+     "title": "Artemis II Moon Mission Complete!",
+     "year": 2026,
+     "kind": "NASA News · 2026",
+     "dur": 212.53,
+     "url": "https://archive.org/download/nasa_tv-Artemis_II_Moon_Mission_Complete/Artemis_II_Moon_Mission_Complete.mp4"
+    },
+    {
+     "title": "FLASHBACK — When the News Came to the Theater",
+     "kind": "Flashback · A Surge Report Segment",
      "dur": 90,
      "url": "",
      "brief": 3
     }
    ],
-   "total": 1491.92
+   "total": 2196.9
   }
  ]
 }

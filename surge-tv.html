@@ -2,7 +2,7 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>RETRO SURGE TV — NewSurge's 24/7 Retro TV Dial</title>
-<meta name="description" content="RETRO SURGE TV: a whole dial of public-domain channels, always on — classic cartoons, the chessboard loop, Decatur local aux, classic movies, Americana, Spanish classics, creature features, retro weather, a prayer stream and the Surge Report. Every viewer of a channel watches the same moment.">
+<meta name="description" content="RETRO SURGE TV: a whole dial of public-domain channels, always on — Americana, the chessboard loop, Decatur & Alabama in the time machine, classic movies, golden-age cartoons, Spanish classics, creature features, retro weather, a prayer stream and the Surge Report. Every viewer of a channel watches the same moment.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{--ink:#06232e;--deep:#083344;--aqua:#35bce0;--aqua2:#7fe7e6;--mint:#a7f3d0;--paper:#eafcff}
@@ -24,7 +24,7 @@ a{color:#0b6e8f}
 .rs-logo.xl{width:86px;height:86px;font-size:47px;border-radius:19px}
 .lg-toon{background:radial-gradient(circle at 50% 42%,#fff6d8 0 36%,#e63946 37% 70%,#1d3557 71%);color:#d90429;text-shadow:0 1px 0 rgba(255,255,255,.5)}
 .lg-gambit{background:repeating-conic-gradient(#22331f 0 25%,#0b130b 0 50%);background-size:18px 18px;color:#fff;text-shadow:0 1px 3px #000}
-.lg-aux{background:#0000a8;color:#fff}
+.lg-time{background:radial-gradient(circle at 50% 78%,#ffd98a 0,#8a5a1d 55%,#2a1a05 88%);color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.6)}
 .lg-late{background:linear-gradient(160deg,#2b1055,#5b7fc4);color:#ffe98a}
 .lg-glory{background:linear-gradient(180deg,#0a2470 0 40%,#b22234 40% 55%,#f5f5f5 55% 68%,#b22234 68% 82%,#f5f5f5 82%);color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.75)}
 .lg-sol{background:linear-gradient(135deg,#ff2e88,#ff8a00);color:#fff;text-shadow:0 1px 2px rgba(120,20,0,.5)}
@@ -87,20 +87,21 @@ a{color:#0b6e8f}
 .rs-wx-err2{font-size:11.5px;color:#9fd8ff;letter-spacing:.04em}
 .rs-wx-icon{float:right;width:clamp(64px,13vw,104px);height:auto;image-rendering:pixelated;margin:2px 0 8px 14px}
 .rs-wx-scene{display:block;width:100%;height:clamp(40px,8.5vw,64px);image-rendering:pixelated;margin-top:12px;border-radius:6px}
-/* ---- CH 3 LOCAL AUX (the AV input that carries Decatur) ---- */
-.rs-aux{position:absolute;inset:0;display:none;background:#0000a8;color:#fff;overflow:hidden;z-index:3;font-family:Silkscreen,monospace}
-.rs-aux.on{display:block}
-.rs-aux-head{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;gap:10px;padding:12px 18px;border-bottom:3px solid #fff}
-.rs-aux-play{margin-left:auto;font-size:14px;letter-spacing:.14em;animation:rsblink 1.15s steps(1) infinite}
-@keyframes rsblink{0%,55%{opacity:1}56%,100%{opacity:0}}
-.rs-aux-panel{position:absolute;top:70px;left:0;right:0;bottom:40px;padding:16px 24px;display:none}
-.rs-aux-panel.on{display:block}
-.rs-aux-big{font-size:clamp(28px,6vw,46px);letter-spacing:.06em;color:#ffe98a;margin:4px 0 10px;line-height:1.1}
-.rs-aux-clock{font-size:clamp(30px,6.4vw,50px);color:#fff;margin:6px 0}
-.rs-aux-line{font-family:Inter,system-ui,sans-serif;font-size:clamp(14px,2.7vw,19px);line-height:1.55;margin:0 0 9px;max-width:620px}
-.rs-aux-line b{color:#ffe98a;font-family:Silkscreen,monospace;font-size:.8em;letter-spacing:.08em}
-.rs-aux-ptitle{font-size:12px;letter-spacing:.26em;color:#9fd8ff;margin:0 0 12px}
-.rs-aux-tick{position:absolute;left:0;right:0;bottom:0;border-top:3px solid #fff;padding:8px 14px;font-size:11.5px;letter-spacing:.06em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* ---- CH 3 THE TIME MACHINE (old Decatur & Alabama, drifting by) ---- */
+.rs-tm{position:absolute;inset:0;display:none;background:radial-gradient(120% 100% at 50% 0%,#3a2a16 0%,#241806 55%,#120b02 100%);color:#f3e5c8;overflow:hidden;z-index:3}
+.rs-tm.on{display:block}
+.rs-tm-head{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;gap:10px;padding:12px 18px;z-index:5}
+.rs-tm-name{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:17px;letter-spacing:.06em}
+.rs-tm-sub{font-family:Silkscreen,monospace;font-size:10.5px;letter-spacing:.22em;color:#d9b96a}
+.rs-tm-mode{margin-left:auto;font-family:Silkscreen,monospace;font-size:10px;letter-spacing:.14em;color:#241806;background:#d9b96a;border-radius:99px;padding:3px 9px}
+.rs-tm-stage{position:absolute;top:52px;left:0;right:0;bottom:118px;background:#0a0703}
+.rs-tm-img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity 1.4s ease}
+.rs-tm-img.on{opacity:1}
+.rs-tm-cap{position:absolute;left:0;right:0;bottom:26px;padding:8px 22px 2px;text-align:center;z-index:5}
+.rs-tm-year{font-family:Silkscreen,monospace;font-size:12px;letter-spacing:.3em;color:#d9b96a;margin:0 0 5px}
+.rs-tm-text{font-size:clamp(14px,2.6vw,18.5px);line-height:1.45;margin:0 auto;max-width:640px;color:#f7efdb}
+.rs-tm-credit{font-family:Silkscreen,monospace;font-size:10px;letter-spacing:.12em;color:#b39b5e;margin-top:5px}
+.rs-tm-tick{position:absolute;left:0;right:0;bottom:0;text-align:center;padding:7px 12px;font-family:Silkscreen,monospace;font-size:10.5px;letter-spacing:.12em;color:#cbb27a;z-index:5}
 /* ---- CH 9 THE ORATORY (prayer stream draft) ---- */
 .rs-pray{position:absolute;inset:0;display:none;background:radial-gradient(120% 100% at 50% 0%,#2a1545 0%,#170a2a 55%,#0a0514 100%);color:#f3e9d2;overflow:hidden;z-index:3}
 .rs-pray.on{display:block}
@@ -200,13 +201,16 @@ body.rs-theater .rs-tv{position:relative;z-index:70;box-shadow:0 30px 90px rgba(
   .rs-pray-candles{height:36px;bottom:15px}
   .rs-pray-foot{display:none}
   .rs-pray-films{bottom:5px;right:8px;padding:6px 10px;font-size:10px}
-  .rs-aux-head{padding:8px 12px}
-  .rs-aux-panel{top:54px;bottom:34px;padding:10px 16px}
-  .rs-aux-ptitle{font-size:10px;margin-bottom:7px}
-  .rs-aux-big{font-size:23px;margin:2px 0 6px}
-  .rs-aux-clock{font-size:25px;margin:3px 0}
-  .rs-aux-line{font-size:12.5px;line-height:1.45;margin-bottom:5px}
-  .rs-aux-hideS{display:none}
+  .rs-tm-head{padding:8px 12px}
+  .rs-tm-name{font-size:14px}
+  .rs-tm-sub{display:none}
+  .rs-tm-mode{display:none}
+  .rs-tm-stage{top:42px;bottom:96px}
+  .rs-tm-cap{bottom:15px;padding:4px 14px 0}
+  .rs-tm-year{font-size:9.5px;margin-bottom:2px}
+  .rs-tm-text{font-size:11.5px;line-height:1.35}
+  .rs-tm-credit{font-size:8.5px;margin-top:2px}
+  .rs-tm-tick{display:none}
   .rs-brief-card{top:60px;padding:6px 18px}
   .rs-brief-h{font-size:20px;margin-bottom:8px}
   .rs-brief-line{font-size:13.5px;margin-bottom:5px}
@@ -218,7 +222,7 @@ body.rs-theater .rs-tv{position:relative;z-index:70;box-shadow:0 30px 90px rgba(
    on-screen TV chrome (channel logos, bug, OSD, tickers) where the pixel
    face is the picture on the tube, not the page's type. ==== */
 @font-face{font-family:'Allo';src:url('/fonts/AlloVariableFriendly.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
-body,.rs-brand,.rs-tag,.rs-chan .onnow,.rs-aux-line,.rs-pray-name,.rs-pray-title,.rs-ident .nm,.rs-wx-city,.rs-wx-big,.rs-brief-h,.rs-brief-line,.rs-grow,.rs-now,.rs-gtitle,.rs-gname,.rs-foot{font-family:'Allo',system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+body,.rs-brand,.rs-tag,.rs-chan .onnow,.rs-tm-text,.rs-pray-name,.rs-pray-title,.rs-ident .nm,.rs-wx-city,.rs-wx-big,.rs-brief-h,.rs-brief-line,.rs-grow,.rs-now,.rs-gtitle,.rs-gname,.rs-foot{font-family:'Allo',system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
 </style></head>
 
 <body>
@@ -228,7 +232,7 @@ body,.rs-brand,.rs-tag,.rs-chan .onnow,.rs-aux-line,.rs-pray-name,.rs-pray-title
     <div class="rs-brand">RETRO <span class="tv">SURGE</span> 📺</div>
     <a class="rs-back" href="/">← NEWSURGE.TV</a>
   </div>
-  <p class="rs-tag">A whole dial of channels, always on — <b>every viewer of a channel watches the same moment</b>, like TV used to be. Ten channels, each with its own name and its own bug in the corner: golden-age <b>cartoons</b>, a non-stop <b>chessboard loop</b>, Decatur on the <b>AUX input</b>, classic <b>movies</b>, <b>Americana</b>, <b>Canal Sol</b>, creature features on <b>Dead Air</b>, <b>Retro Weather</b>, a <b>prayer stream</b>, and <b>The Surge Report</b>. Public-domain treasures only.</p>
+  <p class="rs-tag">A whole dial of channels, always on — <b>every viewer of a channel watches the same moment</b>, like TV used to be. Ten channels, each with its own name and its own bug in the corner: <b>Americana</b>, a non-stop <b>chessboard loop</b>, Decatur &amp; Alabama in the <b>time machine</b>, classic <b>movies</b>, golden-age <b>cartoons</b>, <b>Canal Sol</b>, creature features on <b>Dead Air</b>, <b>Retro Weather</b>, a <b>prayer stream</b>, and <b>The Surge Report</b>. Public-domain treasures only.</p>
 
   <div class="rs-chans" id="rsChans"></div>
 
@@ -245,36 +249,18 @@ body,.rs-brand,.rs-tag,.rs-chan .onnow,.rs-aux-line,.rs-pray-name,.rs-pray-title
         <div class="rs-wx-err" id="rsWxErr">WEATHER WIRE DOWN — TRY AGAIN IN A FEW<br><span class="rs-wx-err2">THE JAZZ PLAYS ON · DECATUR WILL BE BACK SHORTLY</span></div>
         <div class="rs-wx-tick" id="rsWxTick">LOCAL ON THE 8s · DECATUR, ALABAMA · THE ONLY CITY ON THIS CHANNEL</div>
       </div>
-      <div class="rs-aux" id="rsAux" aria-hidden="true">
-        <div class="rs-aux-head"><span class="rs-logo sm lg-aux">🔌</span><span>LOCAL AUX · DECATUR, AL</span><span class="rs-aux-play">▶ PLAY</span></div>
-        <div class="rs-aux-panel" id="rsAuxP0">
-          <p class="rs-aux-ptitle">AUX INPUT · COMMUNITY BOARD</p>
-          <div class="rs-aux-big">DECATUR LOCAL</div>
-          <div class="rs-aux-clock" id="rsAuxClock">--:--</div>
-          <p class="rs-aux-line">THE RIVER CITY · DECATUR, ALABAMA · EST. 1823</p>
-          <p class="rs-aux-line rs-aux-hideS">This is the feed on the AUX input — the local board, all day. For weather, flip to <b>CH 8</b>.</p>
+      <div class="rs-tm" id="rsTm" aria-hidden="true">
+        <div class="rs-tm-head"><span class="rs-logo sm lg-time">🕰</span><span class="rs-tm-name">THE TIME MACHINE</span><span class="rs-tm-sub">DECATUR &amp; ALABAMA · THEN</span><span class="rs-tm-mode" id="rsTmMode">PHOTOGRAPH</span></div>
+        <div class="rs-tm-stage">
+          <img class="rs-tm-img" id="rsTmImgA" alt="Historical photograph from Decatur or Alabama">
+          <img class="rs-tm-img" id="rsTmImgB" alt="" aria-hidden="true">
         </div>
-        <div class="rs-aux-panel" id="rsAuxP1">
-          <p class="rs-aux-ptitle">AROUND TOWN</p>
-          <p class="rs-aux-line"><b>POINT MALLARD PARK</b> — water park, golf, trails &amp; the Jubilee in spring.</p>
-          <p class="rs-aux-line"><b>HISTORIC BANK STREET</b> — antique shops &amp; the old downtown.</p>
-          <p class="rs-aux-line"><b>PRINCESS THEATRE</b> — the 1941 art-deco landmark on 2nd Avenue.</p>
-          <p class="rs-aux-line"><b>COOK MUSEUM</b> — natural science, right downtown.</p>
-          <p class="rs-aux-line"><b>INGALLS HARBOR</b> — marina &amp; pavilion on the river.</p>
+        <div class="rs-tm-cap">
+          <p class="rs-tm-year" id="rsTmYear">—</p>
+          <p class="rs-tm-text" id="rsTmText">Stepping back in time…</p>
+          <div class="rs-tm-credit" id="rsTmCredit">—</div>
         </div>
-        <div class="rs-aux-panel" id="rsAuxP2">
-          <p class="rs-aux-ptitle">ON THE RIVER</p>
-          <p class="rs-aux-line">Decatur sits on <b>WHEELER LAKE</b>, the wide bend of the Tennessee River — some of the best bass water in the South.</p>
-          <p class="rs-aux-line">Ingalls Harbor &amp; the Riverwalk: boats, pavilions, and sunsets over the water.</p>
-          <p class="rs-aux-line">They don't call it <b>THE RIVER CITY</b> for nothing.</p>
-        </div>
-        <div class="rs-aux-panel" id="rsAuxP3">
-          <p class="rs-aux-ptitle">BOARD NOTES</p>
-          <p class="rs-aux-line"><b>ALABAMA JUBILEE</b> — the hot-air balloon classic, a Memorial Day weekend tradition since 1978.</p>
-          <p class="rs-aux-line"><b>SHOP LOCAL</b> — Bank Street &amp; 2nd Avenue keep downtown Decatur humming.</p>
-          <p class="rs-aux-line"><b>FARMERS MARKET</b> — downtown market days: bring a bag, leave with tomatoes.</p>
-        </div>
-        <div class="rs-aux-tick">DECATUR AUX · THE LOCAL FEED ON THE AUX INPUT · WEATHER LIVES ON CH 8 ⛅ · RETRO SURGE TV</div>
+        <div class="rs-tm-tick">THE TIME MACHINE · OLD DECATUR &amp; ALABAMA · EVERY VIEWER RIDES THE SAME YEARS · RETRO SURGE TV</div>
       </div>
       <div class="rs-pray" id="rsPray" aria-hidden="true">
         <div class="rs-pray-head"><span class="rs-logo sm lg-oratory">🕯</span><span class="rs-pray-name">THE ORATORY</span><span class="rs-pray-motto">BEAD BY BEAD</span><span class="rs-pray-draft">DRAFT STREAM</span></div>
@@ -332,7 +318,7 @@ body,.rs-brand,.rs-tag,.rs-chan .onnow,.rs-aux-line,.rs-pray-name,.rs-pray-title
     <div id="rsGuideAll"><p class="rs-meta">Loading the dial…</p></div>
   </div>
 
-  <p class="rs-foot">Everything on Retro Surge TV is <b>public domain</b> or clearly licensed, checked title by title: the Fleischer <b>Superman</b> cartoons (1941–43, copyrights never renewed), <b>Prelinger</b> films carrying the Public Domain Dedication, <b>Universal Newsreels</b> (deeded to the U.S. Government), <b>The Big Picture</b> (U.S. Army), NASA footage (courtesy NASA; no endorsement implied), and classic features including <i>Night of the Living Dead</i> (1968), <i>Charade</i> (1963), <i>His Girl Friday</i> (1940) and <i>Carnival of Souls</i> (1962). Played from the <b>Internet Archive</b> and Wikimedia Commons. Each channel runs on its own clock-set loop — <b>CH 1</b> ~2 h 58 min · <b>CH 2</b> the loop, non-stop · <b>CH 3</b> the local board · <b>CH 4</b> ~6 h 16 min · <b>CH 5</b> ~11 h 18 min · <b>CH 6</b> ~4 h 46 min · <b>CH 7</b> ~12 h 2 min · <b>CH 8</b> Retro Weather — always Decatur · <b>CH 9</b> The Oratory — prayer stream (draft) with a silent-epic film block · <b>CH 10</b> The Surge Report — with the Morning Edition at 7 AM CT and the Evening Edition at 7 PM CT — so if you leave and come back, the channel has moved on without you, just like the old days. CH 8's soundtrack: "Modern Jazz Samba", "Backed Vibes" and "As I Figure" by Kevin MacLeod (CC BY) and "Immersion In Smooth Jazz" by Nick Gordy (CC BY-NC-SA 3.0), via the Internet Archive. CH 9's prayer voices come from the Holy Rosary project; its film block plays silent sacred epics of 1912–1928. CH 2's chessboard is art by <b>KRILLWILL</b>.</p>
+  <p class="rs-foot">Everything on Retro Surge TV is <b>public domain</b> or clearly licensed, checked title by title: the Fleischer <b>Superman</b> cartoons (1941–43, copyrights never renewed), <b>Prelinger</b> films carrying the Public Domain Dedication, <b>Universal Newsreels</b> (deeded to the U.S. Government), <b>The Big Picture</b> (U.S. Army), NASA footage (courtesy NASA; no endorsement implied), and classic features including <i>Night of the Living Dead</i> (1968), <i>Charade</i> (1963), <i>His Girl Friday</i> (1940) and <i>Carnival of Souls</i> (1962). Played from the <b>Internet Archive</b> and Wikimedia Commons. Each channel runs on its own clock-set loop — <b>CH 1</b> Americana ~25 h 24 min · <b>CH 2</b> the loop, non-stop · <b>CH 3</b> The Time Machine — Decatur &amp; Alabama photographs and film, 1901 to 1967 · <b>CH 4</b> ~6 h 16 min · <b>CH 5</b> Classic Cartoons ~2 h 58 min · <b>CH 6</b> ~4 h 46 min · <b>CH 7</b> ~12 h 2 min · <b>CH 8</b> Retro Weather — always Decatur · <b>CH 9</b> The Oratory — prayer stream (draft) with a silent-epic film block · <b>CH 10</b> The Surge Report — all news: newsreels, NASA film and reflective flashbacks, with the Morning Edition at 7 AM CT and the Evening Edition at 7 PM CT — so if you leave and come back, the channel has moved on without you, just like the old days. CH 3's photographs come from the <b>Library of Congress</b> (HABS, HAER and FSA), the <b>National Archives</b> (TVA) and <b>NASA</b> — public domain, with three CC BY 2.0 views credited on screen (Boston Public Library; Tennessee Valley Authority). CH 8's soundtrack: "Modern Jazz Samba", "Backed Vibes" and "As I Figure" by Kevin MacLeod (CC BY) and "Immersion In Smooth Jazz" by Nick Gordy (CC BY-NC-SA 3.0), via the Internet Archive. CH 9's prayer voices come from the Holy Rosary project; its film block plays silent sacred epics of 1912–1928. CH 2's chessboard is art by <b>KRILLWILL</b>.</p>
 </div>
 
 <script>
@@ -352,7 +338,10 @@ bugLogo=document.getElementById('rsBugLogo'),
 guideLab=document.getElementById('rsGuideLab'),allLab=document.getElementById('rsAllLab'),
 wxEl=document.getElementById('rsWx'),wxErr=document.getElementById('rsWxErr'),
 wxTick=document.getElementById('rsWxTick'),wxClockEl=document.getElementById('rsWxClock'),
-auxEl=document.getElementById('rsAux'),auxClockEl=document.getElementById('rsAuxClock'),
+tmEl=document.getElementById('rsTm'),tmYearEl=document.getElementById('rsTmYear'),
+tmTextEl=document.getElementById('rsTmText'),tmCreditEl=document.getElementById('rsTmCredit'),
+tmModeEl=document.getElementById('rsTmMode'),tmImgA=document.getElementById('rsTmImgA'),
+tmImgB=document.getElementById('rsTmImgB'),
 prayEl=document.getElementById('rsPray'),briefEl=document.getElementById('rsBrief'),
 staticEl=document.getElementById('rsStatic'),osdEl=document.getElementById('rsOsd'),
 identEl=document.getElementById('rsIdent'),filmChip=document.getElementById('rsFilmChip'),
@@ -360,7 +349,7 @@ au=document.getElementById('rsJazz'),jazzBtn=document.getElementById('rsJazzBtn'
 prayAu=document.getElementById('rsPrayAu');
 var chans=null,chIdx=0,reel=null,total=0,cum=[],cur=-1,pendingSeek=null,started=false,soundOn=false;
 var castActive=false,tuneSeq=0,override=null,skipSet={},errFor='',errN=0;
-var wxOn=false,auxOn=false,prayOn=false,prayFilm=false,loopOn=false,briefOn=false,talkOn=false;
+var wxOn=false,tmOn=false,tmImgOn=false,prayOn=false,prayFilm=false,loopOn=false,briefOn=false,talkOn=false;
 var WX_IDX=-1;
 /* Each channel gets its own phase on the shared epoch clock, so the channels
    are never all sitting at the same point of their loops. */
@@ -409,7 +398,6 @@ function buildChanBar(){
 }
 function chanNowText(c,i){
   if(c.weather)return wxData?('Decatur, AL · '+Math.round(wxData.current.temperature_2m)+'° '+wmoLabel(wxData.current.weather_code)):'Decatur, AL — Local Weather';
-  if(c.aux)return 'Decatur Local — Community Board';
   if(c.loop)return 'The Chessboard — KRILLWILL (looping)';
   if(c.prayer)return 'The Prayer Stream — prayers in rotation';
   if(c.talk&&editionActive())return (editionName())+' — premiering now';
@@ -419,12 +407,11 @@ function chanNowText(c,i){
 }
 function chanNextText(c,i){
   if(c.weather)return 'Always Decatur — conditions, almanac, forecast & the 5-day · 🎷 smooth jazz';
-  if(c.aux)return 'Around Town · On the River · Board Notes — rotating every 10 sec';
   if(c.loop)return 'The same board, forever · a 58-second loop that never stops';
   if(c.prayer)return 'Film block: '+c.items.map(function(it){return it.title;}).join(' · ');
   var tot=0;c.items.forEach(function(it){tot+=it.dur;});
   var p=posFor(c.items,tot,PHASE[i]||0);
-  if(c.talk)return 'Rotation: newsreels, NASA & The Brief · Editions 7 AM & 7 PM CT · Next: '+c.items[(p.k+1)%c.items.length].title;
+  if(c.talk)return 'Rotation: newsreels, NASA & flashbacks · Editions 7 AM & 7 PM CT · Next: '+c.items[(p.k+1)%c.items.length].title;
   return 'Next: '+c.items[(p.k+1)%c.items.length].title;
 }
 function refreshChanBar(){
@@ -474,21 +461,20 @@ if(guideAllEl){
    stale async start (slow network, double-tap) a no-op. */
 function unloadVideo(){try{v.pause();}catch(e){}v.removeAttribute('src');try{v.load();}catch(e){}v.loop=false;}
 function unloadAudio(a){try{a.pause();}catch(e){}a.removeAttribute('src');try{a.load();}catch(e){}}
-var wxTimer=null,wxRefresh=null,auxTimer=null,prayTimer=null,candleRAF=null,identTimer=null,osdTimer=null;
+var wxTimer=null,wxRefresh=null,prayTimer=null,candleRAF=null,identTimer=null,osdTimer=null;
 function stopAllMedia(){
   unloadVideo();unloadAudio(au);unloadAudio(prayAu);
   try{vBg.pause();}catch(e){}vBg.removeAttribute('src');try{vBg.load();}catch(e){}vBg.classList.remove('on');
-  wxOn=false;auxOn=false;prayOn=false;prayFilm=false;loopOn=false;briefOn=false;talkOn=false;
+  wxOn=false;tmOn=false;tmImgOn=false;prayOn=false;prayFilm=false;loopOn=false;briefOn=false;talkOn=false;
   override=null;cur=-1;pendingSeek=null;
   wxEl.classList.remove('on');wxEl.setAttribute('aria-hidden','true');
-  auxEl.classList.remove('on');auxEl.setAttribute('aria-hidden','true');
+  tmEl.classList.remove('on');tmEl.setAttribute('aria-hidden','true');
   prayEl.classList.remove('on');prayEl.setAttribute('aria-hidden','true');
   briefEl.classList.remove('on');briefEl.setAttribute('aria-hidden','true');
   filmChip.classList.remove('on');
   jazzBtn.hidden=true;
   if(wxTimer){clearInterval(wxTimer);wxTimer=null;}
   if(wxRefresh){clearInterval(wxRefresh);wxRefresh=null;}
-  if(auxTimer){clearInterval(auxTimer);auxTimer=null;}
   if(prayTimer){clearInterval(prayTimer);prayTimer=null;}
   if(candleRAF){cancelAnimationFrame(candleRAF);candleRAF=null;}
   if(identTimer){clearTimeout(identTimer);identTimer=null;}
@@ -513,7 +499,7 @@ function tuneTo(i,instant){
 function activate(i){
   var c=chans[i];
   if(c.weather){enterWx();return;}
-  if(c.aux){enterAux();return;}
+  if(c.time){enterTm();return;}
   if(c.prayer){enterPrayer();return;}
   if(c.loop){enterLoop();return;}
   if(c.talk)talkOn=true;
@@ -568,6 +554,7 @@ function loadItem(p){
   cur=p.k;
   if(it.brief!==undefined&&it.brief!==null){enterBrief(it.brief,null);unloadVideo();pendingSeek=null;return;}
   exitBrief();
+  if(tmOn){tmLoad(p);return;}
   if(it.url&&skipSet[it.url]){startItem((p.k+1)%reel.length);return;}
   pendingSeek=p.off;
   msg.textContent='TUNING…';
@@ -583,7 +570,7 @@ v.addEventListener('loadedmetadata',function(){
 v.addEventListener('playing',function(){msg.textContent='';started=true;});
 v.addEventListener('waiting',function(){if(started&&!briefOn)msg.textContent='···';});
 v.addEventListener('error',function(){
-  if(!reel||wxOn||auxOn||briefOn)return;
+  if(!reel||wxOn||briefOn)return;
   if(prayOn&&!prayFilm)return;
   if(loopOn){msg.textContent='PLEASE STAND BY — THE LOOP RETURNS SHORTLY';return;}
   var it=reel[cur];if(!it||!it.url)return;
@@ -599,7 +586,7 @@ v.addEventListener('ended',function(){
 });
 
 function sync(force){
-  if(!reel||wxOn||auxOn||loopOn)return;
+  if(!reel||wxOn||loopOn)return;
   if(prayOn&&!prayFilm)return;
   if(castActive)return;
   if(talkOn&&editionActive()){editionTick();return;}
@@ -834,30 +821,51 @@ function enterWx(){
   wxRefresh=setInterval(fetchWx,600000);
 }
 
-/* ---------- CH 3 · LOCAL AUX ---------- */
-var auxPanel=0;
-function showAuxPanel(n){
-  for(var j=0;j<4;j++){var p=document.getElementById('rsAuxP'+j);if(p)p.className='rs-aux-panel'+(j===n?' on':'');}
+/* ---------- CH 3 · THE TIME MACHINE ----------
+   One reel, two kinds of moments, on the same shared wall-clock cycle as
+   every other channel: film items play on the <video> element, photograph
+   items hold in the overlay as a slow drift — two stacked <img>s crossfade
+   (1.4s) so a new year never hard-cuts in. loadItem() routes here via tmLoad
+   whenever tmOn; sync()'s 1-second tick walks the reel across the seam
+   between a film and a photograph exactly like any other item change. */
+var tmFront=0;
+function tmShowImage(it){
+  tmImgOn=true;
+  tmEl.classList.add('on');tmEl.setAttribute('aria-hidden','false');
+  var imgs=[tmImgA,tmImgB],next=imgs[1-tmFront],prev=imgs[tmFront];
+  var swap=function(){prev.classList.remove('on');next.classList.add('on');tmFront=1-tmFront;next.onload=null;next.onerror=null;};
+  next.onload=swap;
+  /* A photograph that fails to load never swaps in — the previous year
+     stays on screen under the new caption rather than a broken frame. */
+  next.onerror=function(){next.onload=null;next.onerror=null;};
+  next.src=it.img;
+  if(next.complete&&next.naturalWidth>0)swap();
+  tmYearEl.textContent=it.year||'';
+  tmTextEl.textContent=it.caption||it.title||'';
+  tmCreditEl.textContent=it.credit||'';
+  tmModeEl.textContent='PHOTOGRAPH';
+  unloadVideo();
 }
-function enterAux(){
-  auxOn=true;auxPanel=0;
-  auxEl.classList.add('on');auxEl.setAttribute('aria-hidden','false');
+function tmHideImage(){
+  tmImgOn=false;
+  tmEl.classList.remove('on');tmEl.setAttribute('aria-hidden','true');
+}
+function tmLoad(p){
+  var it=reel[p.k];
+  if(it.img){tmShowImage(it);pendingSeek=null;msg.textContent='';return;}
+  tmHideImage();
+  if(it.url&&skipSet[it.url]){startItem((p.k+1)%reel.length);return;}
+  pendingSeek=p.off;
+  msg.textContent='TUNING…';
+  v.loop=false;
+  v.src=it.url;
+  v.load();
+}
+function enterTm(){
+  tmOn=true;
   msg.textContent='';
-  auxClockEl.textContent=fmtClock(new Date());
-  showAuxPanel(0);
-  if(auxTimer)clearInterval(auxTimer);
-  auxTimer=setInterval(function(){auxPanel=(auxPanel+1)%4;showAuxPanel(auxPanel);},10000);
-  nowEl.textContent='Decatur Local — Community Board';
-  metaEl.textContent='LOCAL AUX · the Decatur feed on the AUX input · panels rotate every 10 sec · silent, like a good bulletin board';
-  fill.style.width='100%';
-  elap.textContent='LOCAL';endsEl.textContent='always on';
-  nextEl.innerHTML='<li><span class="t">BOARD</span><span>Around Town</span><span class="k">10 SEC</span></li>'
-    +'<li><span class="t">BOARD</span><span>On the River</span><span class="k">10 SEC</span></li>'
-    +'<li><span class="t">BOARD</span><span>Board Notes</span><span class="k">10 SEC</span></li>';
-  if(!allEl.dataset.built){
-    allEl.dataset.built='1';
-    allEl.innerHTML='<li class="on"><span class="t">24/7</span><span>Decatur, Alabama — community board on the AUX input</span><span class="k">Local</span></li>';
-  }
+  sync(true);
+  if(reel&&reel[cur]&&reel[cur].url)v.play().catch(function(){});
 }
 
 /* ---------- CH 9 · THE ORATORY (prayer stream draft + silent-epic film block) ---------- */
@@ -877,10 +885,44 @@ var PRAYERS=[
  {b:'EVENING',t:'Act of Contrition',x:'O my God, I am heartily sorry for having offended Thee, and I detest all my sins because of Thy just punishments, but most of all because they offend Thee, my God, who art all good and deserving of all my love. I firmly resolve, with the help of Thy grace, to sin no more and to avoid the near occasions of sin. Amen.'},
  {b:'NIGHT',t:'Angel of God',x:"Angel of God, my guardian dear, to whom God's love commits me here, ever this day be at my side, to light and guard, to rule and guide. Amen."}
 ];
-var PAU=['sign','creed','our-father','hail-mary','glory-be','fatima','hail-holy-queen','closing'];
-var pauIdx=0,prayIdx=0;
+/* Paired prayer stream: ONE sequence of segments. Each segment is a prayer
+   card plus its voice track (or silence), and the two advance together.
+   The old build rotated the text cards on a fixed 40s wall-clock timer while
+   the audio ran on its own 'ended' clock from index 0 — the voice almost
+   never matched the card on screen. Voiced durations below are the real mp3
+   lengths (ffprobe, Nov 18 2026); prayers with no voice track hold as silent
+   cards for 40s. 'closing.mp3' is deliberately NOT in the stream: it is the
+   rosary's spoken conclusion, which has no matching card in PRAYERS, so
+   playing it under any card would recreate the mismatch. The file stays in
+   assets/prayer-audio/ if a proper closing card is ever added. */
+var PSEG=[
+ {p:0,a:'sign',d:7.392},
+ {p:1,a:'creed',d:42.768},
+ {p:2,a:'our-father',d:23.208},
+ {p:3,a:'hail-mary',d:16.728},
+ {p:4,a:'glory-be',d:11.736},
+ {p:5,a:'fatima',d:11.616},
+ {p:6,a:null,d:40},
+ {p:7,a:null,d:40},
+ {p:8,a:null,d:40},
+ {p:9,a:null,d:40},
+ {p:10,a:null,d:40},
+ {p:11,a:'hail-holy-queen',d:52.128},
+ {p:12,a:null,d:40},
+ {p:13,a:null,d:40}
+];
+var PCYCLE=0;for(var psi=0;psi<PSEG.length;psi++)PCYCLE+=PSEG[psi].d;
+var segIdx=0,segToken=0;
+function prayPos(){
+  var pos=(Date.now()/1000)%PCYCLE,acc=0;
+  for(var i=0;i<PSEG.length;i++){
+    if(pos<acc+PSEG[i].d)return{i:i,off:pos-acc};
+    acc+=PSEG[i].d;
+  }
+  return{i:0,off:0};
+}
 function renderPrayCard(){
-  var p=PRAYERS[prayIdx];
+  var p=PRAYERS[PSEG[segIdx].p];
   document.getElementById('rsPrayBlock').textContent=p.b;
   document.getElementById('rsPrayTitle').textContent=p.t;
   var tx=document.getElementById('rsPrayText');
@@ -888,17 +930,54 @@ function renderPrayCard(){
   tx.className='rs-pray-text'+(p.x.length>260?' long':'');
 }
 function playPrayAu(){
-  prayAu.src='assets/prayer-audio/'+PAU[pauIdx]+'.mp3';
+  var seg=PSEG[segIdx];
+  if(!seg||!seg.a)return;
+  var pos=prayPos(),off=(pos.i===segIdx)?pos.off:0;
+  var src='assets/prayer-audio/'+seg.a+'.mp3';
+  if(prayAu.getAttribute('src')!==src){
+    prayAu.src=src;
+    if(off>0.05){
+      var seek=function(){try{prayAu.currentTime=off;}catch(e){}};
+      prayAu.addEventListener('loadedmetadata',seek,{once:true});
+    }
+  }else if(off>0.05&&Math.abs(prayAu.currentTime-off)>1.5){
+    try{prayAu.currentTime=off;}catch(e){}
+  }
   prayAu.play().catch(function(){});
+}
+function showSeg(i,off){
+  segIdx=i;segToken++;
+  var tok=segToken,seg=PSEG[i];
+  renderPrayCard();
+  if(prayTimer){clearTimeout(prayTimer);prayTimer=null;}
+  if(seg.a){
+    playPrayAu();
+    /* Fallback: if 'ended' never fires (autoplay block, stall), advance on
+       the shared clock so the card never hangs on a finished prayer. */
+    prayTimer=setTimeout(function(){
+      if(tok!==segToken||!prayOn||prayFilm)return;
+      advanceSeg();
+    },Math.max(250,(seg.d-off)*1000+1500));
+  }else{
+    unloadAudio(prayAu);
+    prayTimer=setTimeout(function(){
+      if(tok!==segToken||!prayOn||prayFilm)return;
+      advanceSeg();
+    },Math.max(250,(seg.d-off)*1000));
+  }
+}
+function advanceSeg(){
+  showSeg((segIdx+1)%PSEG.length,0);
 }
 prayAu.addEventListener('ended',function(){
   if(!prayOn||prayFilm)return;
-  pauIdx=(pauIdx+1)%PAU.length;playPrayAu();
+  if(!PSEG[segIdx].a)return;
+  advanceSeg();
 });
 prayAu.addEventListener('error',function(){
   if(!prayOn||prayFilm)return;
-  pauIdx=(pauIdx+1)%PAU.length;
-  if(pauIdx!==0)playPrayAu();
+  if(!PSEG[segIdx].a)return;
+  advanceSeg();
 });
 function drawCandles(t){
   if(!prayOn||prayFilm)return;
@@ -937,13 +1016,10 @@ function enterPrayer(){
   prayEl.classList.add('on');prayEl.setAttribute('aria-hidden','false');
   filmChip.classList.remove('on');
   msg.textContent='';
-  prayIdx=Math.floor(Date.now()/40000)%PRAYERS.length;
-  renderPrayCard();
-  if(prayTimer)clearInterval(prayTimer);
-  prayTimer=setInterval(function(){prayIdx=(prayIdx+1)%PRAYERS.length;renderPrayCard();},40000);
+  var pos=prayPos();
+  showSeg(pos.i,pos.off);
   if(candleRAF)cancelAnimationFrame(candleRAF);
   candleRAF=requestAnimationFrame(drawCandles);
-  pauIdx=0;playPrayAu();
   renderPrayGuide();
 }
 document.getElementById('rsPrayFilms').addEventListener('click',function(){
@@ -962,22 +1038,25 @@ filmChip.addEventListener('click',function(){
   enterPrayer();
 });
 
-/* ---------- CH 10 · THE SURGE REPORT: The Brief + 7 AM / 7 PM editions ---------- */
+/* ---------- CH 10 · THE SURGE REPORT: all news — reels, NASA film, flashbacks + 7 AM / 7 PM editions ----------
+   The explainer Briefs are gone (Sergio, Nov 18 2026: the channel is "just
+   everything news"). The card slots now carry FLASHBACKS: reflective,
+   factual looks back at moments already in this channel's orbit. Every line
+   is checkable; no invented quotes, no invented color. */
 var BRIEFS=[
- {h:'How to Read a News Story',l:['<b>Check the source.</b> Who is telling you this — and how would they know?','<b>Check the date.</b> Old stories wear new headlines all the time.','<b>Find the document.</b> The quote, the filing, the video — not just the summary of it.','<b>Separate news from opinion.</b> Both are fine. They are not the same thing.']},
- {h:'The Space Race in Five Dates',l:['<b>1957</b> — Sputnik 1: the first satellite, and America looks up.','<b>April 1961</b> — Yuri Gagarin orbits; Alan Shepard answers a month later.','<b>February 1962</b> — John Glenn orbits the Earth three times.','<b>July 1969</b> — Apollo 11 lands on the Moon.','<b>1975</b> — Apollo–Soyuz: the race ends with a handshake in orbit.']},
- {h:"What 'Public Domain' Actually Means",l:['Works whose copyright <b>expired</b>, was <b>never renewed</b>, or that were <b>made by the U.S. government</b>.','That is the whole legal engine of this dial — every channel, checked title by title.','Old does not automatically mean free: renewals, restorations and trademarks still count.','When in doubt, we check the record — and if it is not clear, it does not air.']},
- {h:'How a Bill Becomes a Law',l:['<b>Introduced</b> in the House or the Senate, and sent to committee.','<b>Committee</b> hearings and markup — where most bills quietly end.','<b>Floor votes</b> in both chambers; differences ironed out in conference.','<b>The President</b> signs it — or vetoes it, and Congress can override with two-thirds.']},
- {h:'Why Newsreels Mattered',l:['Before TV news, the news came to the <b>theater</b> — ten minutes at a time.','Universal Newsreel ran 1929–1967; MCA later <b>deeded the library to the U.S. Government</b>.','That deed is why this channel can play them today, free and clear.','You are watching the same reels a 1962 moviegoer watched.']}
+ {kick:'FLASHBACK',h:'Glenn Orbits the Earth',l:['<b>February 20, 1962</b> — John Glenn rides Friendship 7 around the Earth three times, the first American to orbit the planet.','The flight lasts <b>4 hours, 55 minutes</b> — and for all of it, a country holds its breath with one 40-year-old man in a capsule built for one.','Two days later, Universal\u2019s cameras turn it into the newsreel on this channel: <b>\u201cSpace Triumph! Glenn Flight Thrills World.\u201d</b>','Before television lived in every home, this is how a nation watched together — a few days late, in the dark, shoulder to shoulder.']},
+ {kick:'FLASHBACK',h:'The Eagle Has Landed',l:['<b>July 20, 1969</b> — Apollo 11 sets down in the Sea of Tranquility. Armstrong\u2019s whole report is four words: <b>\u201cThe Eagle has landed.\u201d</b>','Armstrong and Aldrin walk; Michael Collins keeps the lonelier watch, alone in orbit around the far side of the Moon.','The rocket that lifted them was Saturn V — designed and tested at Marshall Space Flight Center in <b>Huntsville, Alabama</b>.','An estimated <b>600 million people</b> watched the first step — still the largest audience ever gathered around a single moment.']},
+ {kick:'FLASHBACK',h:'A Handshake in Orbit',l:['<b>July 17, 1975</b> — an American Apollo and a Soviet Soyuz dock in orbit, and Tom Stafford and Alexei Leonov shake hands through the hatch.','It is the first joint flight of the two rivals — and, quietly, <b>the end of the Space Race</b> that began with Sputnik in 1957.','Leonov had been the first man to walk in space, ten years earlier. Now the race finished not with a flag, but with a greeting.','The two crews trained in each other\u2019s languages so that, at the moment of meeting, each commander could speak the other\u2019s tongue.']},
+ {kick:'FLASHBACK',h:'When the News Came to the Theater',l:['Before TV news, the news came to the <b>theater</b> — ten minutes at a time, between the cartoon and the feature.','Universal Newsreel ran <b>1929–1967</b>; MCA later <b>deeded the library to the U.S. Government</b> — which is why this channel can play the reels today, free and clear.','A 1962 moviegoer saw the same Glenn reel you just saw, in the same order, with the same narration.','The reels were the week, edited. Slow by our measure — and somehow easier to believe.']}
 ];
 function enterBrief(idx,edLabel){
   briefOn=true;
   var b=BRIEFS[idx%BRIEFS.length];
-  document.getElementById('rsBriefKick').textContent=edLabel?('THE SURGE REPORT · '+edLabel):'THE BRIEF · A SURGE REPORT SEGMENT';
+  document.getElementById('rsBriefKick').textContent=edLabel?('THE SURGE REPORT · '+edLabel):((b.kick||'THE BRIEF')+' · A SURGE REPORT SEGMENT');
   document.getElementById('rsBriefH').textContent=b.h;
   document.getElementById('rsBriefLines').innerHTML=b.l.map(function(s){return '<p class="rs-brief-line">'+s+'</p>';}).join('');
   var ed=document.getElementById('rsBriefEd');
-  ed.hidden=!edLabel;ed.textContent=edLabel||'THE BRIEF';
+  ed.hidden=!edLabel;ed.textContent=edLabel||(b.kick||'THE BRIEF');
   briefEl.classList.add('on');briefEl.setAttribute('aria-hidden','false');
 }
 function exitBrief(){
@@ -995,8 +1074,8 @@ function editionStartSec(){
   if(d.getHours()<12)s.setHours(7,0,0,0);else s.setHours(19,0,0,0);
   return Math.max(0,(d-s)/1000);
 }
-var ED_CYCLE=[{type:'title',dur:15},{type:'brief',idx:4,dur:45},{type:'brief',idx:0,dur:45},{type:'video',dur:369.79},{type:'brief',idx:1,dur:45},{type:'brief',idx:2,dur:45},{type:'brief',idx:3,dur:45}];
-var ED_TOTAL=609.79,edKey=null;
+var ED_CYCLE=[{type:'title',dur:15},{type:'brief',idx:3,dur:45},{type:'brief',idx:0,dur:45},{type:'video',dur:369.79},{type:'brief',idx:1,dur:45},{type:'brief',idx:2,dur:45}];
+var ED_TOTAL=564.79,edKey=null;
 function editionTick(){
   if(!talkOn)return;
   if(!editionActive()){
@@ -1021,8 +1100,8 @@ function editionTick(){
     unloadVideo();
     briefOn=true;
     document.getElementById('rsBriefKick').textContent='THE SURGE REPORT';
-    document.getElementById('rsBriefH').textContent=editionName()+' — The Brief';
-    document.getElementById('rsBriefLines').innerHTML='<p class="rs-brief-line">The day in plain English: briefs, clips and the reels that made the news. <b>Premiering at '+(editionName().indexOf('MORNING')===0?'7:00 AM':'7:00 PM')+' CT</b> — then this edition folds into the rotation.</p>';
+    document.getElementById('rsBriefH').textContent=editionName()+' — The News';
+    document.getElementById('rsBriefLines').innerHTML='<p class="rs-brief-line">All the news, start to finish: the reels that made it, the rockets that topped it, and the moments worth remembering. <b>Premiering at '+(editionName().indexOf('MORNING')===0?'7:00 AM':'7:00 PM')+' CT</b> — then this edition folds into the rotation.</p>';
     var ed=document.getElementById('rsBriefEd');
     ed.hidden=false;ed.textContent=label;
     briefEl.classList.add('on');briefEl.setAttribute('aria-hidden','false');
@@ -1055,14 +1134,15 @@ syncBtn.addEventListener('click',function(){
 /* ---------- AirPlay (Safari / iOS / macOS) ----------
    The picker lives on the <video> itself, and the tap is the user gesture
    it needs. The button appears only where that API exists, and it disables
-   on channels with nothing to send (CH 3 board, CH 8 weather, CH 9 prayer
-   cards, CH 10 brief cards). There is no Chromecast button: the Cast sender
+   on channels with nothing to send (CH 8 weather, CH 9 prayer
+   cards, CH 10 flashback cards, CH 3 while a photograph is on screen). There is no Chromecast button: the Cast sender
    framework does not run in iOS Safari, so the old CAST button could only
    ever sit there dead — a button that silently does nothing is worse than
    none. AirPlay is the casting route on this page. */
 var airOK=('webkitShowPlaybackTargetPicker' in v);
 function videoBacked(){
-  if(wxOn||auxOn||briefOn)return false;
+  if(wxOn||briefOn)return false;
+  if(tmOn&&tmImgOn)return false;
   if(prayOn&&!prayFilm)return false;
   return !!v.getAttribute('src');
 }
@@ -1149,7 +1229,7 @@ window.RS={
       videoPaused:v.paused,videoSrc:(v.getAttribute('src')||''),videoLoop:v.loop,
       jazzPaused:au.paused,jazzSrc:(au.getAttribute('src')||''),
       prayPaused:prayAu.paused,praySrc:(prayAu.getAttribute('src')||''),
-      wxOn:wxOn,auxOn:auxOn,prayOn:prayOn,prayFilm:prayFilm,loopOn:loopOn,briefOn:briefOn,talkOn:talkOn,
+      wxOn:wxOn,tmOn:tmOn,tmImgOn:tmImgOn,prayOn:prayOn,prayFilm:prayFilm,loopOn:loopOn,briefOn:briefOn,talkOn:talkOn,
       theater:theaterOn,airOK:airOK,airHidden:airBtn.hidden,airDisabled:!!airBtn.disabled,
       bgOn:vBg.classList.contains('on'),videoLoop:v.loop,fsOn:fsActive(),
       edition:talkOn&&editionActive()};
@@ -1169,7 +1249,6 @@ fetch('surge-tv-playlist.json',{cache:'no-cache'}).then(function(r){return r.jso
   setInterval(function(){
     clockEl.textContent='CH '+(chIdx+1)+' · '+fmtClock(new Date())+' CT · VIEWERS SYNCED';
     if(wxOn)wxClockEl.textContent=fmtClock(new Date())+' CT';
-    if(auxOn)auxClockEl.textContent=fmtClock(new Date());
   },1000);
   clockEl.textContent='CH '+(chIdx+1)+' · '+fmtClock(new Date())+' · VIEWERS SYNCED';
 }).catch(function(){msg.textContent='THE REEL WOULD NOT LOAD — REFRESH TO RETRY';nowEl.textContent='Off air (for a second)';});
